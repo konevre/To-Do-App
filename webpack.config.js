@@ -8,25 +8,33 @@ module.exports = {
     entry: ["@babel/polyfill", "./src/index.jsx"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].[hash].js"
+        filename: "[name].[hash].js",
     },
     devServer: {
         historyApiFallback: true,
         port: 3000,
     },
+    resolve: {
+        extensions: [".js", ".json"],
+    },
     plugins: [
-        new HTMLWebpackPlugin({template: "./src/index.html"}),
-        new CleanWebpackPlugin()
+        new HTMLWebpackPlugin({ template: "./src/index.html" }),
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
             {
                 test: /\.(css|scss|sass)$/,
-                use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                    "postcss-loader",
+                ],
             },
             {
                 test: /\.(jpg|jpeg|png|svg)/,
-                use: ["file-loader"]
+                use: ["file-loader"],
             },
             {
                 test: /\.m?js$/,
@@ -34,9 +42,9 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
+                        presets: ["@babel/preset-env"],
+                    },
+                },
             },
             {
                 test: /\.m?jsx$/,
@@ -44,10 +52,10 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-react", '@babel/preset-env']
-                    }
-                }
-            }
-        ]
-    }
-}
+                        presets: ["@babel/preset-react", "@babel/preset-env"],
+                    },
+                },
+            },
+        ],
+    },
+};

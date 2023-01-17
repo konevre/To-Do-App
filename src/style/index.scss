@@ -4,13 +4,13 @@
 
 html {
     @apply font-lexend;
-    @apply h-screen;
+    @apply h-full;
 }
 
 body {
-    @apply h-screen;
+    @apply text-neutral-700;
+    @apply h-full;
     @apply bg-slate-100;
-    @apply p-4 sm:p-6;
 }
 
 #root {
