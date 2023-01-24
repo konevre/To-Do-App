@@ -11,7 +11,7 @@ import {
     useDeleteTodoMutation,
 } from "../store/apiSlice.js";
 
-const useForm = () => {
+const useTodoForm = () => {
     const { isTodoOpen } = useSelector((state) => state.tasks);
     const isOpen = isTodoOpen[0];
     const todoObj = isTodoOpen[1];
@@ -58,7 +58,16 @@ const useForm = () => {
         updateTodo(data);
     };
 
-    const onSubmit = (values, method) => {
+    const onSubmit = (values, { resetForm }) => {
+        if (todoObj) {
+            handleSubmit(values, "PUT");
+        } else {
+            handleSubmit(values, "POST");
+        }
+        resetForm();
+    };
+
+    const handleSubmit = (values, method) => {
         const date =
             values.date.length === 0 ? "" : formatDate(values.date, "dd-MM-yy");
         const data = {
@@ -85,4 +94,4 @@ const useForm = () => {
     };
 };
 
-export default useForm;
+export default useTodoForm;

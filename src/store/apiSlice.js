@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001" }),
-    tagTypes: ["todos"],
+    tagTypes: ["todos", "lists"],
     endpoints: (builder) => ({
         getAllTodos: builder.query({
             query: () => "/todos",
@@ -36,6 +36,18 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["todos"],
         }),
+        getAllLists: builder.query({
+            query: () => "/lists",
+            providesTags: ["lists"],
+        }),
+        createList: builder.mutation({
+            query: (list) => ({
+                url: "/lists",
+                method: "POST",
+                body: list,
+            }),
+            invalidatesTags: ["lists"],
+        }),
     }),
 });
 
@@ -45,4 +57,6 @@ export const {
     useCreateTodoMutation,
     useUpdateTodoMutation,
     useDeleteTodoMutation,
+    useGetAllListsQuery,
+    useCreateListMutation,
 } = apiSlice;

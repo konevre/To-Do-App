@@ -8,11 +8,10 @@ import upcoming from "../../resources/icons/chevrons-right.svg";
 import today from "../../resources/icons/list-check.svg";
 import calendar from "../../resources/icons/calendar-days.svg";
 import note from "../../resources/icons/note.svg";
-import plus from "../../resources/icons/plus.svg";
 import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
 
-import "./style.scss";
+import ListComponent from "./Lists/ListComponent.jsx";
 
 const MenuComponent = () => {
     const dispatch = useDispatch();
@@ -79,40 +78,7 @@ const MenuComponent = () => {
                 {/* DIVIDER */}
                 <div className="mt-3 h-px bg-neutral-300"></div>
                 {/* LISTS */}
-                <div className="mt-6 ml-3 text-xs font-semibold uppercase">
-                    Lists
-                </div>
-                <div className="mt-3 flex flex-col">
-                    <div className="flex h-10 items-center rounded-lg px-5">
-                        <div className="h-4 w-4 rounded bg-cyan-400 text-center text-xs font-semibold text-neutral-600"></div>
-                        <div className="ml-2.5 text-sm font-normal">
-                            Personal
-                        </div>
-                        <div className="ml-auto h-4 w-6 rounded bg-neutral-300 text-center text-xs font-semibold text-neutral-600">
-                            5
-                        </div>
-                    </div>
-                    <div className="flex h-10 items-center rounded-lg px-5">
-                        <div className="h-4 w-4 rounded bg-red-400 text-center text-xs font-semibold text-neutral-600"></div>
-                        <div className="ml-2.5 text-sm font-normal">Work</div>
-                        <div className="ml-auto h-4 w-6 rounded bg-neutral-300 text-center text-xs font-semibold text-neutral-600">
-                            2
-                        </div>
-                    </div>
-                    <div className="flex h-10 items-center rounded-lg px-5">
-                        <div className="h-4 w-4 rounded bg-amber-400 text-center text-xs font-semibold text-neutral-600"></div>
-                        <div className="ml-2.5 text-sm font-normal">List 1</div>
-                        <div className="ml-auto h-4 w-6 rounded bg-neutral-300 text-center text-xs font-semibold text-neutral-600">
-                            9
-                        </div>
-                    </div>
-                    <div className="flex h-10 cursor-pointer items-center rounded-lg px-5">
-                        <img src={plus} alt="upcoming" className="w-3" />
-                        <div className="ml-2.5 text-sm font-normal">
-                            Add New List
-                        </div>
-                    </div>
-                </div>
+                <ListComponent />
                 {/* DIVIDER */}
                 <div className="mt-3 h-px bg-neutral-300"></div>
                 {/* TAGS */}

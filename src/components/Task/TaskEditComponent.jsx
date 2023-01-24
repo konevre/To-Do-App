@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import xmark from "../../resources/icons/xmark.svg";
 
-import useForm from "../../hooks/useForm";
+import useTodoForm from "../../hooks/useTodoForm";
 
 import SubtaskComponent from "./SubtaskComponent.jsx";
 
@@ -15,9 +15,8 @@ const TaskEditComponent = () => {
         onDelete,
         onSubmit,
         onClose,
-        todoObj,
         isOpen,
-    } = useForm();
+    } = useTodoForm();
 
     const isHidden = isOpen ? "" : "hidden";
 
@@ -44,14 +43,7 @@ const TaskEditComponent = () => {
                             enableReinitialize
                             initialValues={initialValues}
                             validationSchema={validationSchema}
-                            onSubmit={(values, { resetForm }) => {
-                                if (todoObj) {
-                                    onSubmit(values, "PUT");
-                                } else {
-                                    onSubmit(values, "POST");
-                                }
-                                resetForm();
-                            }}
+                            onSubmit={onSubmit}
                         >
                             {(values) => (
                                 <Form className="mt-5" action="#" id="task">
