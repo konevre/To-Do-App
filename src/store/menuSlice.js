@@ -8,7 +8,7 @@ const menuSlice = createSlice({
     name: "menu",
     initialState,
     reducers: {
-        setMenu: (state) => {
+        showMenu: (state) => {
             state.isMenuOpen = !state.isMenuOpen;
         },
     },
@@ -17,4 +17,4 @@ const menuSlice = createSlice({
 const { actions, reducer } = menuSlice;
 
 export default reducer;
-export const { setMenu } = actions;
+export const { showMenu } = actions;

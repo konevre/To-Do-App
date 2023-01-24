@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { setMenu } from "../../store/menuSlice.js";
+import { showMenu } from "../../store/menuSlice.js";
 
 import upcoming from "../../resources/icons/chevrons-right.svg";
 import today from "../../resources/icons/list-check.svg";
@@ -12,23 +12,25 @@ import plus from "../../resources/icons/plus.svg";
 import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
 
+import "./style.scss";
+
 const MenuComponent = () => {
     const dispatch = useDispatch();
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
 
     const onMenu = () => {
-        dispatch(setMenu());
+        dispatch(showMenu());
     };
 
     const isHidden = isMenuOpen
-        ? "absolute top-0 z-10 translate-x-0 sm:static sm:z-0 sm:pr-0"
+        ? "absolute top-0 z-10 translate-x-0 sm:static sm:z-0"
         : "absolute top-0 -z-10 -translate-x-full delay-300 sm:static sm:z-0 sm:hidden";
 
     return (
         <div
-            className={`${isHidden} min-h-full w-full transform bg-neutral-200 p-4 transition duration-300 ease-in-out sm:basis-1/3 sm:transform-none sm:bg-slate-100 sm:p-6 lg:basis-1/4`}
+            className={`${isHidden} h-full w-full transform bg-neutral-200 transition duration-300 ease-in-out sm:basis-1/3 sm:transform-none sm:bg-slate-100 lg:basis-1/4`}
         >
-            <div className="min-h-full bg-neutral-200 sm:rounded-2xl sm:p-4">
+            <div className="m-mobile h-full overflow-y-auto bg-neutral-200 p-4 sm:rounded-2xl">
                 <div className="flex items-center justify-between">
                     <div className="font-semibold sm:text-xl">Menu</div>
                     <img
@@ -134,7 +136,6 @@ const MenuComponent = () => {
                     <img src={settings} alt="settings" className="h-3/4" />
                     <div className="text-sm">Settings</div>
                 </div>
-                {/* DIVIDER */}
             </div>
         </div>
     );

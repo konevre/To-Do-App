@@ -15,4 +15,6 @@ body {
 
 #root {
     @apply h-full;
+    @apply sm:p-6;
+    @apply overflow-x-hidden;
 }

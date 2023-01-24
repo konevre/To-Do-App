@@ -1,8 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import menu from "./menuSlice.js";
-import tasks from "./taskSlice.js";
+import { apiSlice } from "./apiSlice.js";
 
-const store = configureStore({ reducer: { menu, tasks } });
+import menu from "./menuSlice.js";
+import tasks from "./todoSlice.js";
+
+const store = configureStore({
+    reducer: { menu, tasks, [apiSlice.reducerPath]: apiSlice.reducer },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiSlice.middleware),
+});
 
 export default store;

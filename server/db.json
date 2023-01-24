@@ -1,0 +1,55 @@
+{
+  "todos": [
+    {
+      "name": "Call dad",
+      "list": {
+        "name": "Work",
+        "color": "bg-amber-300"
+      },
+      "due_date": "24-01-23",
+      "subtasks": [],
+      "id": "0d68c221-5fbb-4189-9bb8-53187cc44f4e"
+    },
+    {
+      "name": "Roman",
+      "list": {
+        "name": "",
+        "color": "bg-amber-300"
+      },
+      "due_date": "",
+      "subtasks": [],
+      "id": "5bf8658b-7baa-490b-a8c6-b161f4f8e709"
+    },
+    {
+      "name": "Call bakery",
+      "list": {
+        "name": "Work",
+        "color": "bg-amber-300"
+      },
+      "due_date": "25-01-23",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Add some flavor"
+        },
+        {
+          "done": true,
+          "name": "Chocolate topping??"
+        }
+      ],
+      "id": "9fa727d6-6e22-4173-8731-81d50e1e4d82"
+    },
+    {
+      "id": "8a485512-a031-451e-ba64-43c89d0d0d3a",
+      "name": "Call Yaya Toure",
+      "description": "",
+      "list": {
+        "name": "",
+        "color": "bg-amber-300"
+      },
+      "due_date": "",
+      "tags": "Tag 1",
+      "subtasks": []
+    }
+  ]
+}

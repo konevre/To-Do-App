@@ -1,18 +1,36 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
-import { taskToggler } from "../../store/taskSlice";
+import { showTodo } from "../../store/todoSlice";
+import { useUpdateTodoMutation } from "../../store/apiSlice";
+import { showMenu } from "../../store/menuSlice.js";
 
 import detail from "../../resources/icons/chevron.svg";
 import calendar from "../../resources/icons/calendar-x.svg";
 
 const TaskItemComponent = ({ task, i }) => {
     const dispatch = useDispatch();
+    const [isDone, setTodoState] = useState(false);
+    const [updateTodo] = useUpdateTodoMutation();
+    const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
+    const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+
+    const onTask = () => {
+        if (isLessThan1024 && isMenuOpen) {
+            dispatch(showMenu());
+        }
+        dispatch(showTodo(task));
+    };
+
+    const switchTodoState = () => {
+        setTodoState(!isDone);
+    };
 
     const listName = task.list.name,
         listColor = task.list.color,
         subLength = task.subtasks.length,
-        dueDate = task.dueDate;
+        dueDate = task.due_date;
 
     const taskExtra =
         subLength > 0 || listName.length > 0 || dueDate.length > 0;
@@ -24,25 +42,26 @@ const TaskItemComponent = ({ task, i }) => {
             <div className="flex w-4 items-center">
                 <input
                     type="checkbox"
-                    checked={task.done}
-                    onChange={() => dispatch(taskToggler(i))}
+                    checked={isDone}
+                    onChange={switchTodoState}
                 />
             </div>
             <div className="col-span-3 col-start-2 my-auto ml-3 truncate text-base text-neutral-600 ">
                 {task.name}
             </div>
             <div className="ml-auto flex h-8 cursor-pointer items-center">
-                <img src={detail} alt="plus" className="h-1/2" />
+                <img
+                    src={detail}
+                    alt="plus"
+                    className="h-1/2"
+                    onClick={onTask}
+                />
             </div>
             {taskExtra ? (
-                <div className="col-span-3 col-start-2 ml-3 flex h-8 gap-x-4 sm:gap-x-6">
+                <div className="col-span-3 col-start-2 ml-3 flex h-8  flex-wrap gap-4 sm:gap-x-6">
                     {dueDate.length > 0 && (
                         <div className="flex items-center">
-                            <img
-                                src={calendar}
-                                alt="subtask"
-                                className="h-1/2"
-                            />
+                            <img src={calendar} alt="subtask" className="h-4" />
                             <div className="ml-2 text-xs font-semibold text-neutral-600">
                                 {dueDate}
                             </div>

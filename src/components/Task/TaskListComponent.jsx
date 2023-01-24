@@ -1,16 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+
+import { useGetAllTodosQuery } from "../../store/apiSlice.js";
 
 import TaskItemComponent from "./TaskItemComponent.jsx";
 
 const TaskListComponent = () => {
-    const tasks = useSelector((state) => state.tasks.tasks);
+    const { data: todos, isSuccess } = useGetAllTodosQuery();
 
-    const content = tasks.map((task, i) => {
-        return <TaskItemComponent task={task} i={i} key={i} />;
-    });
-
-    return content;
+    if (isSuccess) {
+        return todos.map((task, i) => {
+            return <TaskItemComponent task={task} i={i} key={i} />;
+        });
+    }
 };
 
 export default TaskListComponent;
