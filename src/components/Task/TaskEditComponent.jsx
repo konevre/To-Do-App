@@ -1,65 +1,25 @@
 /* eslint-disable indent */
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { v4 as uuidv4 } from "uuid";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import {
-    useCreateTodoMutation,
-    useUpdateTodoMutation,
-    useDeleteTodoMutation,
-} from "../../store/apiSlice";
-
-import { closeTodo, makeTodoNull, showTodo } from "../../store/todoSlice.js";
-import { formatDate } from "../../utils/utils.js";
 
 import xmark from "../../resources/icons/xmark.svg";
+
+import useForm from "../../hooks/useForm";
 
 import SubtaskComponent from "./SubtaskComponent.jsx";
 
 const TaskEditComponent = () => {
-    const { isTodoOpen } = useSelector((state) => state.tasks);
-    const dispatch = useDispatch();
-    const isHidden = isTodoOpen[0] ? "" : "hidden";
+    const {
+        initialValues,
+        validationSchema,
+        onDelete,
+        onSubmit,
+        onClose,
+        todoObj,
+        isOpen,
+    } = useForm();
 
-    // СДЕЛАТЬ КАСТОМ ХУК ПО ФОРМЕ
-    const [createTodo] = useCreateTodoMutation();
-    const [updateTodo] = useUpdateTodoMutation();
-    const [deleteTodo] = useDeleteTodoMutation();
-
-    const todo = isTodoOpen[1];
-
-    const onClose = () => {
-        dispatch(closeTodo());
-    };
-
-    const onDelete = () => {
-        dispatch(makeTodoNull());
-        deleteTodo(todo.id);
-    };
-
-    const onUpdate = (data) => {
-        dispatch(showTodo(data));
-        updateTodo(data);
-    };
-
-    const onSubmit = (values, method) => {
-        const date =
-            values.date.length === 0 ? "" : formatDate(values.date, "dd-MM-yy");
-        const data = {
-            id: todo?.id || uuidv4(),
-            name: values.name,
-            description: values.descr,
-            list: { name: values.list, color: "bg-amber-300" },
-            due_date: date,
-            tags: values.tags,
-            subtasks: values.subtasks,
-        };
-        method === "POST" ? createTodo(data) : onUpdate(data);
-    };
-    // ДО СЮДА
+    const isHidden = isOpen ? "" : "hidden";
 
     const render = () => {
         return (
@@ -82,32 +42,10 @@ const TaskEditComponent = () => {
                         {/* FORM */}
                         <Formik
                             enableReinitialize
-                            initialValues={{
-                                name: todo ? todo?.name : "",
-                                descr: todo ? todo?.descr : "",
-                                list: todo ? todo?.list.name : "",
-                                date: todo
-                                    ? formatDate(todo?.due_date, "yyyy-MM-dd")
-                                    : "",
-                                tags: todo ? todo.tags : "",
-                                subtasks: todo ? todo.subtasks : [],
-                            }}
-                            validationSchema={Yup.object({
-                                name: Yup.string()
-                                    .min(2, "Min 2 symbols")
-                                    .required("Name field is required."),
-                                subtasks: Yup.array().of(
-                                    Yup.object().shape({
-                                        name: Yup.string()
-                                            .min(2, "Min 2 symbols")
-                                            .required(
-                                                "Name field is required."
-                                            ),
-                                    })
-                                ),
-                            })}
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
                             onSubmit={(values, { resetForm }) => {
-                                if (todo) {
+                                if (todoObj) {
                                     onSubmit(values, "PUT");
                                 } else {
                                     onSubmit(values, "POST");
@@ -193,7 +131,7 @@ const TaskEditComponent = () => {
                     </div>
 
                     <div className="flex justify-between gap-x-4">
-                        {isTodoOpen[1] && (
+                        {isOpen && (
                             <button
                                 onClick={onDelete}
                                 className="flex h-10 basis-1/2 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200  text-sm font-semibold"
@@ -205,7 +143,7 @@ const TaskEditComponent = () => {
                             type="submit"
                             form="task"
                             className={`flex h-10 ${
-                                isTodoOpen[1] ? "basis-1/2" : "basis-full"
+                                isOpen ? "basis-1/2" : "basis-full"
                             } items-center justify-center rounded-lg bg-amber-300 text-sm font-semibold`}
                         >
                             Save changes

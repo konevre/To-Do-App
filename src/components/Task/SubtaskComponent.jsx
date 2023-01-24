@@ -1,46 +1,14 @@
 /* eslint-disable indent */
-import React, { useState } from "react";
+import React from "react";
 
 import { Field, ErrorMessage, FieldArray } from "formik";
 
 import plus from "../../resources/icons/plus.svg";
 import xmark from "../../resources/icons/xmark.svg";
 
-const SubtaskComponent = ({ values, todo }) => {
-    // const [newSubtasks, setNewSubtasks] = useState([]);
-
-    // const onSubtask = () => {
-    //     setNewSubtasks((state) => [...state, newSubtask()]);
-    // };
-
-    // const newSubtask = () => {
-    //     return (
-    //         <div className="flex h-10 flex-row p-1">
-    //             <input type="checkbox" className="w-4" />
-    //             <input
-    //                 placeholder="Name"
-    //                 className="ml-3 basis-full border-none bg-neutral-200 px-3.5 text-sm text-neutral-500"
-    //                 type="text"
-    //             />
-    //         </div>
-    //     );
-    // };
-
+const SubtaskComponent = ({ values }) => {
     return (
         <>
-            {/* <div className="sm:text-x mt-5 font-semibold">Subtask:</div>
-            <div
-                onClick={onSubtask}
-                className="mt-8 flex h-12 cursor-pointer flex-row rounded-lg border border-neutral-300 p-3.5"
-            >
-                <img src={plus} alt="plus" className="h-full" />
-                <div className="ml-3 flex items-center truncate text-base text-neutral-500">
-                    Add New Subtask
-                </div>
-            </div> */}
-            {/* {newSubtasks.length > 0 && (
-                <div className="mt-3">{newSubtasks}</div>
-            )} */}
             <FieldArray
                 name="subtasks"
                 render={(arrayHelpers) => (

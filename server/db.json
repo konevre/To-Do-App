@@ -29,7 +29,7 @@
       "due_date": "25-01-23",
       "subtasks": [
         {
-          "done": false,
+          "done": true,
           "name": "Add some flavor"
         },
         {
@@ -49,6 +49,18 @@
       },
       "due_date": "",
       "tags": "Tag 1",
+      "subtasks": []
+    },
+    {
+      "id": "54e64d8b-6cb1-44f8-b189-8d73ff299a5d",
+      "name": "Hellooo",
+      "description": "",
+      "list": {
+        "name": "",
+        "color": "bg-amber-300"
+      },
+      "due_date": "",
+      "tags": "",
       "subtasks": []
     }
   ]
