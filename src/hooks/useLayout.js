@@ -8,6 +8,7 @@ import { closeTodo, showTask } from "../store/todoSlice";
 const useLayout = () => {
     const dispatch = useDispatch();
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
+    const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
     const { isTodoOpen } = useSelector((state) => state.tasks);
 
@@ -25,7 +26,9 @@ const useLayout = () => {
         dispatch(showTask(null));
     };
 
-    return { isMenuOpen, isTodoOpen, onMenu, onTask };
+    const isAllOpen = isMenuOpen && isTodoOpen[0] && isMoreThan1024;
+
+    return { isMenuOpen, isTodoOpen, onMenu, onTask, isAllOpen };
 };
 
 export default useLayout;

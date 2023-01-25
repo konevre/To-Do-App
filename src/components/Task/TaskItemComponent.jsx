@@ -15,7 +15,6 @@ const TaskItemComponent = ({ task, i }) => {
 
     const lists = useSelector((state) => state.lists.lists);
     const taskList = lists.filter((item) => item.name === task.list)[0];
-    console.log(task.name, task.list);
 
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);

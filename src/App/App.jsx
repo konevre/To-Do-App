@@ -5,6 +5,8 @@ import MenuComponent from "../components/Menu/Menu.jsx";
 import TaskEditComponent from "../components/Task/TaskEditComponent.jsx";
 
 import TodayPage from "../Pages/TodayPage.jsx";
+import UpcomingPage from "../Pages/UpcomingPage.jsx";
+import WelcomePage from "../Pages/WelcomePage.jsx";
 
 const App = () => {
     return (
@@ -12,8 +14,9 @@ const App = () => {
             <div className="relative h-full sm:flex sm:gap-x-3 lg:gap-x-5">
                 <MenuComponent />
                 <Routes>
-                    {/* <Route path="/" element={<Welcome />} /> */}
+                    <Route path="/" element={<WelcomePage />} />
                     <Route path="/today" element={<TodayPage />} />
+                    <Route path="/upcoming" element={<UpcomingPage />} />
                 </Routes>
                 <TaskEditComponent />
             </div>

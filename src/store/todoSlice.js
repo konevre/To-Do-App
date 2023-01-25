@@ -2,7 +2,7 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
     todos: [],
-    isTodoOpen: [true, null],
+    isTodoOpen: [false, null],
 };
 
 const todoSlice = createSlice({

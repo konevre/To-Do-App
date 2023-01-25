@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import logo from "../resources/welcome/welcome_logo.png";
 
-const Welcome = () => {
+const WelcomePage = () => {
     return (
         <div className="flex h-full flex-col p-4 sm:p-6 lg:flex-row">
             <div className="flex h-3/5 items-center justify-center rounded-2xl bg-neutral-900 sm:h-3/6 lg:h-full lg:basis-1/2">
@@ -30,4 +30,4 @@ const Welcome = () => {
     );
 };
 
-export default Welcome;
+export default WelcomePage;
