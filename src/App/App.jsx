@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Welcome from "../Pages/Welcome.jsx";
-import TodayComponent from "../components/Today/TodayComponent.jsx";
 import MenuComponent from "../components/Menu/Menu.jsx";
 import TaskEditComponent from "../components/Task/TaskEditComponent.jsx";
+
+import TodayPage from "../Pages/TodayPage.jsx";
 
 const App = () => {
     return (
@@ -13,7 +13,7 @@ const App = () => {
                 <MenuComponent />
                 <Routes>
                     {/* <Route path="/" element={<Welcome />} /> */}
-                    <Route path="/today" element={<TodayComponent />} />
+                    <Route path="/today" element={<TodayPage />} />
                 </Routes>
                 <TaskEditComponent />
             </div>

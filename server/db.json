@@ -1,31 +1,23 @@
 {
   "todos": [
     {
-      "name": "Call dad",
-      "list": {
-        "name": "Work",
-        "color": "bg-amber-300"
-      },
+      "name": "Call grandad",
+      "list": "Work",
       "due_date": "24-01-23",
       "subtasks": [],
       "id": "0d68c221-5fbb-4189-9bb8-53187cc44f4e"
     },
     {
       "name": "Roman",
-      "list": {
-        "name": "",
-        "color": "bg-amber-300"
-      },
+      "list": "Hobby",
       "due_date": "",
       "subtasks": [],
-      "id": "5bf8658b-7baa-490b-a8c6-b161f4f8e709"
+      "id": "5bf8658b-7baa-490b-a8c6-b161f4f8e709",
+      "done": false
     },
     {
       "name": "Call bakery",
-      "list": {
-        "name": "Work",
-        "color": "bg-amber-300"
-      },
+      "list": "Hobby",
       "due_date": "25-01-23",
       "subtasks": [
         {
@@ -38,49 +30,13 @@
         }
       ],
       "id": "9fa727d6-6e22-4173-8731-81d50e1e4d82"
-    },
-    {
-      "id": "8a485512-a031-451e-ba64-43c89d0d0d3a",
-      "name": "Call Yaya Toure",
-      "description": "",
-      "list": {
-        "name": "",
-        "color": "bg-amber-300"
-      },
-      "due_date": "",
-      "tags": "Tag 1",
-      "subtasks": []
-    },
-    {
-      "id": "54e64d8b-6cb1-44f8-b189-8d73ff299a5d",
-      "name": "Hellooo",
-      "description": "",
-      "list": {
-        "name": "",
-        "color": "bg-amber-300"
-      },
-      "due_date": "",
-      "tags": "",
-      "subtasks": []
-    },
-    {
-      "id": "3714f23b-cc7a-4556-8df2-52fcad0bd320",
-      "name": "Роман",
-      "description": "",
-      "list": {
-        "name": "",
-        "color": "bg-amber-300"
-      },
-      "due_date": "",
-      "tags": "",
-      "subtasks": []
     }
   ],
   "lists": [
     {
       "id": 1,
       "name": "Personal",
-      "color": "bg-amber-400"
+      "color": "bg-amber-500"
     },
     {
       "id": 2,
@@ -93,14 +49,21 @@
       "id": 3
     },
     {
-      "name": "List 2",
-      "color": "bg-violet-400",
+      "name": "Hello",
+      "color": "bg-green-400",
       "id": 4
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tag 1",
+      "color": "bg-red-300",
+      "id": 1
     },
     {
-      "name": "Hobby 2",
-      "color": "bg-green-400",
-      "id": 5
+      "name": "Tag 2",
+      "color": "bg-pink-300",
+      "id": 2
     }
   ]
 }

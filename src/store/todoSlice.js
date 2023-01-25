@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
+    todos: [],
     isTodoOpen: [true, null],
 };
 
@@ -8,7 +9,10 @@ const todoSlice = createSlice({
     name: "tasks",
     initialState,
     reducers: {
-        showTodo: (state, action) => {
+        saveTodos: (state, action) => {
+            state.todos = action.payload;
+        },
+        showTask: (state, action) => {
             state.isTodoOpen = [true, action.payload];
         },
         closeTodo: (state) => {
@@ -23,4 +27,5 @@ const todoSlice = createSlice({
 const { actions, reducer } = todoSlice;
 
 export default reducer;
-export const { showTodo, closeTodo, makeTodoNull } = actions;
+export const { showTask, closeTodo, makeTodoNull, saveTodos, switchTodoState } =
+    actions;

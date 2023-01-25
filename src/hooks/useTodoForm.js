@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { formatDate } from "../utils/utils";
 
-import { closeTodo, makeTodoNull, showTodo } from "../store/todoSlice";
+import { closeTodo, makeTodoNull, showTask } from "../store/todoSlice";
 import {
     useCreateTodoMutation,
     useUpdateTodoMutation,
@@ -25,7 +25,7 @@ const useTodoForm = () => {
     const initialValues = {
         name: todoObj ? todoObj?.name : "",
         descr: todoObj ? todoObj?.descr : "",
-        list: todoObj ? todoObj?.list.name : "",
+        list: todoObj ? todoObj?.list : "",
         date: todoObj ? formatDate(todoObj?.due_date, "yyyy-MM-dd") : "",
         tags: todoObj ? todoObj.tags : "",
         subtasks: todoObj ? todoObj.subtasks : [],
@@ -54,7 +54,7 @@ const useTodoForm = () => {
     };
 
     const onUpdate = (data) => {
-        dispatch(showTodo(data));
+        dispatch(showTask(data));
         updateTodo(data);
     };
 
@@ -74,7 +74,7 @@ const useTodoForm = () => {
             id: todoObj?.id || uuidv4(),
             name: values.name,
             description: values.descr,
-            list: { name: values.list, color: "bg-amber-300" },
+            list: values.list,
             due_date: date,
             tags: values.tags,
             subtasks: values.subtasks,

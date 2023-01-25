@@ -12,6 +12,7 @@ import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
 
 import ListComponent from "./Lists/ListComponent.jsx";
+import TagsComponent from "./Tags/TagsComponent.jsx";
 
 const MenuComponent = () => {
     const dispatch = useDispatch();
@@ -75,28 +76,10 @@ const MenuComponent = () => {
                         </div>
                     </div>
                 </div>
-                {/* DIVIDER */}
                 <div className="mt-3 h-px bg-neutral-300"></div>
-                {/* LISTS */}
                 <ListComponent />
-                {/* DIVIDER */}
                 <div className="mt-3 h-px bg-neutral-300"></div>
-                {/* TAGS */}
-                <div className="mt-6 ml-3 text-xs font-semibold uppercase">
-                    Tags
-                </div>
-                <div className="mt-3 flex min-h-min flex-wrap gap-1">
-                    <div className="flex h-full items-center justify-center rounded bg-sky-200 px-3 text-sm">
-                        Tag 1
-                    </div>
-                    <div className="flex h-full items-center justify-center rounded bg-pink-200 px-3 text-sm">
-                        Tag 2
-                    </div>
-                    <div className="flex h-full items-center justify-center rounded bg-neutral-300 px-3 text-sm">
-                        + Add Tag
-                    </div>
-                </div>
-                {/* DIVIDER */}
+                <TagsComponent />
                 <div className="mt-6 h-px bg-neutral-300"></div>
                 <div className="mt-4 mb-2 ml-3 flex h-5 items-center gap-x-3">
                     <img src={settings} alt="settings" className="h-3/4" />

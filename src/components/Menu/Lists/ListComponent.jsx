@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
-
-import { useGetAllListsQuery } from "../../../store/apiSlice";
+import useGetLists from "../../../hooks/useGetLists";
 
 import useListForm from "../../../hooks/useListForm";
 
 import plus from "../../../resources/icons/plus.svg";
+
+import TagListFormComponent from "../../Forms/TagListFormComponent.jsx";
 
 import ListItemComponent from "./ListItemComponent.jsx";
 
@@ -19,9 +19,10 @@ const ListComponent = () => {
         onSubmit,
         colors,
     } = useListForm();
-    const { data: lists, isSuccess } = useGetAllListsQuery();
-    const [isNewList, setNewList] = useState(false);
 
+    const { lists } = useGetLists();
+
+    const [isNewList, setNewList] = useState(false);
     const onNewList = () => {
         setNewList(!isNewList);
     };
@@ -46,7 +47,7 @@ const ListComponent = () => {
                 Lists
             </div>
             <div className="mt-3 flex flex-col">
-                {isSuccess &&
+                {lists &&
                     lists.map((list, i) => {
                         return <ListItemComponent key={i} list={list} />;
                     })}
@@ -60,37 +61,14 @@ const ListComponent = () => {
                     </div>
                 </div>
                 {isNewList && (
-                    <div className="mt-3 rounded-lg border border-neutral-300 bg-neutral-200 p-3 ">
-                        <Formik
-                            initialValues={initialState}
-                            validationSchema={validationSchema}
-                            onSubmit={onSubmit}
-                        >
-                            <Form>
-                                <div className="flex items-center rounded-lg border border-neutral-300 p-3">
-                                    <div
-                                        className={`h-4 w-4 rounded ${colors[activeColor]}`}
-                                    ></div>
-
-                                    <Field
-                                        name="list"
-                                        type="text"
-                                        placeholder="List Name"
-                                        className="ml-2  w-full bg-neutral-200 px-3.5 text-sm text-neutral-500"
-                                    ></Field>
-                                </div>
-                                <ErrorMessage
-                                    component="div"
-                                    name="list"
-                                    className="mt-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                                />
-                            </Form>
-                        </Formik>
-
-                        <div className="mt-4 flex justify-between">
-                            {colorItems}
-                        </div>
-                    </div>
+                    <TagListFormComponent
+                        name="List"
+                        initialState={initialState}
+                        validationSchema={validationSchema}
+                        onSubmit={onSubmit}
+                        activeColor={colors[activeColor]}
+                        colorItems={colorItems}
+                    />
                 )}
             </div>
         </>

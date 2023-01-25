@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-import { showTodo } from "../../store/todoSlice";
+import { showTask } from "../../store/todoSlice";
 import { useUpdateTodoMutation } from "../../store/apiSlice";
 import { showMenu } from "../../store/menuSlice.js";
 
@@ -12,7 +12,11 @@ import calendar from "../../resources/icons/calendar-x.svg";
 const TaskItemComponent = ({ task, i }) => {
     const dispatch = useDispatch();
     const [isDone, setTodoState] = useState(false);
-    const [updateTodo] = useUpdateTodoMutation();
+
+    const lists = useSelector((state) => state.lists.lists);
+    const taskList = lists.filter((item) => item.name === task.list)[0];
+    console.log(task.name, task.list);
+
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
 
@@ -20,20 +24,19 @@ const TaskItemComponent = ({ task, i }) => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(showTodo(task));
+        dispatch(showTask(task));
     };
 
     const switchTodoState = () => {
         setTodoState(!isDone);
     };
 
-    const listName = task.list.name,
-        listColor = task.list.color,
-        subLength = task.subtasks.length,
+    const subLength = task.subtasks.length,
         dueDate = task.due_date;
 
     const taskExtra =
-        subLength > 0 || listName.length > 0 || dueDate.length > 0;
+        subLength > 0 || task.list.length > 0 || dueDate.length > 0;
+
     return (
         <div
             key={i}
@@ -77,13 +80,13 @@ const TaskItemComponent = ({ task, i }) => {
                             </div>
                         </div>
                     )}
-                    {listName.length > 0 && (
+                    {taskList && (
                         <div className="flex items-center">
                             <div
-                                className={`h-4 w-4 rounded ${listColor} text-center text-xs font-semibold text-neutral-600`}
+                                className={`h-4 w-4 rounded ${taskList.color} text-center text-xs font-semibold text-neutral-600`}
                             ></div>
                             <div className="ml-3 hidden text-xs font-semibold text-neutral-600 sm:block">
-                                {listName}
+                                {taskList.name}
                             </div>
                         </div>
                     )}
