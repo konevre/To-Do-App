@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { showMenu } from "../../store/menuSlice.js";
@@ -13,6 +13,7 @@ import xmark from "../../resources/icons/xmark.svg";
 
 import ListComponent from "./Lists/ListComponent.jsx";
 import TagsComponent from "./Tags/TagsComponent.jsx";
+import CustomLink from "./CustomLink/CustomLinkComponent.jsx";
 
 const MenuComponent = () => {
     const dispatch = useDispatch();
@@ -50,31 +51,24 @@ const MenuComponent = () => {
                     Tasks
                 </div>
                 <div className="mt-3 flex flex-col">
-                    <div className="flex h-12 items-center rounded px-5">
-                        <img src={upcoming} alt="upcoming" className="w-3" />
-                        <div className="ml-3 text-sm font-normal">Upcoming</div>
-                        <div className="ml-auto h-4 w-6 rounded bg-neutral-300 text-center text-xs font-semibold text-neutral-600">
-                            12
-                        </div>
-                    </div>
-                    {/* ACTIVE  */}
-                    <div className="flex h-10 items-center rounded-lg bg-neutral-300 px-5">
-                        <img src={today} alt="upcoming" className="w-3.5" />
-                        <div className="ml-2.5 text-sm font-normal">Today</div>
-                        <div className="ml-auto h-4 w-6 rounded bg-slate-100 text-center text-xs font-semibold text-neutral-600">
-                            5
-                        </div>
-                    </div>
-                    <div className="flex h-10 items-center rounded px-5">
-                        <img src={calendar} alt="upcoming" className="w-3" />
-                        <div className="ml-3 text-sm font-normal">Calendar</div>
-                    </div>
-                    <div className="flex h-10 items-center rounded px-5">
-                        <img src={note} alt="upcoming" className="w-3" />
-                        <div className="ml-3 text-sm font-normal">
-                            Sticky Wall
-                        </div>
-                    </div>
+                    <CustomLink
+                        to="/upcoming"
+                        title="Upcoming"
+                        number={5}
+                        icon={upcoming}
+                    />
+                    <CustomLink
+                        to="/today"
+                        title="Today"
+                        number={12}
+                        icon={today}
+                    />
+                    <CustomLink
+                        to="/calendar"
+                        title="Calendar"
+                        icon={calendar}
+                    />
+                    <CustomLink to="/notes" title="Sticky Wall" icon={note} />
                 </div>
                 <div className="mt-3 h-px bg-neutral-300"></div>
                 <ListComponent />

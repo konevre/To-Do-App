@@ -20,7 +20,9 @@ const LayoutComponent = ({ children }) => {
         <div
             className={`h-full w-full transform bg-slate-100 transition duration-300 ease-in-out sm:transform-none ${basis}`}
         >
-            <div className="h-full w-full overflow-y-auto p-4">{children}</div>
+            <div className="h-full w-full overflow-y-auto overflow-x-hidden p-4 sm:pb-0">
+                {children}
+            </div>
         </div>
     );
 };

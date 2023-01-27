@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001" }),
-    tagTypes: ["todos", "lists", "tags"],
+    tagTypes: ["todos", "lists", "tags", "stickers"],
     endpoints: (builder) => ({
         getAllTodos: builder.query({
             query: () => "/todos",
@@ -60,6 +60,18 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["tags"],
         }),
+        getAllStickers: builder.query({
+            query: () => "/stickers",
+            providesTags: ["stickers"],
+        }),
+        createSticker: builder.mutation({
+            query: (sticker) => ({
+                url: "/stickers",
+                method: "POST",
+                body: sticker,
+            }),
+            invalidatesTags: ["stickers"],
+        }),
     }),
 });
 
@@ -73,4 +85,6 @@ export const {
     useCreateListMutation,
     useGetAllTagsQuery,
     useCreateTagMutation,
+    useGetAllStickersQuery,
+    useCreateStickerMutation,
 } = apiSlice;

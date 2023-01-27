@@ -6,6 +6,7 @@ import menu from "./menuSlice.js";
 import tasks from "./todoSlice.js";
 import lists from "./listSlice.js";
 import tags from "./tagSlice.js";
+import stickers from "./stickerSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
         tasks,
         lists,
         tags,
+        stickers,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>

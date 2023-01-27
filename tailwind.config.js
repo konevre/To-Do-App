@@ -14,6 +14,13 @@ module.exports = {
             },
             gridTemplateRows: {
                 form: "repeat(3, minmax(0, 2em))",
+                stickers: "16em",
+            },
+            gridAutoRows: {
+                stickers: "16em",
+            },
+            minHeight: {
+                stickers: "16em",
             },
         },
     },

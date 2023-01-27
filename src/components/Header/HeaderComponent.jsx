@@ -3,6 +3,7 @@ import React from "react";
 import useLayout from "../../hooks/useLayout";
 
 import bars from "../../resources/icons/bars.svg";
+import plus from "../../resources/icons/plus.svg";
 
 const HeaderComponent = ({ title }) => {
     const { isMenuOpen, onMenu } = useLayout();
@@ -24,9 +25,14 @@ const HeaderComponent = ({ title }) => {
             >
                 {title}
             </div>
-            <div className="font-base  ml-2 flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 sm:ml-5 sm:h-10 sm:w-10">
+            <div className="font-base ml-2 flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 sm:ml-5 sm:h-10 sm:w-10">
                 5
             </div>
+            {title === "Sticky Wall" && (
+                <div className="ml-auto h-5 lg:hidden">
+                    <img src={plus} alt="add" className="h-full" />
+                </div>
+            )}
         </div>
     );
 };

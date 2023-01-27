@@ -24,7 +24,7 @@ const useTodoForm = () => {
 
     const initialValues = {
         name: todoObj ? todoObj?.name : "",
-        descr: todoObj ? todoObj?.descr : "",
+        descr: todoObj ? todoObj?.description : "",
         list: todoObj ? todoObj?.list : "",
         date: todoObj ? formatDate(todoObj?.due_date, "yyyy-MM-dd") : "",
         tags: todoObj ? todoObj.tags : "",

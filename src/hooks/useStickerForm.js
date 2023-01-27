@@ -1,16 +1,20 @@
 import { useState } from "react";
 import * as Yup from "yup";
 
-import { useCreateTagMutation } from "../store/apiSlice";
+import { useCreateStickerMutation } from "../store/apiSlice";
 
-const useTagForm = () => {
+const useStickerForm = () => {
     const [activeColor, setColor] = useState(4);
-    const [createTag] = useCreateTagMutation();
-    const initialState = { Tag: "" };
+    const [createSticker] = useCreateStickerMutation();
+    const initialState = { Sticker: "", descr: "" };
+
     const validationSchema = Yup.object({
-        Tag: Yup.string()
+        Sticker: Yup.string()
             .min(2, "Min 2 symbols")
             .required("Name field is required."),
+        descr: Yup.string()
+            .min(2, "Min 2 symbols")
+            .required("Description field is required."),
     });
 
     const colors = [
@@ -25,11 +29,12 @@ const useTagForm = () => {
     ];
 
     const onSubmit = (values, { resetForm }) => {
-        const newTag = {
-            name: values.Tag,
+        const newSticker = {
+            name: values.Sticker,
+            description: values.descr,
             color: colors[activeColor],
         };
-        createTag(newTag);
+        createSticker(newSticker);
         resetForm();
     };
 
@@ -43,4 +48,4 @@ const useTagForm = () => {
     };
 };
 
-export default useTagForm;
+export default useStickerForm;
