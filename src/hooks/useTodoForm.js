@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { formatDate } from "../utils/utils";
 
-import { closeTodo, makeTodoNull, showTask } from "../store/todoSlice";
+import { closeEdit, makeEditNull, showEdit } from "../store/editSlice";
 import {
     useCreateTodoMutation,
     useUpdateTodoMutation,
@@ -12,9 +12,9 @@ import {
 } from "../store/apiSlice.js";
 
 const useTodoForm = () => {
-    const { isTodoOpen } = useSelector((state) => state.tasks);
-    const isOpen = isTodoOpen[0];
-    const todoObj = isTodoOpen[1];
+    const { isEditOpen } = useSelector((state) => state.edit);
+    const isOpen = isEditOpen.isOpen;
+    const todoObj = isEditOpen.task;
 
     const dispatch = useDispatch();
 
@@ -45,16 +45,16 @@ const useTodoForm = () => {
     });
 
     const onClose = () => {
-        dispatch(closeTodo());
+        dispatch(closeEdit());
     };
 
     const onDelete = () => {
-        dispatch(makeTodoNull());
+        dispatch(makeEditNull());
         deleteTodo(todoObj.id);
     };
 
     const onUpdate = (data) => {
-        dispatch(showTask(data));
+        dispatch(showEdit(data));
         updateTodo(data);
     };
 

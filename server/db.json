@@ -22,22 +22,6 @@
       "id": "5bf8658b-7baa-490b-a8c6-b161f4f8e709"
     },
     {
-      "name": "Call bakery",
-      "list": "Hobby",
-      "due_date": "25-01-23",
-      "subtasks": [
-        {
-          "done": true,
-          "name": "Add some flavor"
-        },
-        {
-          "done": true,
-          "name": "Chocolate topping??"
-        }
-      ],
-      "id": "9fa727d6-6e22-4173-8731-81d50e1e4d82"
-    },
-    {
       "name": "Заказать выпускной!!!!!",
       "list": "Hobby",
       "due_date": "26-01-23",
@@ -92,28 +76,16 @@
   ],
   "stickers": [
     {
-      "id": 1,
-      "name": "Social Media",
-      "description": "1) Plan social content, 2) build content calendar",
-      "color": "bg-green-200"
-    },
-    {
-      "id": 2,
-      "name": "Email A/B Tests",
-      "description": "1) Subject lines, 2) Sender, 3) CTA",
-      "color": "bg-amber-200"
-    },
-    {
-      "name": "123",
-      "description": "1231\n",
-      "color": "bg-blue-200",
-      "id": 3
-    },
-    {
-      "name": "Buy milk",
+      "name": "Buy milk!",
       "description": "Call dad\n",
       "color": "bg-red-300",
       "id": 4
+    },
+    {
+      "name": "sdfsdf!",
+      "description": "sdfsfd",
+      "color": "bg-purple-300",
+      "id": 5
     }
   ]
 }

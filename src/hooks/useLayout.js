@@ -2,32 +2,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 import { showMenu } from "../store/menuSlice";
-import { closeTodo, showTask } from "../store/todoSlice";
+import { closeEdit, showEdit } from "../store/editSlice";
 
 const useLayout = () => {
     const dispatch = useDispatch();
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
     const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
-    const { isTodoOpen } = useSelector((state) => state.tasks);
+    const { isEditOpen } = useSelector((state) => state.edit);
 
     const onMenu = () => {
-        if (isLessThan1024 && isTodoOpen[0]) {
-            dispatch(closeTodo());
+        if (isLessThan1024 && isEditOpen.isOpen) {
+            dispatch(closeEdit());
         }
         dispatch(showMenu());
     };
 
-    const onTask = () => {
+    const onEdit = () => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(showTask(null));
+        dispatch(showEdit(null));
     };
 
-    const isAllOpen = isMenuOpen && isTodoOpen[0] && isMoreThan1024;
+    const isAllOpen = isMenuOpen && isEditOpen.isOpen && isMoreThan1024;
 
-    return { isMenuOpen, isTodoOpen, onMenu, onTask, isAllOpen };
+    return { isMenuOpen, isEditOpen, onMenu, onEdit, isAllOpen };
 };
 
 export default useLayout;

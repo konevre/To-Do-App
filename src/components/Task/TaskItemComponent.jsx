@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-import { showTask } from "../../store/todoSlice";
-import { useUpdateTodoMutation } from "../../store/apiSlice";
+import { showEdit } from "../../store/editSlice";
 import { showMenu } from "../../store/menuSlice.js";
 
 import detail from "../../resources/icons/chevron.svg";
@@ -23,7 +22,7 @@ const TaskItemComponent = ({ task, i }) => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(showTask(task));
+        dispatch(showEdit(task));
     };
 
     const switchTodoState = () => {

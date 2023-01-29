@@ -3,11 +3,21 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector } from "react-redux";
 
+import useTodoForm from "../../hooks/useTodoForm.js";
 import SubtaskComponent from "../Task/SubtaskComponent.jsx";
 
-const TaskFormComponent = ({ initialValues, validationSchema, onSubmit }) => {
+const TaskFormComponent = () => {
     const lists = useSelector((state) => state.lists.lists);
     const tags = useSelector((state) => state.tags.tags);
+
+    const {
+        initialValues,
+        validationSchema,
+        onDelete,
+        onSubmit,
+        onClose,
+        isOpen,
+    } = useTodoForm();
 
     const makeOptions = (array) => {
         return array.map((item) => {

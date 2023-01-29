@@ -72,6 +72,21 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["stickers"],
         }),
+        updateSticker: builder.mutation({
+            query: ({ id, ...sticker }) => ({
+                url: `/stickers/${id}`,
+                method: "PUT",
+                body: sticker,
+            }),
+            invalidatesTags: ["stickers"],
+        }),
+        deleteSticker: builder.mutation({
+            query: (id) => ({
+                url: `/stickers/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["stickers"],
+        }),
     }),
 });
 
@@ -87,4 +102,6 @@ export const {
     useCreateTagMutation,
     useGetAllStickersQuery,
     useCreateStickerMutation,
+    useDeleteStickerMutation,
+    useUpdateStickerMutation,
 } = apiSlice;

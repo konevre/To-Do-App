@@ -6,6 +6,7 @@ import menu from "./menuSlice.js";
 import tasks from "./todoSlice.js";
 import lists from "./listSlice.js";
 import tags from "./tagSlice.js";
+import edit from "./editSlice.js";
 import stickers from "./stickerSlice.js";
 
 const store = configureStore({
@@ -14,6 +15,7 @@ const store = configureStore({
         tasks,
         lists,
         tags,
+        edit,
         stickers,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },

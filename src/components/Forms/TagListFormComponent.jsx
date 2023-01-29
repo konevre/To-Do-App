@@ -26,23 +26,7 @@ const TagListFormComponent = ({
                             className="ml-2 w-full resize-none bg-neutral-200 px-3.5 text-sm text-neutral-500"
                         ></Field>
                     </div>
-                    {name === "Sticker" && (
-                        <>
-                            <div className="mt-2 flex items-center rounded-lg border border-neutral-300 p-3">
-                                <Field
-                                    name="descr"
-                                    as="textarea"
-                                    placeholder="Description"
-                                    className="ml-2 w-full bg-neutral-200 px-3.5 text-sm text-neutral-500"
-                                ></Field>
-                            </div>
-                            <ErrorMessage
-                                component="div"
-                                name="descr"
-                                className="mt-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                            />
-                        </>
-                    )}
+
                     <ErrorMessage
                         component="div"
                         name={name}

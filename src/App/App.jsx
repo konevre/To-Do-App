@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import MenuComponent from "../components/Menu/Menu.jsx";
-import TaskEditComponent from "../components/Task/TaskEditComponent.jsx";
+import EditComponent from "../components/Task/EditComponent.jsx";
 
 import TodayPage from "../Pages/TodayPage.jsx";
 import UpcomingPage from "../Pages/UpcomingPage.jsx";
@@ -20,7 +20,7 @@ const App = () => {
                     <Route path="/upcoming" element={<UpcomingPage />} />
                     <Route path="/notes" element={<StickyWallPage />} />
                 </Routes>
-                <TaskEditComponent />
+                <EditComponent />
             </div>
         </Router>
     );
