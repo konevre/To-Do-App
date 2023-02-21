@@ -8,6 +8,7 @@ import TodayPage from "../Pages/TodayPage.jsx";
 import UpcomingPage from "../Pages/UpcomingPage.jsx";
 import WelcomePage from "../Pages/WelcomePage.jsx";
 import StickyWallPage from "../Pages/StickyWallPage.jsx";
+import CalendarPage from "../Pages/CalendarPage.jsx";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path="/today" element={<TodayPage />} />
                     <Route path="/upcoming" element={<UpcomingPage />} />
                     <Route path="/notes" element={<StickyWallPage />} />
+                    <Route path="/calendar" element={<CalendarPage />} />
                 </Routes>
                 <EditComponent />
             </div>

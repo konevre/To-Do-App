@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import useTodoForm from "../../hooks/useTodoForm.js";
 import SubtaskComponent from "../Task/SubtaskComponent.jsx";
 
+import DateTimePickerComponent from "./Timepicker/DateTimePickerComponent.jsx";
+
 const TaskFormComponent = () => {
     const lists = useSelector((state) => state.lists.lists);
     const tags = useSelector((state) => state.tags.tags);
@@ -33,7 +35,7 @@ const TaskFormComponent = () => {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            {(values) => (
+            {({ values, setFieldValue }) => (
                 <Form className="mt-5" action="#" id="task">
                     <Field
                         name="name"
@@ -56,6 +58,20 @@ const TaskFormComponent = () => {
                     ></Field>
                     {/* GRID */}
                     <div className="mt-5 grid grid-cols-form grid-rows-form items-center gap-y-3">
+                        <DateTimePickerComponent
+                            values={values}
+                            setFieldValue={setFieldValue}
+                        />
+                        <ErrorMessage
+                            component="div"
+                            name="date"
+                            className="col-span-2 mt-2 mb-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
+                        />
+                        <ErrorMessage
+                            component="div"
+                            name="startHour"
+                            className="col-span-2 mt-2 mb-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
+                        />
                         <label className="text-sm" htmlFor="list">
                             List
                         </label>
@@ -68,15 +84,6 @@ const TaskFormComponent = () => {
                             <option value=""></option>
                             {makeOptions(lists)}
                         </Field>
-                        <label className="text-sm" htmlFor="date">
-                            Due Date
-                        </label>
-                        <Field
-                            name="date"
-                            id="date"
-                            type="date"
-                            className="h-full rounded border border-neutral-300 bg-neutral-200 px-1 text-sm"
-                        />
                         <label className="text-sm" htmlFor="tags">
                             Tags
                         </label>
@@ -90,7 +97,7 @@ const TaskFormComponent = () => {
                             {makeOptions(tags)}
                         </Field>
                     </div>
-                    <SubtaskComponent values={values.values} />
+                    <SubtaskComponent values={values} />
                 </Form>
             )}
         </Formik>

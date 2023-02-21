@@ -56,7 +56,9 @@ const StickerForm = () => {
                 </Form>
             </Formik>
 
-            <div className="mt-4 flex justify-between">{colorItems}</div>
+            <div className="mt-4 flex flex-wrap justify-between">
+                {colorItems}
+            </div>
         </div>
     );
 };

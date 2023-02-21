@@ -19,7 +19,6 @@ const SubtaskComponent = ({ values }) => {
                         <div
                             onClick={() => {
                                 arrayHelpers.push({ done: false, name: "" });
-                                console.log(1);
                             }}
                             className="mt-5 flex h-12 cursor-pointer flex-row rounded-lg border border-neutral-300 p-3.5"
                         >

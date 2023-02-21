@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
 import {
     useCreateStickerMutation,
     useUpdateStickerMutation,
 } from "../store/apiSlice";
+
+import { showSticker } from "../store/editSlice.js";
 
 const useStickerForm = () => {
     const colors = [
@@ -21,6 +23,7 @@ const useStickerForm = () => {
     ];
     const { isEditOpen } = useSelector((state) => state.edit);
     const editObj = isEditOpen.sticker;
+    const dispatch = useDispatch();
 
     const colorIndex = editObj ? colors.indexOf(editObj.color) : -1;
     const currentColor = editObj && colorIndex !== -1 ? colorIndex : 4;
@@ -34,8 +37,8 @@ const useStickerForm = () => {
     const [updateSticker] = useUpdateStickerMutation();
 
     const initialState = {
-        Sticker: editObj ? editObj.name : "",
-        descr: editObj ? editObj.description : "",
+        Sticker: editObj ? editObj?.name : "",
+        descr: editObj ? editObj?.description : "",
     };
 
     const validationSchema = Yup.object({
@@ -61,6 +64,11 @@ const useStickerForm = () => {
         );
     });
 
+    const onUpdate = (newSticker) => {
+        dispatch(showSticker(newSticker));
+        updateSticker(newSticker);
+    };
+
     const onSubmit = (values, { resetForm }) => {
         const newSticker = {
             id: editObj?.id || uuidv4(),
@@ -69,7 +77,7 @@ const useStickerForm = () => {
             color: colors[activeColor],
         };
 
-        editObj ? updateSticker(newSticker) : createSticker(newSticker);
+        editObj ? onUpdate(newSticker) : createSticker(newSticker);
         resetForm();
     };
 

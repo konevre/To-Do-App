@@ -50,7 +50,7 @@ const EditComponent = () => {
             <div
                 className={`${isHidden} ${transition} h-full w-full overflow-y-auto bg-neutral-200 sm:basis-1/3 sm:rounded-2xl sm:bg-slate-100`}
             >
-                <div className="flex h-full flex-col justify-between bg-neutral-200 p-4 sm:rounded-2xl">
+                <div className="flex h-full flex-col justify-between overflow-y-auto bg-neutral-200 p-4 sm:rounded-2xl">
                     <div className="mb-8">
                         <div className="flex items-center justify-between">
                             <div className="font-semibold sm:text-xl">

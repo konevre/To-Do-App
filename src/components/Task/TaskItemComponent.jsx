@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-import { showEdit } from "../../store/editSlice";
+import { showEdit } from "../../store/editSlice.js";
 import { showMenu } from "../../store/menuSlice.js";
 
 import detail from "../../resources/icons/chevron.svg";

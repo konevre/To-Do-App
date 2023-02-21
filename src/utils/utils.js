@@ -8,3 +8,22 @@ export const formatDate = (date, format) => {
         return [day, month, year.slice(2)].join("-");
     }
 };
+
+export const countHours = (start, end) => {
+    const range = [];
+    for (let i = start; end > i; i++) {
+        range.push(i);
+    }
+    return range;
+};
+
+export const isNewCol = (hours, eventHours) => {
+    let index = -1;
+    for (let i = 0; i < hours.length; i++) {
+        if (!hours[i].some((hour) => eventHours.includes(hour))) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+};

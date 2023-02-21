@@ -1,12 +1,46 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import useLayout from "../../hooks/useLayout";
 
 import bars from "../../resources/icons/bars.svg";
 import plus from "../../resources/icons/plus.svg";
+import { showSticker, showEdit } from "../../store/editSlice";
 
-const HeaderComponent = ({ title }) => {
-    const { isMenuOpen, onMenu } = useLayout();
+const HeaderComponent = ({ title, number = true }) => {
+    const { isMenuOpen, onMenu, location, isMoreThan1024 } = useLayout();
+    const dispatch = useDispatch();
+
+    const add = {
+        "/notes": (
+            <div className="ml-auto h-5 cursor-pointer lg:hidden">
+                <img
+                    src={plus}
+                    alt="add"
+                    className="h-full"
+                    onClick={() => dispatch(showSticker(null))}
+                />
+            </div>
+        ),
+        "/calendar": isMoreThan1024 ? (
+            <button
+                onClick={() => dispatch(showEdit(null))}
+                className="ml-auto cursor-pointer rounded-lg border border-neutral-300 py-2 px-4"
+            >
+                Add Task
+            </button>
+        ) : (
+            <div className="ml-auto h-5 cursor-pointer lg:hidden">
+                <img
+                    src={plus}
+                    alt="add"
+                    className="h-full"
+                    onClick={() => dispatch(showEdit(null))}
+                />
+            </div>
+        ),
+    };
+
     return (
         <div className="mb-8 flex items-center">
             {!isMenuOpen && (
@@ -25,14 +59,12 @@ const HeaderComponent = ({ title }) => {
             >
                 {title}
             </div>
-            <div className="font-base ml-2 flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 sm:ml-5 sm:h-10 sm:w-10">
-                5
-            </div>
-            {title === "Sticky Wall" && (
-                <div className="ml-auto h-5 lg:hidden">
-                    <img src={plus} alt="add" className="h-full" />
+            {number && (
+                <div className="font-base ml-2 flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 sm:ml-5 sm:h-10 sm:w-10">
+                    5
                 </div>
             )}
+            {add[location]}
         </div>
     );
 };

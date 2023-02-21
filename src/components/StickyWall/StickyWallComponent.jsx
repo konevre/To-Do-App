@@ -8,12 +8,16 @@ import plus from "../../resources/icons/plus.svg";
 import HeaderComponent from "../Header/HeaderComponent.jsx";
 
 import { showSticker } from "../../store/editSlice.js";
+import useLayout from "../../hooks/useLayout.js";
 
 import StickerItemComponent from "./StickerItemComponent.jsx";
 
 const StickyWallComponent = () => {
     const { stickers, setStickers } = useGetStickers();
     const dispatch = useDispatch();
+
+    const { isAllOpen, isMoreThan1024 } = useLayout();
+    const cols = isAllOpen && isMoreThan1024 ? "lg:grid-cols-2" : "";
 
     const onNewSticker = () => {
         dispatch(showSticker(null));
@@ -28,7 +32,7 @@ const StickyWallComponent = () => {
                 values={stickers}
                 as="div"
                 onReorder={setStickers}
-                className="grid h-full auto-rows-fr grid-cols-1 gap-3 overflow-y-auto lg:auto-rows-stickers lg:grid-cols-3 lg:grid-rows-stickers lg:gap-5 lg:rounded-lg lg:border lg:border-neutral-200 lg:p-6 2xl:grid-cols-4"
+                className={`grid h-full auto-rows-fr grid-cols-1 gap-3 overflow-y-auto lg:auto-rows-stickers lg:grid-cols-3 lg:grid-rows-stickers lg:gap-5 lg:rounded-lg lg:border lg:border-neutral-200 lg:p-6 2xl:grid-cols-4 ${cols}`}
             >
                 {stickers &&
                     stickers.map((item) => {
@@ -42,7 +46,7 @@ const StickyWallComponent = () => {
                     })}
                 <div
                     onClick={onNewSticker}
-                    className={`${hover} flex items-center justify-center rounded-lg bg-neutral-200 p-5 shadow-md shadow-neutral-300 lg:flex`}
+                    className={`${hover} hidden items-center justify-center rounded-lg bg-neutral-200 p-5 shadow-md shadow-neutral-300 lg:flex`}
                 >
                     <img src={plus} alt="add_sticker" className="h-8" />
                 </div>

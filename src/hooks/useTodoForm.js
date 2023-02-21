@@ -1,6 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
+
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+
+import { DateTime } from "luxon";
 
 import { formatDate } from "../utils/utils";
 
@@ -11,8 +14,12 @@ import {
     useDeleteTodoMutation,
 } from "../store/apiSlice.js";
 
+import useLuxon from "./calendarHooks/useLuxon.js";
+
 const useTodoForm = () => {
     const { isEditOpen } = useSelector((state) => state.edit);
+    const { now } = useLuxon();
+
     const isOpen = isEditOpen.isOpen;
     const todoObj = isEditOpen.task;
 
@@ -24,25 +31,62 @@ const useTodoForm = () => {
 
     const initialValues = {
         name: todoObj ? todoObj?.name : "",
-        descr: todoObj ? todoObj?.description : "",
+        descr: todoObj ? todoObj.description || "" : "",
         list: todoObj ? todoObj?.list : "",
-        date: todoObj ? formatDate(todoObj?.due_date, "yyyy-MM-dd") : "",
+        date: todoObj ? todoObj?.due_date : now.toFormat("dd-MM-yy"),
         tags: todoObj ? todoObj.tags : "",
         subtasks: todoObj ? todoObj.subtasks : [],
+        startHour: todoObj
+            ? DateTime.fromFormat(todoObj?.startHour, "HH:mm").toFormat("h")
+            : "1",
+        startPeriod: todoObj
+            ? DateTime.fromFormat(todoObj?.startHour, "HH:mm").toFormat("a")
+            : "AM",
+        endHour: todoObj
+            ? DateTime.fromFormat(todoObj?.endHour, "HH:mm").toFormat("h")
+            : "2",
+        endPeriod: todoObj
+            ? DateTime.fromFormat(todoObj?.endHour, "HH:mm").toFormat("a")
+            : "AM",
     };
 
-    const validationSchema = Yup.object({
-        name: Yup.string()
-            .min(2, "Min 2 symbols")
-            .required("Name field is required."),
-        subtasks: Yup.array().of(
-            Yup.object().shape({
-                name: Yup.string()
-                    .min(2, "Min 2 symbols")
-                    .required("Name field is required."),
-            })
-        ),
-    });
+    console.log(initialValues);
+
+    const validationSchema = Yup.object()
+        .shape({
+            name: Yup.string()
+                .min(2, "Min 2 symbols")
+                .required("Name field is required."),
+            subtasks: Yup.array().of(
+                Yup.object().shape({
+                    name: Yup.string()
+                        .min(2, "Min 2 symbols")
+                        .required("Name field is required."),
+                })
+            ),
+            date: Yup.string().required("Date field is required."),
+            startHour: Yup.string(),
+            startPeriod: Yup.string(),
+            endHour: Yup.string(),
+            endPeriod: Yup.string(),
+        })
+        .test("time", "end hour is more than start hour", function (value) {
+            const { startHour, startPeriod, endHour, endPeriod } = value;
+            const start = +DateTime.fromFormat(
+                    `${startHour}${startPeriod}`,
+                    "ha"
+                ).toFormat("H"),
+                end = +DateTime.fromFormat(
+                    `${endHour}${endPeriod}`,
+                    "ha"
+                ).toFormat("H");
+
+            if (start < end) return true;
+            return this.createError({
+                path: "startHour",
+                message: "End hour must be greater than start hour.",
+            });
+        });
 
     const onClose = () => {
         dispatch(closeEdit());
@@ -68,16 +112,23 @@ const useTodoForm = () => {
     };
 
     const handleSubmit = (values, method) => {
-        const date =
-            values.date.length === 0 ? "" : formatDate(values.date, "dd-MM-yy");
         const data = {
             id: todoObj?.id || uuidv4(),
             name: values.name,
             description: values.descr,
             list: values.list,
-            due_date: date,
+            due_date: values.date,
             tags: values.tags,
             subtasks: values.subtasks,
+            startHour: DateTime.fromFormat(
+                `${values.startHour}${values.startPeriod}`,
+                "ha"
+            ).toFormat("HH:mm"),
+            endHour: DateTime.fromFormat(
+                `${values.endHour}${values.endPeriod}`,
+                "ha"
+            ).toFormat("HH:mm"),
+            color: "bg-red-300",
         };
         method === "POST" ? createTodo(data) : onUpdate(data);
     };
