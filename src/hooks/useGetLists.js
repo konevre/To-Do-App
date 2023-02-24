@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { saveLists } from "../store/listSlice";
+import { saveLists, updateList } from "../store/listSlice";
 import { useGetAllListsQuery } from "../store/apiSlice";
 
 const useGetLists = () => {

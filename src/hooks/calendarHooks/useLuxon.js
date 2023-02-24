@@ -13,13 +13,23 @@ const useLuxon = () => {
         dispatch(changeNow(date));
     };
 
-    const to12 = (time) => {
-        if (time !== "") {
-            return DateTime.fromFormat(time, "HH:mm").toFormat("h");
-        }
+    const now = DateTime.fromFormat(today, "dd-MM-yy");
+    const constantNow = DateTime.now();
+
+    const to12 = (index) => {
+        return DateTime.fromFormat(`${index}`, "H").toFormat("hh:mm a");
     };
 
-    const now = DateTime.fromFormat(today, "dd-MM-yy");
+    const isCorrectRange = (range, date, plus) => {
+        const luxonDate = DateTime.fromFormat(`${date}`, "dd-MM-yy");
+        return constantNow.plus({ days: plus }).hasSame(luxonDate, range);
+    };
+
+    const filterTasks = (tasks, range, plus = 0) => {
+        return tasks.filter((item) =>
+            isCorrectRange(range, item.due_date, plus)
+        );
+    };
 
     const changeDate = (state, range) => {
         switch (state) {
@@ -34,7 +44,7 @@ const useLuxon = () => {
                 break;
         }
     };
-    return { now, changeDate, to12 };
+    return { now, constantNow, changeDate, to12, filterTasks };
 };
 
 export default useLuxon;

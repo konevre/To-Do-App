@@ -9,7 +9,7 @@ const useLayout = () => {
     const dispatch = useDispatch();
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
     const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });
-    const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+    const { isMenuOpen } = useSelector((state) => state.menu);
     const { isEditOpen } = useSelector((state) => state.edit);
     const location = useLocation().pathname;
 

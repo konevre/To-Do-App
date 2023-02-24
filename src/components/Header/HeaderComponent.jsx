@@ -7,7 +7,7 @@ import bars from "../../resources/icons/bars.svg";
 import plus from "../../resources/icons/plus.svg";
 import { showSticker, showEdit } from "../../store/editSlice";
 
-const HeaderComponent = ({ title, number = true }) => {
+const HeaderComponent = ({ title, number }) => {
     const { isMenuOpen, onMenu, location, isMoreThan1024 } = useLayout();
     const dispatch = useDispatch();
 
@@ -59,9 +59,9 @@ const HeaderComponent = ({ title, number = true }) => {
             >
                 {title}
             </div>
-            {number && (
+            {number !== 0 && (
                 <div className="font-base ml-2 flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 sm:ml-5 sm:h-10 sm:w-10">
-                    5
+                    {number}
                 </div>
             )}
             {add[location]}

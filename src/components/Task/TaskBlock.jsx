@@ -1,25 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import useLayout from "../../hooks/useLayout.js";
+import useFilterTasks from "../../hooks/useFilterTasks.js";
 
-import plus from "../../resources/icons/plus.svg";
+import TaskItemComponent from "./TaskItemComponent.jsx";
+import AddTaskComponent from "./AddTaskComponent.jsx";
 
-import TaskListComponent from "./TaskListComponent.jsx";
+const TaskBlock = ({ filter, setNum, ...props }) => {
+    const todos = useFilterTasks(filter, props.id);
 
-const TaskBlock = () => {
-    const { onEdit } = useLayout();
+    useEffect(() => {
+        if (setNum) setNum(todos.length);
+    }, [todos.length]);
+
     return (
         <>
-            <div
-                onClick={onEdit}
-                className="flex h-12 cursor-pointer flex-row rounded-lg border border-neutral-300 p-3.5"
-            >
-                <img src={plus} alt="plus" className="h-full" />
-                <div className="ml-3 flex items-center truncate text-base text-neutral-500">
-                    Add New Task
-                </div>
-            </div>
-            <TaskListComponent />
+            <AddTaskComponent />
+            {todos &&
+                todos.map((task, i) => {
+                    return <TaskItemComponent task={task} i={i} key={i} />;
+                })}
         </>
     );
 };

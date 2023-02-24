@@ -4,7 +4,7 @@
       "name": "Call gradmom!!",
       "description": "",
       "list": "Personal",
-      "due_date": "10-02-23",
+      "due_date": "21-02-23",
       "tags": "Tag 1",
       "subtasks": [
         {
@@ -62,16 +62,16 @@
       ]
     },
     {
-      "name": "Start diploma",
-      "description": "Write my ",
+      "id": "75ca8ba0-ecc4-40dc-b2d3-b48a6eca1114",
+      "name": "WOOOOW",
+      "description": "",
       "list": "",
       "due_date": "23-02-23",
       "tags": "",
       "subtasks": [],
-      "startHour": "07:00",
-      "endHour": "15:00",
-      "color": "bg-red-300",
-      "id": "4c255203-5d4b-4d7a-b265-dd3e02cedb29"
+      "startHour": "01:00",
+      "endHour": "03:00",
+      "color": "bg-red-300"
     }
   ],
   "lists": [

@@ -11,7 +11,7 @@ const CalendarComponent = () => {
 
     return (
         <div className="flex h-full flex-col">
-            <HeaderComponent title={activeTitle} number={false} />
+            <HeaderComponent title={activeTitle} />
             <RangeComponent />
             <WeekdayComponent />
             <div className="mt-5 basis-full overflow-y-auto">

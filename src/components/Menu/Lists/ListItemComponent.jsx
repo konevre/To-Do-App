@@ -1,17 +1,20 @@
 import React from "react";
 
+import useFilterTasks from "../../../hooks/useFilterTasks.js";
+
+import CustomLink from "../CustomLink/CustomLinkComponent.jsx";
+
 const ListItemComponent = ({ list }) => {
-    const { name, color } = list;
+    const { name, color, id } = list;
+    const len = useFilterTasks("list", id).length;
+
     return (
-        <div className="flex h-10 items-center rounded-lg px-5">
-            <div
-                className={`h-4 w-4 rounded ${color} text-center text-xs font-semibold text-neutral-600`}
-            ></div>
-            <div className="ml-2.5 text-sm font-normal">{name}</div>
-            <div className="ml-auto h-4 w-6 rounded bg-neutral-300 text-center text-xs font-semibold text-neutral-600">
-                5
-            </div>
-        </div>
+        <CustomLink
+            to={`lists/${id}`}
+            title={name}
+            number={len}
+            color={color}
+        />
     );
 };
 

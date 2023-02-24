@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { DateTime } from "luxon";
 
-import { formatDate } from "../utils/utils";
-
 import { closeEdit, makeEditNull, showEdit } from "../store/editSlice";
 import {
     useCreateTodoMutation,
@@ -18,7 +16,7 @@ import useLuxon from "./calendarHooks/useLuxon.js";
 
 const useTodoForm = () => {
     const { isEditOpen } = useSelector((state) => state.edit);
-    const { now } = useLuxon();
+    const { constantNow } = useLuxon();
 
     const isOpen = isEditOpen.isOpen;
     const todoObj = isEditOpen.task;
@@ -33,7 +31,7 @@ const useTodoForm = () => {
         name: todoObj ? todoObj?.name : "",
         descr: todoObj ? todoObj.description || "" : "",
         list: todoObj ? todoObj?.list : "",
-        date: todoObj ? todoObj?.due_date : now.toFormat("dd-MM-yy"),
+        date: todoObj ? todoObj?.due_date : constantNow.toFormat("dd-MM-yy"),
         tags: todoObj ? todoObj.tags : "",
         subtasks: todoObj ? todoObj.subtasks : [],
         startHour: todoObj
@@ -49,8 +47,6 @@ const useTodoForm = () => {
             ? DateTime.fromFormat(todoObj?.endHour, "HH:mm").toFormat("a")
             : "AM",
     };
-
-    console.log(initialValues);
 
     const validationSchema = Yup.object()
         .shape({

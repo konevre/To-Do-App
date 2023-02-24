@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { showMenu } from "../../store/menuSlice.js";
@@ -18,6 +17,7 @@ import CustomLink from "./CustomLink/CustomLinkComponent.jsx";
 const MenuComponent = () => {
     const dispatch = useDispatch();
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+    const { upcomingNum, todayNum } = useSelector((state) => state.tasks);
 
     const onMenu = () => {
         dispatch(showMenu());
@@ -54,13 +54,13 @@ const MenuComponent = () => {
                     <CustomLink
                         to="/upcoming"
                         title="Upcoming"
-                        number={5}
+                        number={upcomingNum}
                         icon={upcoming}
                     />
                     <CustomLink
                         to="/today"
                         title="Today"
-                        number={12}
+                        number={todayNum}
                         icon={today}
                     />
                     <CustomLink
