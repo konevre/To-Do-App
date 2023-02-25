@@ -8,6 +8,7 @@ import { closeEdit, showEdit } from "../store/editSlice";
 const useLayout = () => {
     const dispatch = useDispatch();
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
+    const isLessThan840 = useMediaQuery({ query: "(max-width: 840px)" });
     const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });
     const { isMenuOpen } = useSelector((state) => state.menu);
     const { isEditOpen } = useSelector((state) => state.edit);
@@ -37,6 +38,7 @@ const useLayout = () => {
         isAllOpen,
         location,
         isMoreThan1024,
+        isLessThan840,
     };
 };
 

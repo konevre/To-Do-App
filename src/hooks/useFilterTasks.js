@@ -1,10 +1,13 @@
 import useLuxon from "./calendarHooks/useLuxon";
 import useGetTodos from "./useGetTodos.js";
 import useGetLists from "./useGetLists.js";
+import useGetTags from "./useGetTags";
 
 const useFilterTasks = (filter, props) => {
     const { todos } = useGetTodos();
     const { lists } = useGetLists();
+    const { tags } = useGetTags();
+
     const { filterTasks } = useLuxon();
 
     const filterByfilter = (todos, filterArr) => {
@@ -22,6 +25,8 @@ const useFilterTasks = (filter, props) => {
             return filterTasks(todos, "week");
         case "list":
             return filterByfilter(todos, lists);
+        case "tag":
+            return filterByfilter(todos, tags);
         default:
             break;
     }

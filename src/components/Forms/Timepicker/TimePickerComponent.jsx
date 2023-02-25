@@ -23,7 +23,7 @@ const TimePickerComponent = ({ setFieldValue, values }) => {
                 </div>
             </div>
             <div className="mt-2 flex flex-row justify-between gap-x-2">
-                <div className="flex basis-full flex-row justify-evenly rounded-md border border-neutral-400 py-1 px-2">
+                <div className="flex basis-full flex-row flex-wrap justify-evenly rounded-md border border-neutral-400 py-1 px-1 sm:px-2">
                     <Field
                         type="number"
                         id="startHour"
@@ -46,7 +46,7 @@ const TimePickerComponent = ({ setFieldValue, values }) => {
                     </Field>
                 </div>
 
-                <div className="flex basis-full flex-row justify-evenly rounded-md border border-neutral-400 py-1 px-2">
+                <div className="flex basis-full flex-row flex-wrap justify-evenly rounded-md border border-neutral-400 py-1 px-1 sm:px-2">
                     <Field
                         type="number"
                         id="hour"

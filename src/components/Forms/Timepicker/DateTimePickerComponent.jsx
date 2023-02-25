@@ -3,6 +3,7 @@ import { Field } from "formik";
 import { useSelector } from "react-redux";
 
 import xmark from "../../../resources/icons/xmark.svg";
+import useLayout from "../../../hooks/useLayout.js";
 
 import MonthPickerComponent from "./MonthPickerComponent.jsx";
 import TimePickerComponent from "./TimePickerComponent.jsx";
@@ -41,7 +42,6 @@ const DateTimePickerComponent = ({ setFieldValue, values }) => {
                         <MonthPickerComponent
                             setFieldValue={setFieldValue}
                             values={values}
-                            // setDatePlaceHolder={setDatePlaceHolder}
                         />
                         <TimePickerComponent
                             values={values}
@@ -49,7 +49,6 @@ const DateTimePickerComponent = ({ setFieldValue, values }) => {
                         />
                     </div>
                 ) : null}
-                {/* <Field type="hidden" name="date" id="date" /> */}
             </div>
         </>
     );

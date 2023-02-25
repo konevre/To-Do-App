@@ -9,16 +9,14 @@ const UpcomingComponent = () => {
     const { isAllOpen } = useLayout();
     const [num, setNum] = useState(0);
 
-    const gridLg = isAllOpen
-        ? "lg:grid-cols-1 lg:grid-rows-3"
-        : "lg:grid-cols-2 lg:grid-rows-2";
+    const gridLg = isAllOpen ? "lg:grid-cols-1" : "lg:grid-cols-2";
     const colSpanLg = isAllOpen ? "lg:col-span-1" : "lg:col-span-2";
 
     return (
         <>
             <HeaderComponent title="Upcoming" number={num} />
             <div
-                className={`grid grid-cols-1 grid-rows-3 gap-y-5 lg:gap-6 ${gridLg}`}
+                className={`lg:grid-rows-auto grid grid-cols-1 gap-y-5 lg:gap-6 ${gridLg}`}
             >
                 <div
                     className={`lg:rounded-lg lg:border lg:border-neutral-300 lg:p-5 ${colSpanLg}`}

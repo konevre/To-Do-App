@@ -1,13 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const TagsItemComponent = ({ tag }) => {
-    const { name, color } = tag;
+    const { name, color, id } = tag;
     return (
-        <div
-            className={`flex h-full items-center justify-center rounded ${color} p-2 text-sm`}
-        >
-            {name}
-        </div>
+        <NavLink to={`tags/${id}`}>
+            <div
+                className={`flex h-full items-center justify-center rounded ${color} p-2 text-sm`}
+            >
+                {name}
+            </div>
+        </NavLink>
     );
 };
 

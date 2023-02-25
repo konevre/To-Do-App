@@ -10,6 +10,7 @@ import WelcomePage from "../Pages/WelcomePage.jsx";
 import StickyWallPage from "../Pages/StickyWallPage.jsx";
 import CalendarPage from "../Pages/CalendarPage.jsx";
 import ListsPage from "../Pages/ListsPage.jsx";
+import TagsPage from "../Pages/TagsPage.jsx";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path="/notes" element={<StickyWallPage />} />
                     <Route path="/calendar" element={<CalendarPage />} />
                     <Route path="/lists/:id" element={<ListsPage />} />
+                    <Route path="/tags/:id" element={<TagsPage />} />
                 </Routes>
                 <EditComponent />
             </div>

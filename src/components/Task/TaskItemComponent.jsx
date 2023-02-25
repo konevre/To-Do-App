@@ -12,11 +12,11 @@ const TaskItemComponent = ({ task, i }) => {
     const dispatch = useDispatch();
     const [isDone, setTodoState] = useState(false);
 
-    const lists = useSelector((state) => state.lists.lists);
+    const { lists } = useSelector((state) => state.lists);
     const taskList = lists.filter((item) => item.name === task.list)[0];
 
     const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
-    const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
+    const { isMenuOpen } = useSelector((state) => state.menu);
 
     const onTask = () => {
         if (isLessThan1024 && isMenuOpen) {
@@ -59,7 +59,7 @@ const TaskItemComponent = ({ task, i }) => {
                 />
             </div>
             {taskExtra ? (
-                <div className="col-span-3 col-start-2 ml-3 flex h-8  flex-wrap gap-4 sm:gap-x-6">
+                <div className="col-span-3 col-start-2 ml-3 flex h-fit  flex-wrap gap-4 sm:gap-x-6">
                     {dueDate.length > 0 && (
                         <div className="flex items-center">
                             <img src={calendar} alt="subtask" className="h-4" />

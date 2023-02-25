@@ -24,7 +24,7 @@ const CustomLink = ({ to, title, number, icon, color, ...props }) => {
                 <div
                     className={`${styledInner} ml-auto h-4 w-6 text-center text-xs font-semibold text-neutral-600`}
                 >
-                    {number}
+                    {number !== 0 && number}
                 </div>
             </div>
         </Link>

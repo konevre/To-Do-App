@@ -54,8 +54,6 @@ const TagsComponent = () => {
                 >
                     + Add Tag
                 </div>
-
-                {/* ADD FORM */}
             </div>
             {isNewTag && (
                 <TagListFormComponent

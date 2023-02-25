@@ -5,10 +5,12 @@ import useLuxon from "../../../hooks/calendarHooks/useLuxon.js";
 import chevronRight from "../../../resources/icons/chevron.svg";
 import chevronLeft from "../../../resources/icons/chevron-left.svg";
 import useCalendarWeek from "../../../hooks/calendarHooks/useCalendarWeek.js";
+import useLayout from "../../../hooks/useLayout.js";
 
 const MonthPickerComponent = ({ setFieldValue, values }) => {
     const { now } = useLuxon();
     const [month, setMonth] = useState(now);
+    const { isEditOpen, isLessThan840 } = useLayout();
 
     const onSetDate = (item) => {
         setFieldValue("date", item.toFormat("dd-MM-yy"));
@@ -32,8 +34,11 @@ const MonthPickerComponent = ({ setFieldValue, values }) => {
         const day = item === "" ? "" : item.toFormat("dd-MM-yy");
         const bg =
             values.date === day && day !== "" ? "bg-neutral-400 rounded" : "";
+        const p = isEditOpen.isOpen && isLessThan840 ? "p-1" : "p-2";
         return (
-            <div className="flex flex-col items-center justify-center rounded-md p-2 text-sm sm:items-start sm:justify-start">
+            <div
+                className={`${p} flex flex-col items-center justify-center rounded-md text-sm sm:items-start sm:justify-start`}
+            >
                 <div
                     onClick={() => onSetDate(item)}
                     className={`${bg} flex w-full basis-1/4 cursor-default justify-center`}
@@ -62,7 +67,9 @@ const MonthPickerComponent = ({ setFieldValue, values }) => {
                     onClick={() => changeMonth(1)}
                 />
             </div>
-            <div className={`${gridCols} mt-3 grid`}>{weekDays}</div>
+            {!isLessThan840 && (
+                <div className={`${gridCols} mt-3 grid`}>{weekDays}</div>
+            )}
             <div className="grid auto-rows-fr grid-cols-7 grid-rows-4">
                 {monthItems}
             </div>

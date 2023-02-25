@@ -9,6 +9,7 @@ import calendar from "../../resources/icons/calendar-days.svg";
 import note from "../../resources/icons/note.svg";
 import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
+import useFilterTasks from "../../hooks/useFilterTasks.js";
 
 import ListComponent from "./Lists/ListComponent.jsx";
 import TagsComponent from "./Tags/TagsComponent.jsx";
@@ -17,7 +18,8 @@ import CustomLink from "./CustomLink/CustomLinkComponent.jsx";
 const MenuComponent = () => {
     const dispatch = useDispatch();
     const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
-    const { upcomingNum, todayNum } = useSelector((state) => state.tasks);
+    const upcomingNum = useFilterTasks("week").length;
+    const todayNum = useFilterTasks("today").length;
 
     const onMenu = () => {
         dispatch(showMenu());

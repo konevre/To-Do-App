@@ -12,6 +12,7 @@ const useCalendarGrid = (index) => {
 
     const hours = [[]];
     const cols = [[]];
+    let num = 0;
 
     todos.forEach((event) => {
         if (event.due_date === currentDay.toFormat("dd-MM-yy")) {
@@ -28,9 +29,11 @@ const useCalendarGrid = (index) => {
                 cols[newCol].push(event);
                 hours[newCol].push(...eventHours);
             }
+
+            num++;
         }
     });
-
+    console.log(num);
     return { cols };
 };
 

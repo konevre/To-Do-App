@@ -1,34 +1,24 @@
 import React from "react";
 import { Reorder } from "framer-motion";
-import { useDispatch } from "react-redux";
 
 import useGetStickers from "../../hooks/useGetStickers.js";
 import plus from "../../resources/icons/plus.svg";
-
 import HeaderComponent from "../Header/HeaderComponent.jsx";
-
-import { showSticker } from "../../store/editSlice.js";
 import useLayout from "../../hooks/useLayout.js";
 
 import StickerItemComponent from "./StickerItemComponent.jsx";
 
 const StickyWallComponent = () => {
-    const { stickers, setStickers } = useGetStickers();
-    const dispatch = useDispatch();
-
+    const { stickers, setStickers, onNewSticker } = useGetStickers();
     const { isAllOpen, isMoreThan1024 } = useLayout();
     const cols =
         isAllOpen && isMoreThan1024 ? "lg:grid-cols-2" : "lg:grid-cols-3";
-
-    const onNewSticker = () => {
-        dispatch(showSticker(null));
-    };
 
     const hover = "hover:bg-neutral-300 hover:shadow-lg h-full";
 
     return (
         <div className="flex h-full flex-col">
-            <HeaderComponent title="Sticky Wall" />
+            <HeaderComponent title="Sticky Wall" number={0} />
             <Reorder.Group
                 values={stickers}
                 as="div"
