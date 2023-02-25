@@ -11,6 +11,7 @@ import StickyWallPage from "../Pages/StickyWallPage.jsx";
 import CalendarPage from "../Pages/CalendarPage.jsx";
 import ListsPage from "../Pages/ListsPage.jsx";
 import TagsPage from "../Pages/TagsPage.jsx";
+import SearchResultsPage from "../Pages/SearchResultsPage.jsx";
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
                     <Route path="/calendar" element={<CalendarPage />} />
                     <Route path="/lists/:id" element={<ListsPage />} />
                     <Route path="/tags/:id" element={<TagsPage />} />
+                    <Route path="/search" element={<SearchResultsPage />} />
                 </Routes>
                 <EditComponent />
             </div>

@@ -96,6 +96,18 @@
       "startHour": "01:00",
       "endHour": "02:00",
       "color": "bg-red-300"
+    },
+    {
+      "id": "2aa4a5ba-ea34-4902-afba-32f92b51f1b7",
+      "name": "Helllooooo",
+      "description": "",
+      "list": "",
+      "due_date": "25-02-23",
+      "tags": "Tag 1",
+      "subtasks": [],
+      "startHour": "16:00",
+      "endHour": "18:00",
+      "color": "bg-red-300"
     }
   ],
   "lists": [

@@ -10,6 +10,7 @@ import note from "../../resources/icons/note.svg";
 import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
 import useFilterTasks from "../../hooks/useFilterTasks.js";
+import SearchFormComponent from "../Forms/SearchFormComponent.jsx";
 
 import ListComponent from "./Lists/ListComponent.jsx";
 import TagsComponent from "./Tags/TagsComponent.jsx";
@@ -43,12 +44,7 @@ const MenuComponent = () => {
                         onClick={onMenu}
                     />
                 </div>
-                <input
-                    type="text"
-                    placeholder="Search"
-                    className="mt-5 flex h-10 w-full flex-row rounded-lg border border-neutral-300 bg-neutral-200 p-3.5 text-sm"
-                />
-                {/* TASKS */}
+                <SearchFormComponent />
                 <div className="mt-5 ml-3 text-xs font-semibold uppercase">
                     Tasks
                 </div>

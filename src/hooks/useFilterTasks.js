@@ -10,10 +10,16 @@ const useFilterTasks = (filter, props) => {
 
     const { filterTasks } = useLuxon();
 
-    const filterByfilter = (todos, filterArr) => {
+    const filterByFilter = (todos, filterArr) => {
         const list = filterArr.filter((item) => item.id === +props)[0];
-        const filtered = todos.filter((item) => item.list === list.name);
+        const filtered = todos.filter(
+            (item) => item.list === list.name || item.tags === list.name
+        );
         return filtered;
+    };
+
+    const filterBySearch = (todos) => {
+        return todos.filter((item) => item.name === props);
     };
 
     switch (filter) {
@@ -24,9 +30,11 @@ const useFilterTasks = (filter, props) => {
         case "week":
             return filterTasks(todos, "week");
         case "list":
-            return filterByfilter(todos, lists);
+            return filterByFilter(todos, lists);
         case "tag":
-            return filterByfilter(todos, tags);
+            return filterByFilter(todos, tags);
+        case "search":
+            return filterBySearch(todos);
         default:
             break;
     }

@@ -6,7 +6,8 @@ import TaskItemComponent from "./TaskItemComponent.jsx";
 import AddTaskComponent from "./AddTaskComponent.jsx";
 
 const TaskBlock = ({ filter, setNum, ...props }) => {
-    const todos = useFilterTasks(filter, props.id);
+    const prop = props.id ? props.id : props.name;
+    const todos = useFilterTasks(filter, prop);
     const todosLen = todos.length;
 
     const filterName =
