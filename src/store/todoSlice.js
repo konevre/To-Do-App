@@ -14,7 +14,6 @@ const todoSlice = createSlice({
             state.todos = action.payload;
         },
         changeNum: (state, action) => {
-            console.log(action.payload);
             state[action.payload.name] = action.payload.num;
         },
     },

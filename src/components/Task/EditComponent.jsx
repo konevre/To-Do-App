@@ -31,7 +31,6 @@ const EditComponent = () => {
     const onDelete = () => {
         dispatch(makeEditNull());
         if (stickerPage) {
-            console.log(isEditOpen.sticker.id);
             deleteSticker(isEditOpen.sticker.id);
         } else {
             deleteTodo(isEditOpen.task.id);

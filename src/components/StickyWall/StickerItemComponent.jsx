@@ -14,7 +14,7 @@ const StickerItemComponent = ({ item }) => {
             as="div"
             value={item}
             drag
-            className={`${color} flex flex-col overflow-y-auto rounded-lg p-5 shadow-md shadow-neutral-300 last:mb-3`}
+            className={`${color} flex cursor-grab flex-col overflow-y-auto rounded-lg p-5 shadow-md shadow-neutral-300 last:mb-3`}
         >
             <div className="flex justify-between">
                 <div className="text-sm font-semibold sm:text-lg">{name}</div>

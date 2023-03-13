@@ -5,11 +5,7 @@ const useFilterListAndTags = (filter) => {
     const { tags } = useGetTags();
     const { lists } = useGetLists();
 
-    if (filter === "list") {
-        return lists;
-    } else {
-        return tags;
-    }
+    return filter === "list" ? lists : tags;
 };
 
 export default useFilterListAndTags;

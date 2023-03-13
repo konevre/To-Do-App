@@ -1,4 +1,19 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+const deleteMultipleTodos = createAsyncThunk(
+    "todos/deleteMultipleTodos",
+    async (id, { rejectWithValue }) => {
+        try {
+            await fetch("http://localhost:3001/todos/" + id, {
+                method: "DELETE",
+            });
+            return id;
+        } catch (err) {
+            return rejectWithValue(err.response.data);
+        }
+    }
+);
 
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -36,6 +51,17 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["todos"],
         }),
+        deleteMultipleTodos: builder.mutation({
+            query: ({ ids }) => {
+                return 1;
+                // console.log(ids);
+                // ids.forEach((id) => {
+                //     fetch("http://localhost:3001/todos/" + id, {
+                //         method: "DELETE",
+                //     });
+                // });
+            },
+        }),
         getAllLists: builder.query({
             query: () => "/lists",
             providesTags: ["lists"],
@@ -48,6 +74,13 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ["lists"],
         }),
+        deleteList: builder.mutation({
+            query: (id) => ({
+                url: `/lists/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["lists"],
+        }),
         getAllTags: builder.query({
             query: () => "/tags",
             providesTags: ["tags"],
@@ -57,6 +90,13 @@ export const apiSlice = createApi({
                 url: "/tags",
                 method: "POST",
                 body: tag,
+            }),
+            invalidatesTags: ["tags"],
+        }),
+        deleteTag: builder.mutation({
+            query: (id) => ({
+                url: `/tags/${id}`,
+                method: "DELETE",
             }),
             invalidatesTags: ["tags"],
         }),
@@ -98,10 +138,13 @@ export const {
     useDeleteTodoMutation,
     useGetAllListsQuery,
     useCreateListMutation,
+    useDeleteListMutation,
     useGetAllTagsQuery,
     useCreateTagMutation,
+    useDeleteTagMutation,
     useGetAllStickersQuery,
     useCreateStickerMutation,
     useDeleteStickerMutation,
     useUpdateStickerMutation,
+    useDeleteMultipleTodosMutation,
 } = apiSlice;

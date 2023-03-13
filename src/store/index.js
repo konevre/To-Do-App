@@ -9,6 +9,7 @@ import tags from "./tagSlice.js";
 import edit from "./editSlice.js";
 import stickers from "./stickerSlice.js";
 import calendar from "./calendarSlice.js";
+import modal from "./modalSlice.js";
 
 const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
         edit,
         stickers,
         calendar,
+        modal,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>

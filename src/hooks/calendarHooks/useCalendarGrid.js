@@ -33,7 +33,6 @@ const useCalendarGrid = (index) => {
             num++;
         }
     });
-    console.log(num);
     return { cols };
 };
 

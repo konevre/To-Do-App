@@ -16,7 +16,7 @@ const UpcomingComponent = () => {
         <>
             <HeaderComponent title="Upcoming" number={num} />
             <div
-                className={`lg:grid-rows-auto grid grid-cols-1 gap-y-5 lg:gap-6 ${gridLg}`}
+                className={`lg:grid-rows-auto grid basis-full grid-cols-1 gap-y-5 lg:gap-6 ${gridLg}`}
             >
                 <div
                     className={`lg:rounded-lg lg:border lg:border-neutral-300 lg:p-5 ${colSpanLg}`}

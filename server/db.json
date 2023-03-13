@@ -1,79 +1,6 @@
 {
   "todos": [
     {
-      "name": "Call gradmom!!",
-      "description": "",
-      "list": "Personal",
-      "due_date": "21-02-23",
-      "tags": "Tag 1",
-      "subtasks": [
-        {
-          "done": true,
-          "name": "call bakery!"
-        }
-      ],
-      "startHour": "10:00",
-      "endHour": "12:00",
-      "color": "bg-red-300",
-      "id": "0d68c221-5fbb-4189-9bb8-53187cc44f4e"
-    },
-    {
-      "name": "Roman",
-      "description": "Call someone",
-      "list": "Hobby",
-      "due_date": "10-02-23",
-      "startHour": "14:00",
-      "endHour": "16:00",
-      "color": "bg-red-300",
-      "subtasks": [],
-      "id": "5bf8658b-7baa-490b-a8c6-b161f4f8e709"
-    },
-    {
-      "name": "Заказать выпускной!!!!!",
-      "list": "Hobby",
-      "due_date": "22-02-23",
-      "tags": "",
-      "subtasks": [
-        {
-          "done": true,
-          "name": "что то сделать"
-        }
-      ],
-      "startHour": "11:00",
-      "endHour": "22:00",
-      "color": "bg-red-300",
-      "id": "3af26724-5144-4c59-b3ad-3b5730d1bd1e"
-    },
-    {
-      "id": "e96ed0d0-62da-4c20-b31d-77541aa2c92f",
-      "name": "Позвонить бабушке",
-      "description": "",
-      "list": "Personal",
-      "due_date": "08-02-23",
-      "startHour": "17:00",
-      "endHour": "19:00",
-      "color": "bg-red-300",
-      "tags": "",
-      "subtasks": [
-        {
-          "done": false,
-          "name": "И купить хлеб"
-        }
-      ]
-    },
-    {
-      "id": "75ca8ba0-ecc4-40dc-b2d3-b48a6eca1114",
-      "name": "WOOOOW",
-      "description": "",
-      "list": "",
-      "due_date": "23-02-23",
-      "tags": "",
-      "subtasks": [],
-      "startHour": "01:00",
-      "endHour": "03:00",
-      "color": "bg-red-300"
-    },
-    {
       "id": "5f477286-7819-4839-bd5a-f9834510f7af",
       "name": "Buy some meat",
       "description": "",
@@ -108,29 +35,33 @@
       "startHour": "16:00",
       "endHour": "18:00",
       "color": "bg-red-300"
+    },
+    {
+      "id": "13a8c85a-cb24-474e-a661-938d7c2cec3a",
+      "name": "sdfsdf",
+      "description": "dsfsdfsf",
+      "list": "",
+      "due_date": "09-03-23",
+      "tags": "",
+      "subtasks": [],
+      "startHour": "01:00",
+      "endHour": "02:00",
+      "color": "bg-red-300"
+    },
+    {
+      "id": "04fae41c-e3a8-4d4c-a680-f2b5055dc0b0",
+      "name": "Позвонить солу",
+      "description": "Заказать пиццу",
+      "list": "",
+      "due_date": "13-03-23",
+      "tags": "",
+      "subtasks": [],
+      "startHour": "01:00",
+      "endHour": "02:00",
+      "color": "bg-red-300"
     }
   ],
   "lists": [
-    {
-      "id": 1,
-      "name": "Personal",
-      "color": "bg-amber-500"
-    },
-    {
-      "id": 2,
-      "name": "Work",
-      "color": "bg-red-400"
-    },
-    {
-      "name": "Hobby",
-      "color": "bg-sky-400",
-      "id": 3
-    },
-    {
-      "name": "Hello",
-      "color": "bg-green-400",
-      "id": 4
-    },
     {
       "name": "Выпскной",
       "color": "bg-violet-400",
@@ -138,11 +69,6 @@
     }
   ],
   "tags": [
-    {
-      "name": "Tag 1",
-      "color": "bg-red-300",
-      "id": 1
-    },
     {
       "name": "Tag 2",
       "color": "bg-pink-300",

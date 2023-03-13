@@ -13,7 +13,6 @@ const MonthComponent = () => {
     const monthItems = monthArray.map((item) => {
         const day = item === "" ? "" : item.toFormat("dd-MM-yy");
         const dayEvents = todos.filter((event) => event.due_date === day);
-        console.log(dayEvents);
 
         const bgColor =
             now.hasSame(item, "day") && isLessThan640
