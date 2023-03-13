@@ -15,11 +15,11 @@ import {
 import useLuxon from "./calendarHooks/useLuxon.js";
 
 const useTodoForm = () => {
-    const { isEditOpen } = useSelector((state) => state.edit);
+    const { edit } = useSelector((state) => state.edit);
     const { constantNow } = useLuxon();
 
-    const isOpen = isEditOpen.isOpen;
-    const todoObj = isEditOpen.task;
+    const isOpen = edit.isOpen;
+    const todoObj = edit.task;
 
     const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ const useTodoForm = () => {
         date: todoObj ? todoObj?.due_date : constantNow.toFormat("dd-MM-yy"),
         tags: todoObj ? todoObj.tags : "",
         subtasks: todoObj ? todoObj.subtasks : [],
+        completed: todoObj ? todoObj?.completed : false,
         startHour: todoObj
             ? DateTime.fromFormat(todoObj?.startHour, "HH:mm").toFormat("h")
             : "1",
@@ -116,6 +117,7 @@ const useTodoForm = () => {
             due_date: values.date,
             tags: values.tags,
             subtasks: values.subtasks,
+            completed: false,
             startHour: DateTime.fromFormat(
                 `${values.startHour}${values.startPeriod}`,
                 "ha"

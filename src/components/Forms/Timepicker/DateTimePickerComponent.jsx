@@ -10,7 +10,7 @@ import TimePickerComponent from "./TimePickerComponent.jsx";
 
 const DateTimePickerComponent = ({ setFieldValue, values }) => {
     const [isOpen, setOpen] = useState(false);
-    const { isEditOpen } = useSelector((state) => state.edit);
+    const { edit } = useSelector((state) => state.edit);
 
     const openPicker = () => {
         setOpen(true);
@@ -29,7 +29,7 @@ const DateTimePickerComponent = ({ setFieldValue, values }) => {
                     onFocus={openPicker}
                     className="flex w-full cursor-default items-center rounded border border-neutral-300 bg-neutral-200 px-3.5 text-sm text-neutral-500"
                     readOnly
-                    placeholder={isEditOpen?.task?.due_date || ""}
+                    placeholder={edit?.task?.due_date || ""}
                 />
                 {isOpen ? (
                     <div className="absolute w-full bg-neutral-300 p-3">

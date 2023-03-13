@@ -11,11 +11,11 @@ const useLayout = () => {
     const isLessThan840 = useMediaQuery({ query: "(max-width: 840px)" });
     const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });
     const { isMenuOpen } = useSelector((state) => state.menu);
-    const { isEditOpen } = useSelector((state) => state.edit);
+    const { edit } = useSelector((state) => state.edit);
     const location = useLocation().pathname;
 
     const onMenu = () => {
-        if (isLessThan1024 && isEditOpen.isOpen) {
+        if (isLessThan1024 && edit.isOpen) {
             dispatch(closeEdit());
         }
         dispatch(showMenu());
@@ -28,11 +28,11 @@ const useLayout = () => {
         dispatch(showEdit(null));
     };
 
-    const isAllOpen = isMenuOpen && isEditOpen.isOpen && isMoreThan1024;
+    const isAllOpen = isMenuOpen && edit.isOpen && isMoreThan1024;
 
     return {
         isMenuOpen,
-        isEditOpen,
+        edit,
         onMenu,
         onEdit,
         isAllOpen,

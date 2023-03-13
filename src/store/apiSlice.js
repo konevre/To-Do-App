@@ -1,19 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const deleteMultipleTodos = createAsyncThunk(
-    "todos/deleteMultipleTodos",
-    async (id, { rejectWithValue }) => {
-        try {
-            await fetch("http://localhost:3001/todos/" + id, {
-                method: "DELETE",
-            });
-            return id;
-        } catch (err) {
-            return rejectWithValue(err.response.data);
-        }
-    }
-);
 
 export const apiSlice = createApi({
     reducerPath: "api",
@@ -50,17 +35,6 @@ export const apiSlice = createApi({
                 method: "DELETE",
             }),
             invalidatesTags: ["todos"],
-        }),
-        deleteMultipleTodos: builder.mutation({
-            query: ({ ids }) => {
-                return 1;
-                // console.log(ids);
-                // ids.forEach((id) => {
-                //     fetch("http://localhost:3001/todos/" + id, {
-                //         method: "DELETE",
-                //     });
-                // });
-            },
         }),
         getAllLists: builder.query({
             query: () => "/lists",

@@ -1,64 +1,17 @@
 {
   "todos": [
     {
-      "id": "5f477286-7819-4839-bd5a-f9834510f7af",
-      "name": "Buy some meat",
-      "description": "",
-      "list": "",
-      "due_date": "25-02-23",
-      "tags": "",
-      "subtasks": [],
-      "startHour": "17:00",
-      "endHour": "20:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "039e0258-7295-460c-8fca-3ac3e0cd95e8",
-      "name": "sdfdsfsadf",
-      "description": "",
-      "list": "",
-      "due_date": "25-02-23",
-      "tags": "",
-      "subtasks": [],
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "2aa4a5ba-ea34-4902-afba-32f92b51f1b7",
-      "name": "Helllooooo",
-      "description": "",
-      "list": "",
-      "due_date": "25-02-23",
-      "tags": "Tag 1",
-      "subtasks": [],
-      "startHour": "16:00",
-      "endHour": "18:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "13a8c85a-cb24-474e-a661-938d7c2cec3a",
-      "name": "sdfsdf",
-      "description": "dsfsdfsf",
-      "list": "",
-      "due_date": "09-03-23",
-      "tags": "",
-      "subtasks": [],
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "04fae41c-e3a8-4d4c-a680-f2b5055dc0b0",
-      "name": "Позвонить солу",
-      "description": "Заказать пиццу",
+      "name": "asdfas",
+      "description": "dfasdfadsf",
       "list": "",
       "due_date": "13-03-23",
       "tags": "",
       "subtasks": [],
+      "completed": true,
       "startHour": "01:00",
       "endHour": "02:00",
-      "color": "bg-red-300"
+      "color": "bg-red-300",
+      "id": "d9862d7e-4ec0-4881-aed1-f4b2c94a2c3d"
     }
   ],
   "lists": [

@@ -10,7 +10,7 @@ import useLayout from "../../../hooks/useLayout.js";
 const MonthPickerComponent = ({ setFieldValue, values }) => {
     const { now } = useLuxon();
     const [month, setMonth] = useState(now);
-    const { isEditOpen, isLessThan840 } = useLayout();
+    const { edit, isLessThan840 } = useLayout();
 
     const onSetDate = (item) => {
         setFieldValue("date", item.toFormat("dd-MM-yy"));
@@ -34,7 +34,7 @@ const MonthPickerComponent = ({ setFieldValue, values }) => {
         const day = item === "" ? "" : item.toFormat("dd-MM-yy");
         const bg =
             values.date === day && day !== "" ? "bg-neutral-400 rounded" : "";
-        const p = isEditOpen.isOpen && isLessThan840 ? "p-1" : "p-2";
+        const p = edit.isOpen && isLessThan840 ? "p-1" : "p-2";
         return (
             <div
                 className={`${p} flex flex-col items-center justify-center rounded-md text-sm sm:items-start sm:justify-start`}

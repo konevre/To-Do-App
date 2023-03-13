@@ -21,8 +21,8 @@ const useStickerForm = () => {
         "bg-yellow-300",
         "bg-orange-300",
     ];
-    const { isEditOpen } = useSelector((state) => state.edit);
-    const editObj = isEditOpen.sticker;
+    const { edit } = useSelector((state) => state.edit);
+    const editObj = edit.sticker;
     const dispatch = useDispatch();
 
     const colorIndex = editObj ? colors.indexOf(editObj.color) : -1;

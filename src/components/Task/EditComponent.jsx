@@ -22,7 +22,7 @@ const EditComponent = () => {
     const [deleteSticker] = useDeleteStickerMutation();
     const [deleteTodo] = useDeleteTodoMutation();
 
-    const { isEditOpen } = useSelector((state) => state.edit);
+    const { edit } = useSelector((state) => state.edit);
     const dispatch = useDispatch();
     const onClose = () => {
         dispatch(closeEdit());
@@ -31,13 +31,13 @@ const EditComponent = () => {
     const onDelete = () => {
         dispatch(makeEditNull());
         if (stickerPage) {
-            deleteSticker(isEditOpen.sticker.id);
+            deleteSticker(edit.sticker.id);
         } else {
-            deleteTodo(isEditOpen.task.id);
+            deleteTodo(edit.task.id);
         }
     };
 
-    const isHidden = isEditOpen.isOpen
+    const isHidden = edit.isOpen
         ? "absolute top-0 z-10 translate-x-0 sm:static sm:z-0"
         : "absolute top-0 -z-10 translate-x-full delay-300 sm:static sm:z-0 sm:hidden";
 
@@ -72,7 +72,7 @@ const EditComponent = () => {
                         )}
                     </div>
                     <div className="flex justify-between gap-x-4">
-                        {isEditOpen.isOpen && (
+                        {edit.isOpen && (
                             <button
                                 onClick={onDelete}
                                 className="flex h-10 basis-1/2 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200  text-sm font-semibold"
@@ -84,7 +84,7 @@ const EditComponent = () => {
                             type="submit"
                             form={form}
                             className={`flex h-10 ${
-                                isEditOpen.isOpen ? "basis-1/2" : "basis-full"
+                                edit.isOpen ? "basis-1/2" : "basis-full"
                             } items-center justify-center rounded-lg bg-amber-300 text-sm font-semibold`}
                         >
                             Save changes

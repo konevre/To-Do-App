@@ -12,14 +12,7 @@ const TaskFormComponent = () => {
     const lists = useSelector((state) => state.lists.lists);
     const tags = useSelector((state) => state.tags.tags);
 
-    const {
-        initialValues,
-        validationSchema,
-        onDelete,
-        onSubmit,
-        onClose,
-        isOpen,
-    } = useTodoForm();
+    const { initialValues, validationSchema, onSubmit } = useTodoForm();
 
     const makeOptions = (array) => {
         return array.map((item) => {

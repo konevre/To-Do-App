@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
@@ -7,10 +7,12 @@ import { showMenu } from "../../store/menuSlice.js";
 
 import detail from "../../resources/icons/chevron.svg";
 import calendar from "../../resources/icons/calendar-x.svg";
+import { useUpdateTodoMutation } from "../../store/apiSlice.js";
 
 const TaskItemComponent = ({ task, i }) => {
     const dispatch = useDispatch();
-    const [isDone, setTodoState] = useState(false);
+    const { edit } = useSelector((state) => state.edit);
+    const [updateTodo] = useUpdateTodoMutation();
 
     const { lists } = useSelector((state) => state.lists);
     const taskList = lists.filter((item) => item.name === task.list)[0];
@@ -25,8 +27,15 @@ const TaskItemComponent = ({ task, i }) => {
         dispatch(showEdit(task));
     };
 
+    console.log();
+
     const switchTodoState = () => {
-        setTodoState(!isDone);
+        if (edit.isOpen && edit.task?.id === task.id) {
+            alert("PLESE FINISH EDITING FIRST");
+        } else {
+            const completedState = !task.completed;
+            dispatch(updateTodo({ ...task, completed: completedState }));
+        }
     };
 
     const subLength = task.subtasks.length,
@@ -43,7 +52,7 @@ const TaskItemComponent = ({ task, i }) => {
             <div className="flex w-4 items-center">
                 <input
                     type="checkbox"
-                    checked={isDone}
+                    checked={task.completed}
                     onChange={switchTodoState}
                 />
             </div>
