@@ -3,7 +3,7 @@ import React from "react";
 import useCalendar from "../../hooks/calendarHooks/useCalendar.jsx";
 
 import useCalendarMonth from "../../hooks/calendarHooks/useCalendarMonth.js";
-import useGetTodos from "../../hooks/useGetTodos.js";
+import useGetTodos from "../../hooks/tasksHooks/useGetTodos.js";
 
 const MonthComponent = () => {
     const { monthArray, now, isLessThan640 } = useCalendarMonth();

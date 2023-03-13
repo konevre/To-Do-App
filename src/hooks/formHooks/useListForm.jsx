@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 
-import { useCreateListMutation } from "../store/apiSlice";
+import ColorPicker from "../../components/ColorPicker/ColorPicker.jsx";
+
+import { useCreateListMutation } from "../../store/apiSlice";
 
 const useListForm = () => {
     const [activeColor, setColor] = useState(4);
@@ -23,6 +25,14 @@ const useListForm = () => {
         "bg-amber-500",
     ];
 
+    const colorItems = (
+        <ColorPicker
+            setColor={setColor}
+            colors={colors}
+            activeColor={activeColor}
+        />
+    );
+
     const onSubmit = (values, { resetForm }) => {
         const newList = {
             name: values.List,
@@ -39,6 +49,7 @@ const useListForm = () => {
         validationSchema,
         onSubmit,
         colors,
+        colorItems,
     };
 };
 

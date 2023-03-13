@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import MenuComponent from "../components/Menu/Menu.jsx";
 import EditComponent from "../components/Task/EditComponent.jsx";
+import LayoutComponent from "../components/Layout/LayoutComponent.jsx";
 
 import TodayPage from "../Pages/TodayPage.jsx";
 import UpcomingPage from "../Pages/UpcomingPage.jsx";
@@ -23,16 +24,19 @@ const App = () => {
         <Router>
             <div className="relative h-full sm:flex sm:gap-x-3 lg:gap-x-5">
                 <MenuComponent />
-                <Routes>
-                    <Route path="/" element={<WelcomePage />} />
-                    <Route path="/today" element={<TodayPage />} />
-                    <Route path="/upcoming" element={<UpcomingPage />} />
-                    <Route path="/notes" element={<StickyWallPage />} />
-                    <Route path="/calendar" element={<CalendarPage />} />
-                    <Route path="/lists/:id" element={<ListsPage />} />
-                    <Route path="/tags/:id" element={<TagsPage />} />
-                    <Route path="/search" element={<SearchResultsPage />} />
-                </Routes>
+                <LayoutComponent>
+                    <Routes>
+                        <Route path="/" element={<WelcomePage />} />
+                        <Route path="/today" element={<TodayPage />} />
+                        <Route path="/upcoming" element={<UpcomingPage />} />
+                        <Route path="/notes" element={<StickyWallPage />} />
+                        <Route path="/calendar" element={<CalendarPage />} />
+                        <Route path="/lists/:id" element={<ListsPage />} />
+                        <Route path="/tags/:id" element={<TagsPage />} />
+                        <Route path="/search" element={<SearchResultsPage />} />
+                    </Routes>
+                </LayoutComponent>
+
                 <EditComponent />
             </div>
             <Suspense fallback={<div>Loading...</div>}>

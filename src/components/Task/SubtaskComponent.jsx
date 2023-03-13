@@ -28,7 +28,7 @@ const SubtaskComponent = ({ values }) => {
                             </div>
                         </div>
                         <div className="mt-3">
-                            {values.subtasks.map((subtask, i) => {
+                            {values.subtasks.map((_, i) => {
                                 return (
                                     <>
                                         <div

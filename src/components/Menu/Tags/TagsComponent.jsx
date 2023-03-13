@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import useGetTags from "../../../hooks/useGetTags";
-import useTagForm from "../../../hooks/useTagForm";
+
+import useTagForm from "../../../hooks/formHooks/useTagForm.jsx";
 
 import TagListFormComponent from "../../Forms/TagListFormComponent.jsx";
 
@@ -17,26 +18,12 @@ const TagsComponent = () => {
 
     const {
         activeColor,
-        setColor,
         initialState,
         validationSchema,
         onSubmit,
         colors,
+        colorItems,
     } = useTagForm();
-
-    const colorItems = colors.map((color, i) => {
-        const active =
-            i === activeColor ? "rounded border border-neutral-300" : "";
-        return (
-            <div
-                key={i}
-                className={`p-1.5 ${active}`}
-                onClick={() => setColor(i)}
-            >
-                <div className={`h-4 w-4 rounded ${color}`}></div>
-            </div>
-        );
-    });
 
     return (
         <>

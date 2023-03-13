@@ -1,48 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
-
-import { showEdit } from "../../store/editSlice.js";
-import { showMenu } from "../../store/menuSlice.js";
 
 import detail from "../../resources/icons/chevron.svg";
 import calendar from "../../resources/icons/calendar-x.svg";
-import { useUpdateTodoMutation } from "../../store/apiSlice.js";
+import useTodoItem from "../../hooks/tasksHooks/useTodoItem.js";
 
 const TaskItemComponent = ({ task, i }) => {
-    const dispatch = useDispatch();
-    const { edit } = useSelector((state) => state.edit);
-    const [updateTodo] = useUpdateTodoMutation();
-
-    const { lists } = useSelector((state) => state.lists);
-    const taskList = lists.filter((item) => item.name === task.list)[0];
-
-    const isLessThan1024 = useMediaQuery({ query: "(max-width: 1024px)" });
-    const { isMenuOpen } = useSelector((state) => state.menu);
-
-    const onTask = () => {
-        if (isLessThan1024 && isMenuOpen) {
-            dispatch(showMenu());
-        }
-        dispatch(showEdit(task));
-    };
-
-    console.log();
-
-    const switchTodoState = () => {
-        if (edit.isOpen && edit.task?.id === task.id) {
-            alert("PLESE FINISH EDITING FIRST");
-        } else {
-            const completedState = !task.completed;
-            dispatch(updateTodo({ ...task, completed: completedState }));
-        }
-    };
-
-    const subLength = task.subtasks.length,
-        dueDate = task.due_date;
-
-    const taskExtra =
-        subLength > 0 || task.list.length > 0 || dueDate.length > 0;
+    const { taskList, switchTodoState, onTask, taskExtra, dueDate, subLength } =
+        useTodoItem(task);
 
     return (
         <div

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useGetAllTodosQuery } from "../store/apiSlice";
-import { saveTodos } from "../store/todoSlice";
+import { useGetAllTodosQuery } from "../../store/apiSlice";
+import { saveTodos } from "../../store/todoSlice";
 
 const useGetTodos = () => {
     const { data, isSuccess } = useGetAllTodosQuery();

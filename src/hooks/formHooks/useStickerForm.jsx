@@ -6,9 +6,10 @@ import * as Yup from "yup";
 import {
     useCreateStickerMutation,
     useUpdateStickerMutation,
-} from "../store/apiSlice";
+} from "../../store/apiSlice";
 
-import { showSticker } from "../store/editSlice.js";
+import ColorPicker from "../../components/ColorPicker/ColorPicker.jsx";
+import { showSticker } from "../../store/editSlice.js";
 
 const useStickerForm = () => {
     const colors = [
@@ -28,7 +29,6 @@ const useStickerForm = () => {
     const colorIndex = editObj ? colors.indexOf(editObj.color) : -1;
     const currentColor = editObj && colorIndex !== -1 ? colorIndex : 4;
     const [activeColor, setColor] = useState(currentColor);
-
     useEffect(() => {
         setColor(currentColor);
     }, [colorIndex]);
@@ -50,19 +50,13 @@ const useStickerForm = () => {
             .required("Description field is required."),
     });
 
-    const colorItems = colors.map((color, i) => {
-        const active =
-            i === activeColor ? "rounded border border-neutral-300" : "";
-        return (
-            <div
-                key={i}
-                className={`p-1.5 ${active}`}
-                onClick={() => setColor(i)}
-            >
-                <div className={`h-4 w-4 rounded ${color}`}></div>
-            </div>
-        );
-    });
+    const colorItems = (
+        <ColorPicker
+            setColor={setColor}
+            colors={colors}
+            activeColor={activeColor}
+        />
+    );
 
     const onUpdate = (newSticker) => {
         dispatch(showSticker(newSticker));

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 
-import { useCreateTagMutation } from "../store/apiSlice";
+import ColorPicker from "../../components/ColorPicker/ColorPicker.jsx";
+
+import { useCreateTagMutation } from "../../store/apiSlice";
 
 const useTagForm = () => {
     const [activeColor, setColor] = useState(4);
@@ -32,6 +34,13 @@ const useTagForm = () => {
         createTag(newTag);
         resetForm();
     };
+    const colorItems = (
+        <ColorPicker
+            setColor={setColor}
+            colors={colors}
+            activeColor={activeColor}
+        />
+    );
 
     return {
         activeColor,
@@ -40,6 +49,7 @@ const useTagForm = () => {
         validationSchema,
         onSubmit,
         colors,
+        colorItems,
     };
 };
 

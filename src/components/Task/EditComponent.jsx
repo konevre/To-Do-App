@@ -1,48 +1,24 @@
 /* eslint-disable indent */
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 import xmark from "../../resources/icons/xmark.svg";
-import { closeEdit, makeEditNull } from "../../store/editSlice";
+import useEdit from "../../hooks/useEdit";
+
 import StickerForm from "../Forms/StickerForm.jsx";
 import TaskFormComponent from "../Forms/TaskFormComponent.jsx";
-import {
-    useDeleteStickerMutation,
-    useDeleteTodoMutation,
-} from "../../store/apiSlice";
 
 const EditComponent = () => {
-    const location = useLocation();
-    const stickerPage = location.pathname === "/notes";
-    const title = stickerPage ? "Sticker:" : "Task";
-    const deleteBtn = stickerPage ? "Delete sticker" : "Delete task";
-    const form = stickerPage ? "sticker" : "task";
-
-    const [deleteSticker] = useDeleteStickerMutation();
-    const [deleteTodo] = useDeleteTodoMutation();
-
-    const { edit } = useSelector((state) => state.edit);
-    const dispatch = useDispatch();
-    const onClose = () => {
-        dispatch(closeEdit());
-    };
-
-    const onDelete = () => {
-        dispatch(makeEditNull());
-        if (stickerPage) {
-            deleteSticker(edit.sticker.id);
-        } else {
-            deleteTodo(edit.task.id);
-        }
-    };
-
-    const isHidden = edit.isOpen
-        ? "absolute top-0 z-10 translate-x-0 sm:static sm:z-0"
-        : "absolute top-0 -z-10 translate-x-full delay-300 sm:static sm:z-0 sm:hidden";
-
-    const transition =
-        "transform transition duration-300 ease-in-out sm:transform-none";
+    const {
+        isHidden,
+        transition,
+        onClose,
+        stickerPage,
+        onDelete,
+        title,
+        deleteBtn,
+        form,
+        isEditOpen,
+    } = useEdit();
 
     const render = () => {
         return (
@@ -62,7 +38,6 @@ const EditComponent = () => {
                                 onClick={onClose}
                             />
                         </div>
-                        {/* FORM */}
                         {stickerPage ? (
                             <div className="h-full w-full">
                                 <StickerForm />
@@ -72,7 +47,7 @@ const EditComponent = () => {
                         )}
                     </div>
                     <div className="flex justify-between gap-x-4">
-                        {edit.isOpen && (
+                        {isEditOpen && (
                             <button
                                 onClick={onDelete}
                                 className="flex h-10 basis-1/2 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-200  text-sm font-semibold"
@@ -84,7 +59,7 @@ const EditComponent = () => {
                             type="submit"
                             form={form}
                             className={`flex h-10 ${
-                                edit.isOpen ? "basis-1/2" : "basis-full"
+                                isEditOpen ? "basis-1/2" : "basis-full"
                             } items-center justify-center rounded-lg bg-amber-300 text-sm font-semibold`}
                         >
                             Save changes

@@ -1,17 +1,22 @@
 {
   "todos": [
     {
-      "name": "asdfas",
-      "description": "dfasdfadsf",
-      "list": "",
+      "id": "6fd86e88-8db1-4478-a7cf-dfa4cb613a35",
+      "name": "asdfasdfaa",
+      "description": "fasdfa",
+      "list": "Выпскной",
       "due_date": "13-03-23",
-      "tags": "",
-      "subtasks": [],
-      "completed": true,
+      "tags": "Tag 2",
+      "subtasks": [
+        {
+          "done": true,
+          "name": "asdfasdf"
+        }
+      ],
+      "completed": false,
       "startHour": "01:00",
       "endHour": "02:00",
-      "color": "bg-red-300",
-      "id": "d9862d7e-4ec0-4881-aed1-f4b2c94a2c3d"
+      "color": "bg-red-300"
     }
   ],
   "lists": [

@@ -5,7 +5,7 @@ import useCalendarGrid from "../../../hooks/calendarHooks/useCalendarGrid.js";
 import CellComponent from "./CellComponent.jsx";
 
 const ColComponent = ({ index }) => {
-    const { cols, mainColStyle } = useCalendarGrid(index);
+    const { cols } = useCalendarGrid(index);
 
     const content = cols.map((col, i) => {
         const colStyle = {

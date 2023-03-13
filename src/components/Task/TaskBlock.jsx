@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
 
-import useFilterTasks from "../../hooks/useFilterTasks.js";
+import useTodoBlock from "../../hooks/tasksHooks/useTodoBlock.js";
 
-import TaskItemComponent from "./TaskItemComponent.jsx";
 import AddTaskComponent from "./AddTaskComponent.jsx";
+import TaskListComponent from "./TaskListComponent.jsx";
 
 const TaskBlock = ({ filter, setNum, ...props }) => {
-    const prop = props.id ? props.id : props.name;
-    const todos = useFilterTasks(filter, prop);
-    const todosLen = todos.length;
-
-    const filterName =
-        filter === "today" || filter === "tomorrow" ? filter : `this ${filter}`;
+    const { todos, todosLen, filterName } = useTodoBlock(filter, props);
 
     useEffect(() => {
         if (setNum) setNum(todosLen);
@@ -20,10 +15,7 @@ const TaskBlock = ({ filter, setNum, ...props }) => {
     return (
         <>
             <AddTaskComponent />
-            {(todosLen !== 0 &&
-                todos.map((task, i) => {
-                    return <TaskItemComponent task={task} i={i} key={i} />;
-                })) || (
+            {(todosLen !== 0 && <TaskListComponent todos={todos} />) || (
                 <div className="mt-8 flex items-center justify-center text-lg font-semibold">
                     {`No tasks for ${filterName}`}
                 </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import useStickerForm from "../../hooks/useStickerForm.jsx";
+import useStickerForm from "../../hooks/formHooks/useStickerForm.jsx";
 
 const StickerForm = () => {
     const {

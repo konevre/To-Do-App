@@ -1,5 +1,5 @@
 import { isNewCol, countHours } from "../../utils/utils";
-import useGetTodos from "../useGetTodos";
+import useGetTodos from "../tasksHooks/useGetTodos";
 
 import useLuxon from "./useLuxon.js";
 

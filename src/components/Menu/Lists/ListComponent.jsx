@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 import useGetLists from "../../../hooks/useGetLists";
-
-import useListForm from "../../../hooks/useListForm";
-
+import useListForm from "../../../hooks/formHooks/useListForm.jsx";
 import plus from "../../../resources/icons/plus.svg";
-
 import TagListFormComponent from "../../Forms/TagListFormComponent.jsx";
 
 import ListItemComponent from "./ListItemComponent.jsx";
@@ -13,33 +10,18 @@ import ListItemComponent from "./ListItemComponent.jsx";
 const ListComponent = () => {
     const {
         activeColor,
-        setColor,
         initialState,
         validationSchema,
         onSubmit,
         colors,
+        colorItems,
     } = useListForm();
-
     const { lists } = useGetLists();
-
     const [isNewList, setNewList] = useState(false);
+
     const onNewList = () => {
         setNewList(!isNewList);
     };
-
-    const colorItems = colors.map((color, i) => {
-        const active =
-            i === activeColor ? "rounded border border-neutral-300" : "";
-        return (
-            <div
-                key={i}
-                className={`p-1.5 ${active}`}
-                onClick={() => setColor(i)}
-            >
-                <div className={`h-4 w-4 rounded ${color}`}></div>
-            </div>
-        );
-    });
 
     return (
         <>
