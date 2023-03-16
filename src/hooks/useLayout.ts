@@ -1,24 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 
 import { showMenu } from "../store/menuSlice";
-import { closeEdit, makeEditNull } from "../store/editSlice";
+import { closeEdit, showTodo } from "../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
-interface LayoutHook {
-    isMenuOpen: boolean;
-    isEditOpen: boolean;
-    basis: string;
-    onMenu: () => void;
-    onEdit: () => void;
-    isAllOpen: boolean;
-    location: string;
-    isMoreThan1024: boolean;
-    isLessThan840: boolean;
-}
-
-const useLayout = (): LayoutHook => {
+const useLayout = () => {
     const dispatch = useAppDispatch();
     const isLessThan1024: boolean = useMediaQuery({
         query: "(max-width: 1024px)",
@@ -53,7 +40,7 @@ const useLayout = (): LayoutHook => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(makeEditNull());
+        dispatch(showTodo(null));
     };
 
     const isAllOpen: boolean = isMenuOpen && isEditOpen && isMoreThan1024;

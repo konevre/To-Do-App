@@ -1,7 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 
 import { useUpdateTodoMutation } from "../../store/apiSlice";
-import { showEdit } from "../../store/editSlice";
+import { showTodo } from "../../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { showMenu } from "../../store/menuSlice";
 import { Todo, List } from "../../types";
@@ -33,7 +33,7 @@ const useTodoItem = (task: Todo): TodoItemHook => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(showEdit(task));
+        dispatch(showTodo(task));
     };
 
     const switchTodoState = () => {
@@ -42,10 +42,8 @@ const useTodoItem = (task: Todo): TodoItemHook => {
             alert("Please, finish editing first.");
         } else {
             const completedState = !task.completed;
-            const updatedTask = { ...task, completed: completedState };
-            const taskID = task.id;
-            // TODO - how to update???
-            // dispatch(updateTodo(updatedTask));
+            const updatedTask: Todo = { ...task, completed: completedState };
+            updateTodo(updatedTask);
         }
     };
 

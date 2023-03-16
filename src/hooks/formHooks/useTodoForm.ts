@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { DateTime } from "luxon";
 
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { closeEdit, makeEditNull, showEdit } from "../../store/editSlice";
+import { closeEdit, makeEditNull, showTodo } from "../../store/editSlice";
 import { List, Subtask, Tag, Todo } from "../../types";
 import {
     useCreateTodoMutation,
@@ -107,8 +107,7 @@ const useTodoForm = () => {
     };
 
     const onUpdate = (data: Todo) => {
-        dispatch(showEdit(data));
-        // TODO ??????
+        dispatch(showTodo(data));
         updateTodo(data);
     };
 

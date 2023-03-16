@@ -14,7 +14,7 @@ const useFilterTasks = (filter: Filter, props?: string | undefined) => {
     // TODO ???? list если одинаковые названия листа и тэга
     const filterByFilter = (todos: Todo[], filterArr: Tag[] | Sticker[]) => {
         if (props) {
-            const list = filterArr.filter((item) => item.id === +props)[0];
+            const list = filterArr.filter((item) => item.id === props)[0];
             const filtered = todos.filter(
                 (item) => item.list === list.name || item.tags === list.name
             );

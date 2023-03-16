@@ -14,19 +14,18 @@ const initialState: Edit = {
     edit: { isOpen: false, task: null, sticker: null },
 };
 
-// TODO - переименовать showEdit в showTodo
 const editSlice = createSlice({
     name: "edit",
     initialState,
     reducers: {
-        showEdit: (state, action: PayloadAction<Todo>) => {
+        showTodo: (state, action: PayloadAction<Todo | null>) => {
             state.edit = {
                 isOpen: true,
                 task: action.payload,
                 sticker: null,
             };
         },
-        showSticker: (state, action: PayloadAction<Sticker>) => {
+        showSticker: (state, action: PayloadAction<Sticker | null>) => {
             state.edit = {
                 isOpen: true,
                 task: null,
@@ -46,4 +45,4 @@ const editSlice = createSlice({
 const { actions, reducer } = editSlice;
 
 export default reducer;
-export const { showEdit, closeEdit, makeEditNull, showSticker } = actions;
+export const { showTodo, closeEdit, makeEditNull, showSticker } = actions;

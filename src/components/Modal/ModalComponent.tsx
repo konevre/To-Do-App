@@ -42,7 +42,7 @@ const ModalComponent = () => {
             if (item.list === modalTasks) {
                 const id = item.id;
                 // TODO
-                // dispatch(await deleteTodo(id));
+                await deleteTodo(id);
             }
         }
     };
@@ -52,7 +52,7 @@ const ModalComponent = () => {
         navigate(`/today`);
         const { filterID, deleteFilter } = filterObj;
         // TODO - API
-        // dispatch(deleteFilter(filterID));
+        if (filterID) deleteFilter(filterID);
     };
 
     return (

@@ -1,9 +1,8 @@
 {
   "todos": [
     {
-      "id": "6fd86e88-8db1-4478-a7cf-dfa4cb613a35",
-      "name": "asdfasdfaa",
-      "description": "fasdfa",
+      "name": "asdfasdfaa123123",
+      "description": "fasdfa1111",
       "list": "Выпскной",
       "due_date": "13-03-23",
       "tags": "Tag 2",
@@ -16,23 +15,25 @@
       "completed": false,
       "startHour": "01:00",
       "endHour": "02:00",
+      "color": "bg-red-300",
+      "id": "6fd86e88-8db1-4478-a7cf-dfa4cb613a35"
+    },
+    {
+      "id": "1b7a3d74-1f8c-4210-906f-aca3c21dbb42",
+      "name": "asdfasdfa",
+      "description": "fadsfasf",
+      "list": "",
+      "due_date": "16-03-23",
+      "tags": "",
+      "subtasks": [],
+      "completed": false,
+      "startHour": "01:00",
+      "endHour": "02:00",
       "color": "bg-red-300"
     }
   ],
-  "lists": [
-    {
-      "name": "Выпскной",
-      "color": "bg-violet-400",
-      "id": 5
-    }
-  ],
-  "tags": [
-    {
-      "name": "Tag 2",
-      "color": "bg-pink-300",
-      "id": 2
-    }
-  ],
+  "lists": [],
+  "tags": [],
   "stickers": [
     {
       "name": "Buy milk!",
@@ -48,8 +49,8 @@
     },
     {
       "name": "Купить творог",
-      "description": "сметану и хлеб",
-      "color": "bg-indigo-300",
+      "description": "сметану и хлеб!!",
+      "color": "bg-emerald-300",
       "id": "1925203c-9151-4153-bce7-5c068826c81e"
     }
   ]

@@ -5,7 +5,7 @@ import WeekComponent from "../../components/Calendar/WeekComponent";
 import MonthComponent from "../../components/Calendar/MonthComponent";
 import TodayComponent from "../../components/Calendar/TodayComponent";
 
-import { showEdit } from "../../store/editSlice";
+import { showTodo } from "../../store/editSlice";
 import { showMenu } from "../../store/menuSlice";
 
 import useCalendarMonth from "./useCalendarMonth";
@@ -24,7 +24,7 @@ const useCalendar = () => {
         if (isLessThan1024 && isMenuOpen) {
             dispatch(showMenu());
         }
-        dispatch(showEdit(event));
+        dispatch(showTodo(event));
     };
 
     const { todayTitle } = useCalendarToday();

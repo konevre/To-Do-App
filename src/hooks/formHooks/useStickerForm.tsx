@@ -72,8 +72,7 @@ const useStickerForm = () => {
 
     const onUpdate = (newSticker: Sticker) => {
         dispatch(showSticker(newSticker));
-        // TODO - how to update???
-        // updateSticker(newSticker);
+        updateSticker(newSticker);
     };
 
     const onSubmit = (
@@ -87,7 +86,6 @@ const useStickerForm = () => {
             color: colors[activeColor],
         };
 
-        // TODO - onUpdate не обновляет - см. выше!
         editObj ? onUpdate(newSticker) : createSticker(newSticker);
         resetForm();
     };
