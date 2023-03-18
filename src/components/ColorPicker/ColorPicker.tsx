@@ -8,7 +8,6 @@ interface ColorPickerProps {
     colors: TagColor[] | ListColor[];
 }
 
-// TODO - colors only TagColors or ListColors
 const ColorPicker: React.FC<ColorPickerProps> = ({
     setActiveColor,
     activeColor,

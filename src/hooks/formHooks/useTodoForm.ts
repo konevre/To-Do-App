@@ -4,7 +4,15 @@ import { DateTime } from "luxon";
 
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { closeEdit, makeEditNull, showTodo } from "../../store/editSlice";
-import { List, Subtask, Tag, Todo } from "../../types";
+import {
+    Subtask,
+    Tag,
+    Todo,
+    List,
+    GeneralColors,
+    TagColor,
+    ListColor,
+} from "../../types";
 import {
     useCreateTodoMutation,
     useUpdateTodoMutation,
@@ -14,23 +22,74 @@ import {
 import useLuxon from "../calendarHooks/useLuxon";
 import { FormikHelpers } from "formik";
 
+type StringOrEmpty = string | "";
+
+// TODO - вынести филлеры в отдельный файл
+const generalColors: GeneralColors[] = [
+    "bg-fuchsia-500",
+    "bg-yellow-400",
+    "bg-indigo-400",
+    "bg-amber-600",
+    "bg-violet-500",
+    "bg-sky-500",
+    "bg-yellow-400",
+    "bg-red-500",
+    "bg-purple-400",
+];
+
 interface FormikValues {
-    name: string;
-    list: string;
-    tags: string;
-    descr: string;
-    date: string;
-    startPeriod: string;
-    endPeriod: string;
-    startHour: string;
-    endHour: string;
+    name: StringOrEmpty;
+    list: StringOrEmpty;
+    tags: StringOrEmpty;
+    descr: StringOrEmpty;
+    date: StringOrEmpty;
+    startPeriod: StringOrEmpty;
+    endPeriod: StringOrEmpty;
+    startHour: StringOrEmpty;
+    endHour: StringOrEmpty;
     subtasks: Subtask[];
+    color: TagColor | ListColor | GeneralColors | "";
+    completed?: boolean;
 }
+
+const getRandomColor = (colors: GeneralColors[]) => {
+    const arrLen = colors.length;
+    const randomIndex = Math.floor(Math.random() * arrLen);
+    return generalColors[randomIndex];
+};
+
+const handleTodoColor = (values: FormikValues, list: List[], tag: Tag[]) => {
+    const listColor = list.filter((item) => item.name === values.list)[0]
+            ?.color,
+        tagColor = tag.filter((item) => item.name === values.tags)[0]?.color;
+
+    if (values.color === "") {
+        if (values.list !== "") {
+            return listColor;
+        }
+        if (values.tags !== "") {
+            return tagColor;
+        }
+        return getRandomColor(generalColors);
+    } else {
+        if (values.list === "") {
+            if (values.tags === "") {
+                return getRandomColor(generalColors);
+            } else {
+                return tagColor;
+            }
+        } else {
+            return listColor;
+        }
+    }
+};
 
 const useTodoForm = () => {
     const dispatch = useAppDispatch();
     const { edit } = useAppSelector((state) => state.edit);
     const { constantNow } = useLuxon();
+    const { lists } = useAppSelector((state) => state.lists);
+    const { tags } = useAppSelector((state) => state.tags);
 
     const isOpen = edit.isOpen;
     const todoObj = edit.task;
@@ -39,9 +98,9 @@ const useTodoForm = () => {
     const [updateTodo] = useUpdateTodoMutation();
     const [deleteTodo] = useDeleteTodoMutation();
 
-    const initialValues = {
+    const initialValues: FormikValues = {
         name: todoObj ? todoObj?.name : "",
-        descr: todoObj ? todoObj.description || "" : "",
+        descr: todoObj ? todoObj?.description : "",
         list: todoObj ? todoObj?.list : "",
         date: todoObj ? todoObj?.due_date : constantNow.toFormat("dd-MM-yy"),
         tags: todoObj ? todoObj.tags : "",
@@ -59,6 +118,7 @@ const useTodoForm = () => {
         endPeriod: todoObj
             ? DateTime.fromFormat(todoObj?.endHour, "HH:mm").toFormat("a")
             : "AM",
+        color: todoObj ? todoObj?.color : "",
     };
 
     const validationSchema = Yup.object()
@@ -141,7 +201,7 @@ const useTodoForm = () => {
                 `${values.endHour}${values.endPeriod}`,
                 "ha"
             ).toFormat("HH:mm"),
-            color: "bg-red-300",
+            color: handleTodoColor(values, lists, tags),
         };
         method === "POST" ? createTodo(data) : onUpdate(data);
     };

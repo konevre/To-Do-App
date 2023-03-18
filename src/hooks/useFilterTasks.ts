@@ -1,6 +1,6 @@
 import useLuxon from "./calendarHooks/useLuxon";
 
-import { Todo, Tag, Filter, List } from "../types";
+import { Todo, Filter } from "../types";
 import { useAppSelector } from "../store/hooks";
 
 const useFilterTasks = (filter: Filter, props?: string | undefined) => {

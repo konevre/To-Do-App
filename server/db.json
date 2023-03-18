@@ -1,76 +1,5 @@
 {
-  "todos": [
-    {
-      "name": "asdfasdfaa123123",
-      "description": "fasdfa1111",
-      "list": "Выпскной",
-      "due_date": "13-03-23",
-      "tags": "Tag 2",
-      "subtasks": [
-        {
-          "done": true,
-          "name": "asdfasdf"
-        }
-      ],
-      "completed": false,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300",
-      "id": "6fd86e88-8db1-4478-a7cf-dfa4cb613a35"
-    },
-    {
-      "name": "asdfasdfa",
-      "description": "fadsfasf",
-      "list": "",
-      "due_date": "16-03-23",
-      "tags": "",
-      "subtasks": [],
-      "completed": true,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300",
-      "id": "1b7a3d74-1f8c-4210-906f-aca3c21dbb42"
-    },
-    {
-      "id": "322ac8a4-282b-4828-93f9-4bbf4a67aeca",
-      "name": "dasDa",
-      "description": "asDsada",
-      "list": "",
-      "due_date": "17-03-23",
-      "tags": "",
-      "subtasks": [],
-      "completed": false,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "feda6008-9ac6-426c-a107-7ec370f2d9c4",
-      "name": "DFADFASDF",
-      "description": "ASDFASDF",
-      "list": "work",
-      "due_date": "17-03-23",
-      "tags": "",
-      "subtasks": [],
-      "completed": false,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300"
-    },
-    {
-      "id": "8605fda6-04fc-478f-a472-b6008a982d5a",
-      "name": "fasdfasdf",
-      "description": "sadfasdfsda",
-      "list": "",
-      "due_date": "17-03-23",
-      "tags": "",
-      "subtasks": [],
-      "completed": false,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-red-300"
-    }
-  ],
+  "todos": [],
   "lists": [
     {
       "id": "532d9d97-a707-48b2-b1d0-2fc56319f0a3",
@@ -78,7 +7,13 @@
       "color": "bg-sky-400"
     }
   ],
-  "tags": [],
+  "tags": [
+    {
+      "id": "d60ae868-89c7-4ced-8b74-c07137d25da9",
+      "name": "new tag",
+      "color": "bg-indigo-300"
+    }
+  ],
   "stickers": [
     {
       "name": "Buy milk!",

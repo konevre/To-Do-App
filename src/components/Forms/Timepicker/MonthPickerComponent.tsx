@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { DateTime } from "luxon";
 
 import useCalendarMonth from "../../../hooks/calendarHooks/useCalendarMonth";
 import useLuxon from "../../../hooks/calendarHooks/useLuxon";
@@ -8,7 +9,10 @@ import useCalendarWeek from "../../../hooks/calendarHooks/useCalendarWeek";
 import useLayout from "../../../hooks/useLayout";
 
 import { FieldValues } from "../../../types";
-import { DateTime } from "luxon";
+
+const isString = (obj: string | DateTime) => {
+    return typeof obj === "string";
+};
 
 const MonthPickerComponent: React.FC<FieldValues> = ({
     setFieldValue,
@@ -36,19 +40,19 @@ const MonthPickerComponent: React.FC<FieldValues> = ({
             </div>
         );
     });
-    const monthItems = monthArray.map((item: "" | DateTime) => {
-        const day = item === "" ? "" : item.toFormat("dd-MM-yy");
+    const monthItems = monthArray.map((item: string | DateTime) => {
+        const day = typeof item === "string" ? "" : item.toFormat("dd-MM-yy");
         const bg =
             values.date === day && day !== "" ? "bg-neutral-400 rounded" : "";
-        // TODO - "p" ????
-        const p = isEditOpen && isLessThan840 ? "p-1" : "p-2";
+        const padding = isEditOpen && isLessThan840 ? "p-1" : "p-2";
         return (
             <div
-                className={`${p} flex flex-col items-center justify-center rounded-md text-sm sm:items-start sm:justify-start`}
+                className={`${padding} flex flex-col items-center justify-center rounded-md text-sm sm:items-start sm:justify-start`}
             >
                 <div
                     onClick={() => {
-                        if (item !== "") onSetDate(item);
+                        // TODO - сделать type guard
+                        if (typeof item !== "string") onSetDate(item);
                     }}
                     className={`${bg} flex w-full basis-1/4 cursor-default justify-center`}
                 >

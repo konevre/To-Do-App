@@ -8,16 +8,6 @@ export const todoApiSlice = apiSlice.injectEndpoints({
             query: () => "/todos",
             providesTags: ["todos"],
         }),
-        // getAllTodosTest: builder.query<
-        //     Todo[],
-        //     { filters?: { [key: string]: string } }
-        // >({
-        //     query: ({ filters }) => ({
-        //         url: "/todos",
-        //         params: filters,
-        //     }),
-        //     providesTags: ["todos"],
-        // }),
         getSingleTodo: builder.query<Todo, string>({
             query: (id) => `/todos/${id}`,
             providesTags: ["todos"],

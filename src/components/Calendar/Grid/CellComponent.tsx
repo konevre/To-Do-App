@@ -27,6 +27,7 @@ const CellComponent: React.FC<ICellProps> = ({ col }) => {
 
         return (
             <div
+                key={event.id}
                 onClick={() => onEvent(event)}
                 style={cellStyle}
                 className={`${event.color} truncate rounded-md p-2 text-xs`}

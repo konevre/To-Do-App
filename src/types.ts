@@ -5,20 +5,16 @@ export interface Subtask {
     name: string;
 }
 
-// TODO: Подумать как сузить
-export interface Todo {
-    id: string;
-    name: string;
-    description: string;
-    list: string;
-    due_date: string;
-    tags: string;
-    subtasks: Subtask[];
-    completed: boolean;
-    startHour: string;
-    endHour: string;
-    color: string;
-}
+export type GeneralColors =
+    | "bg-fuchsia-500"
+    | "bg-yellow-400"
+    | "bg-indigo-400"
+    | "bg-amber-600"
+    | "bg-violet-500"
+    | "bg-sky-500"
+    | "bg-yellow-400"
+    | "bg-red-500"
+    | "bg-purple-400";
 
 export type ListColor =
     | "bg-red-400"
@@ -40,7 +36,20 @@ export type TagColor =
     | "bg-yellow-300"
     | "bg-orange-300";
 
-// TODO - ограничить по цветам и сделать айди
+export interface Todo {
+    id: string;
+    name: string;
+    description: string;
+    list: string;
+    due_date: string;
+    tags: string;
+    subtasks: Subtask[];
+    completed: boolean;
+    startHour: string;
+    endHour: string;
+    color: TagColor | ListColor | GeneralColors;
+}
+
 export interface Sticker {
     name: string;
     description: string;
@@ -48,14 +57,12 @@ export interface Sticker {
     id: string;
 }
 
-// TODO - ограничить по цветам и сделать айди
 export interface List {
     name: string;
     color: ListColor;
     id: string;
 }
 
-// TODO: ограничить цвета + сделать генерацию айди
 export interface Tag {
     name: string;
     color: TagColor;

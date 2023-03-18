@@ -1,7 +1,6 @@
+import { DateTime } from "luxon";
 import { changeNow } from "../../store/calendarSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-
-const { DateTime } = require("luxon");
 
 export const todayDate = DateTime.now().toFormat("dd-MM-yy");
 import { Range, Todo } from "../../types";
@@ -13,7 +12,6 @@ const useLuxon = () => {
         dispatch(changeNow(date));
     };
 
-    // TODO - assert types!!!!
     const now = DateTime.fromFormat(today, "dd-MM-yy");
     const constantNow = DateTime.now();
 

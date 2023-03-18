@@ -11,13 +11,14 @@ interface IColProps {
 const ColComponent: React.FC<IColProps> = ({ index }) => {
     const { cols } = useCalendarGrid(index);
 
-    const content = cols.map((col, i: number) => {
+    const content = cols.map((col, i) => {
         const colStyle = {
             gridColumnStart: `${i + 1}`,
             gridColumnEnd: `${i + 2}`,
         };
         return (
             <div
+                key={i}
                 className="grid w-full grid-rows-week gap-y-1 truncate"
                 style={colStyle}
             >

@@ -1,8 +1,9 @@
+import { DateTime } from "luxon";
 import { useMediaQuery } from "react-responsive";
 
 import useLuxon from "./useLuxon";
 
-const useCalendarMonth = (today = null) => {
+const useCalendarMonth = (today?: DateTime) => {
     const isLessThan640 = useMediaQuery({ query: "(max-width: 640px)" });
     const { now } = useLuxon();
     const date = today || now;

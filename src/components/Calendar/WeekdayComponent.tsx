@@ -9,7 +9,7 @@ const WeekdayComponent: React.FC = () => {
     return (
         <div className={`${gridCols} mt-3 grid`}>
             {isWeek1024 && <div></div>}
-            {weekArray.map((item) => {
+            {weekArray.map((item, i) => {
                 const weekDay = item.toFormat("ccc").toUpperCase();
                 const day = item.toFormat("d");
                 const bgColor =
@@ -18,6 +18,7 @@ const WeekdayComponent: React.FC = () => {
                         : "";
                 return (
                     <div
+                        key={i}
                         className={`${bgColor} flex flex-col gap-2 rounded-md p-1`}
                     >
                         <div className="basis-1/2 text-center text-xs">

@@ -11,11 +11,13 @@ const MonthComponent: React.FC = () => {
     const { todos } = useGetTodos();
 
     const monthItems = monthArray.map((item) => {
-        const day: "" | string = item === "" ? "" : item.toFormat("dd-MM-yy");
+        const day = typeof item === "string" ? "" : item.toFormat("dd-MM-yy");
         const dayEvents = todos.filter((event) => event.due_date === day);
 
         const bgColor =
-            now.hasSame(item, "day") && isLessThan640
+            typeof item !== "string" &&
+            now.hasSame(item, "day") &&
+            isLessThan640
                 ? "bg-neutral-200 font-semibold h-8 w-8 m-auto"
                 : "";
         return (
@@ -30,6 +32,7 @@ const MonthComponent: React.FC = () => {
                         {dayEvents.map((event) => {
                             return (
                                 <div
+                                    key={event.id}
                                     onClick={() => onEvent(event)}
                                     className={`${event.color} mt-1 w-full rounded-md p-3`}
                                 ></div>
