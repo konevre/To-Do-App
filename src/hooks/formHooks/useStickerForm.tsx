@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { Sticker, TagColor } from "../../types";
 import { updateSticker, addSticker } from "../../store/stickerSlice";
 
-interface FormikValues {
+interface IFormikStickerValues {
     Sticker: string;
     descr: string;
 }
@@ -31,7 +31,7 @@ const useStickerForm = () => {
 
     const colorIndex = editObj ? colors.indexOf(editObj.color) : -1;
     const currentColor = editObj && colorIndex !== -1 ? colorIndex : 4;
-    const [activeColor, setColor] = useState(currentColor);
+    const [activeColor, setColor] = useState<number>(currentColor);
 
     useEffect(() => {
         setColor(currentColor);
@@ -73,8 +73,8 @@ const useStickerForm = () => {
     };
 
     const onSubmit = (
-        values: FormikValues,
-        { resetForm }: FormikHelpers<FormikValues>
+        values: IFormikStickerValues,
+        { resetForm }: FormikHelpers<IFormikStickerValues>
     ) => {
         const newSticker = {
             id: editObj?.id || uuidv4(),

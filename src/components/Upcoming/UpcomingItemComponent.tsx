@@ -1,12 +1,12 @@
 import React from "react";
 
-interface UpcomingItemProps {
+interface IUpcomingItemProps {
     children: JSX.Element | JSX.Element[];
     title: string;
     colSpanLg?: string;
 }
 
-const UpcomingItemComponent: React.FC<UpcomingItemProps> = ({
+const UpcomingItemComponent: React.FC<IUpcomingItemProps> = ({
     children,
     title,
     colSpanLg = "",

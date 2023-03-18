@@ -10,7 +10,6 @@ interface IColProps {
 
 const ColComponent: React.FC<IColProps> = ({ index }) => {
     const { cols } = useCalendarGrid(index);
-
     const content = cols.map((col, i) => {
         const colStyle = {
             gridColumnStart: `${i + 1}`,

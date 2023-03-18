@@ -10,7 +10,7 @@ const MonthComponent: React.FC = () => {
     const { onEvent } = useCalendar();
     const { todos } = useGetTodos();
 
-    const monthItems = monthArray.map((item) => {
+    const monthItems = monthArray.map((item, i) => {
         const day = typeof item === "string" ? "" : item.toFormat("dd-MM-yy");
         const dayEvents = todos.filter((event) => event.due_date === day);
 
@@ -22,6 +22,7 @@ const MonthComponent: React.FC = () => {
                 : "";
         return (
             <div
+                key={i}
                 className={`${bgColor} flex flex-col items-center justify-center rounded-md p-2 text-sm sm:items-start sm:justify-start`}
             >
                 <div className="flex w-full basis-1/4 justify-center">

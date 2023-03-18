@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Todo, Sticker } from "../types";
 
-interface Edit {
+interface IEdit {
     edit: {
         isOpen: boolean;
         task: null | Todo;
@@ -10,7 +10,7 @@ interface Edit {
     };
 }
 
-const initialState: Edit = {
+const initialState: IEdit = {
     edit: { isOpen: false, task: null, sticker: null },
 };
 

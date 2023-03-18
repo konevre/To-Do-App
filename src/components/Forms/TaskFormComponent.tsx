@@ -18,7 +18,11 @@ const TaskFormComponent: React.FC = () => {
     const makeOptions = (array: Tag[] | List[]) => {
         return array.map((item) => {
             const name = item.name;
-            return <option value={name}>{name}</option>;
+            return (
+                <option key={item.id} value={name}>
+                    {name}
+                </option>
+            );
         });
     };
 

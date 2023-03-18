@@ -1,6 +1,6 @@
 import { FormikValues } from "formik";
 
-export interface Subtask {
+export interface ISubtask {
     done: boolean;
     name: string;
 }
@@ -43,7 +43,7 @@ export interface Todo {
     list: string;
     due_date: string;
     tags: string;
-    subtasks: Subtask[];
+    subtasks: ISubtask[];
     completed: boolean;
     startHour: string;
     endHour: string;
@@ -80,4 +80,21 @@ export type SetFieldValue = (
 export interface FieldValues {
     setFieldValue: SetFieldValue;
     values: FormikValues;
+}
+
+export type StringOrEmpty = string | "";
+
+export interface IFormikValues {
+    name: StringOrEmpty;
+    list: StringOrEmpty;
+    tags: StringOrEmpty;
+    descr: StringOrEmpty;
+    date: StringOrEmpty;
+    startPeriod: StringOrEmpty;
+    endPeriod: StringOrEmpty;
+    startHour: StringOrEmpty;
+    endHour: StringOrEmpty;
+    subtasks: ISubtask[];
+    color: TagColor | ListColor | GeneralColors | "";
+    completed?: boolean;
 }

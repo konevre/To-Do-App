@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Field, FormikValues } from "formik";
+import { Field } from "formik";
 
 import xmark from "../../../resources/icons/xmark.svg";
 
@@ -13,7 +13,7 @@ const DateTimePickerComponent: React.FC<FieldValues> = ({
     setFieldValue,
     values,
 }) => {
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState<boolean>(false);
     const { edit } = useAppSelector((state) => state.edit);
 
     const openPicker = () => {

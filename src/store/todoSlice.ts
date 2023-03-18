@@ -2,20 +2,20 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { todoApiSlice } from "./api/apiEndpoints/todoEndpoints";
 import { Todo } from "../types";
 
-interface TodoSlice {
+interface ITodoSlice {
     todos: Todo[];
     todayNum: number;
     upcomingNum: number;
 }
 
-const initialState: TodoSlice = {
+const initialState: ITodoSlice = {
     todos: [],
     todayNum: 0,
     upcomingNum: 0,
 };
 
-interface ChangeNumAction {
-    name: keyof Omit<TodoSlice, "todos">;
+interface IChangeNumAction {
+    name: keyof Omit<ITodoSlice, "todos">;
     num: number;
 }
 
@@ -26,7 +26,7 @@ const todoSlice = createSlice({
         saveTodos: (state, action: PayloadAction<Todo[]>) => {
             state.todos = action.payload;
         },
-        changeNum: (state, action: PayloadAction<ChangeNumAction>) => {
+        changeNum: (state, action: PayloadAction<IChangeNumAction>) => {
             state[action.payload.name] = action.payload.num;
         },
     },

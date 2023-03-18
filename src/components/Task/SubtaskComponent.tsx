@@ -4,7 +4,7 @@ import { Field, ErrorMessage, FieldArray, FormikValues } from "formik";
 
 import plus from "../../resources/icons/plus.svg";
 import xmark from "../../resources/icons/xmark.svg";
-import { Subtask } from "../../types";
+import { ISubtask } from "../../types";
 
 const SubtaskComponent: React.FC<FormikValues> = ({ values }) => {
     return (
@@ -29,7 +29,7 @@ const SubtaskComponent: React.FC<FormikValues> = ({ values }) => {
                         </div>
                         <div className="mt-3">
                             {values.subtasks.map(
-                                (subtask: Subtask, i: number) => {
+                                (subtask: ISubtask, i: number) => {
                                     return (
                                         <>
                                             <div

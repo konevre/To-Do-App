@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 
 import { Tag } from "../../../types";
 
-interface TagItemProps {
+interface ITagItemProps {
     tag: Tag;
 }
 
-const TagsItemComponent: React.FC<TagItemProps> = ({ tag }) => {
+const TagsItemComponent: React.FC<ITagItemProps> = ({ tag }) => {
     const { name, color, id } = tag;
     return (
         <NavLink to={`tags/${id}`}>

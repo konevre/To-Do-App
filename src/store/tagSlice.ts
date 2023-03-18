@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Tag } from "../types";
 
-interface TagSlice {
+interface ITagSlice {
     tags: Tag[];
 }
 
-const initialState: TagSlice = {
+const initialState: ITagSlice = {
     tags: [],
 };
 

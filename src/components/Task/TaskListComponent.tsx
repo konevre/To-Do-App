@@ -4,11 +4,11 @@ import TaskItemComponent from "./TaskItemComponent";
 
 import { Todo } from "../../types";
 
-interface TaskListProps {
+interface ITaskListProps {
     todos: Todo[];
 }
 
-const TaskListComponent = ({ todos }: TaskListProps) => {
+const TaskListComponent = ({ todos }: ITaskListProps) => {
     return (
         <>
             {todos.map((task, i) => {

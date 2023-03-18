@@ -34,6 +34,10 @@ const useLuxon = () => {
         );
     };
 
+    const showToday = () => {
+        onChange(constantNow.toFormat("dd-MM-yy"));
+    };
+
     const changeDate = (state: Range, range: number): void => {
         switch (state) {
             case "day":
@@ -48,7 +52,7 @@ const useLuxon = () => {
         }
     };
 
-    return { now, constantNow, changeDate, to12, filterTasks };
+    return { now, constantNow, changeDate, to12, filterTasks, showToday };
 };
 
 export default useLuxon;

@@ -2,11 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useTagListForm from "../../hooks/formHooks/useTagListForm";
 
-interface TagListProps {
+interface ITagListProps {
     name: "List" | "Tag";
 }
 
-const TagListFormComponent: React.FC<TagListProps> = ({ name }) => {
+const TagListFormComponent: React.FC<ITagListProps> = ({ name }) => {
     const {
         activeColor,
         initialState,
@@ -21,7 +21,7 @@ const TagListFormComponent: React.FC<TagListProps> = ({ name }) => {
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
-                <Form>
+                <Form id={name.toLowerCase()}>
                     <div className="flex items-center rounded-lg border border-neutral-300 p-3">
                         <div className={`h-4 w-4 rounded ${activeColor}`}></div>
                         <Field

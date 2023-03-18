@@ -6,16 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { showMenu } from "../../store/menuSlice";
 import { Todo, List } from "../../types";
 
-interface TodoItemHook {
-    taskList: List;
-    switchTodoState: () => void;
-    onTask: () => void;
-    taskExtra: boolean;
-    dueDate: string;
-    subLength: number;
-}
-
-const useTodoItem = (task: Todo): TodoItemHook => {
+const useTodoItem = (task: Todo) => {
     const dispatch = useAppDispatch();
     const { isMenuOpen } = useAppSelector((state) => state.menu);
     const { edit } = useAppSelector((state) => state.edit);

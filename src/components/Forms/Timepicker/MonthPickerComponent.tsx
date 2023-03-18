@@ -19,7 +19,7 @@ const MonthPickerComponent: React.FC<FieldValues> = ({
     values,
 }) => {
     const { now } = useLuxon();
-    const [month, setMonth] = useState(now);
+    const [month, setMonth] = useState<DateTime>(now);
     const { isEditOpen, isLessThan840 } = useLayout();
 
     const onSetDate = (item: DateTime) => {

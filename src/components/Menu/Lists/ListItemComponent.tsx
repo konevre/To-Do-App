@@ -5,11 +5,11 @@ import { List } from "../../../types";
 
 import CustomLink from "../CustomLink/CustomLinkComponent";
 
-interface ListItemProps {
+interface IListItemProps {
     list: List;
 }
 
-const ListItemComponent: React.FC<ListItemProps> = ({ list }) => {
+const ListItemComponent: React.FC<IListItemProps> = ({ list }) => {
     const { name, color, id } = list;
     const len = useFilterTasks("list", id).length;
 

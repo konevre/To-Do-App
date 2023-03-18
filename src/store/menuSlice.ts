@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Menu {
+interface IMenu {
     isMenuOpen: boolean;
 }
 
-const initialState: Menu = {
+const initialState: IMenu = {
     isMenuOpen: false,
 };
 

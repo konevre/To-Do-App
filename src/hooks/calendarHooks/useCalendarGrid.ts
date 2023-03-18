@@ -9,7 +9,7 @@ const useCalendarGrid = (index: number) => {
     const { now } = useLuxon();
     const { todos } = useGetTodos();
     const shift = +now.toFormat("E") - 1;
-    const dayCalc = index ? index - shift : 0;
+    const dayCalc = index - shift;
     const currentDay: DateTime = now.plus({ day: dayCalc });
 
     const hours: number[][] = [[]];
@@ -18,6 +18,7 @@ const useCalendarGrid = (index: number) => {
 
     todos.forEach((event) => {
         if (event.due_date === currentDay.toFormat("dd-MM-yy")) {
+            // console.log(currentDay.toFormat("dd-MM-yy"));
             const start = +event.startHour.slice(0, 2);
             const end = +event.endHour.slice(0, 2);
 
@@ -31,10 +32,10 @@ const useCalendarGrid = (index: number) => {
                 cols[newCol].push(event);
                 hours[newCol].push(...eventHours);
             }
-
             num++;
         }
     });
+
     return { cols };
 };
 

@@ -6,6 +6,7 @@ import useEdit from "../../hooks/useEdit";
 
 import StickerForm from "../Forms/StickerForm";
 import TaskFormComponent from "../Forms/TaskFormComponent";
+import SaveButton from "../Buttons/SaveButton";
 
 const EditComponent = () => {
     const {
@@ -55,15 +56,10 @@ const EditComponent = () => {
                                 {deleteBtn}
                             </button>
                         )}
-                        <button
-                            type="submit"
-                            form={form}
-                            className={`flex h-10 ${
-                                isEditOpen ? "basis-1/2" : "basis-full"
-                            } items-center justify-center rounded-lg bg-amber-300 text-sm font-semibold`}
-                        >
-                            Save changes
-                        </button>
+                        <SaveButton
+                            form={form as "sticker" | "task"}
+                            style={isEditOpen ? "basis-1/2" : "basis-full"}
+                        />
                     </div>
                 </div>
             </div>

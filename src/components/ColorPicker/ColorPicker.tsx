@@ -2,13 +2,13 @@ import React from "react";
 
 import { TagColor, ListColor } from "../../types";
 
-interface ColorPickerProps {
+interface IColorPickerProps {
     setActiveColor: (i: number) => void;
     activeColor: number;
     colors: TagColor[] | ListColor[];
 }
 
-const ColorPicker: React.FC<ColorPickerProps> = ({
+const ColorPicker: React.FC<IColorPickerProps> = ({
     setActiveColor,
     activeColor,
     colors,

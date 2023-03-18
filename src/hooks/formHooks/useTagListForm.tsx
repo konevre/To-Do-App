@@ -8,12 +8,13 @@ import ColorPicker from "../../components/ColorPicker/ColorPicker";
 import { useCreateTagMutation } from "../../store/api/apiEndpoints/tagEndpoints";
 import { useCreateListMutation } from "../../store/api/apiEndpoints/listEndpoints";
 
-import { ListColor, TagColor, Tag, List } from "../../types";
+import { Tag, List } from "../../types";
+import { tagColors, listColors } from "../../utils/colors";
 
 type FormikValues = { Tag: "" } | { List: "" };
 
 const useTagListForm = (name: "Tag" | "List") => {
-    const [activeColor, setColor] = useState(4);
+    const [activeColor, setColor] = useState<number>(4);
     const [createList] = useCreateListMutation();
     const [createTag] = useCreateTagMutation();
 
@@ -36,28 +37,6 @@ const useTagListForm = (name: "Tag" | "List") => {
                       .min(2, "Min 2 symbols")
                       .required("Name field is required."),
               });
-
-    // TODO - сделать ListColors interface
-    const tagColors: TagColor[] = [
-        "bg-red-300",
-        "bg-pink-300",
-        "bg-purple-300",
-        "bg-indigo-300",
-        "bg-blue-300",
-        "bg-emerald-300",
-        "bg-yellow-300",
-        "bg-orange-300",
-    ];
-    const listColors: ListColor[] = [
-        "bg-red-400",
-        "bg-fuchsia-400",
-        "bg-violet-400",
-        "bg-blue-500",
-        "bg-sky-400",
-        "bg-green-400",
-        "bg-yellow-400",
-        "bg-amber-500",
-    ];
 
     const setActiveColor = (i: number) => {
         setColor(i);

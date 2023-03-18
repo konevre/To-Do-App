@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Sticker } from "../types";
 
-interface StickerSlice {
+interface IStickerSlice {
     stickers: Sticker[];
 }
 // TODO - СДЕЛАТЬ MIDDLEWARE в LOCALSTORAGE - см. непомнящего
-const initialState: StickerSlice = {
+const initialState: IStickerSlice = {
     stickers: [
         {
             name: "Rent a house",

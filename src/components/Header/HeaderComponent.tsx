@@ -5,37 +5,37 @@ import useLayout from "../../hooks/useLayout";
 import bars from "../../resources/icons/bars.svg";
 import plus from "../../resources/icons/plus.svg";
 
-import { makeEditNull } from "../../store/editSlice";
+import { showSticker, showTodo } from "../../store/editSlice";
 import { useAppDispatch } from "../../store/hooks";
 
-interface HeaderProps {
+interface IHeaderProps {
     title: string | null;
     number: number;
 }
 
-interface AdditionTitle {
+interface IAdditionTitle {
     [key: string]: JSX.Element;
 }
 
-const HeaderComponent: React.FC<HeaderProps> = ({ title, number }) => {
-    const { isMenuOpen, onMenu, location, isMoreThan1024 } = useLayout();
+const HeaderComponent: React.FC<IHeaderProps> = ({ title, number }) => {
+    const { isMenuOpen, onMenu, location, isMoreThan1024, isEditOpen } =
+        useLayout();
     const dispatch = useAppDispatch();
 
-    // TODO - сделать хук ?
-    const add: AdditionTitle = {
+    const add: IAdditionTitle = {
         "/notes": (
             <div className="ml-auto h-5 cursor-pointer lg:hidden">
                 <img
                     src={plus}
                     alt="add"
                     className="h-full"
-                    onClick={() => dispatch(makeEditNull())}
+                    onClick={() => dispatch(showSticker(null))}
                 />
             </div>
         ),
         "/calendar": isMoreThan1024 ? (
             <button
-                onClick={() => dispatch(makeEditNull())}
+                onClick={() => dispatch(showTodo(null))}
                 className="ml-auto cursor-pointer rounded-lg border border-neutral-300 py-2 px-4"
             >
                 Add Task
@@ -46,7 +46,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({ title, number }) => {
                     src={plus}
                     alt="add"
                     className="h-full"
-                    onClick={() => dispatch(makeEditNull())}
+                    onClick={() => dispatch(showTodo(null))}
                 />
             </div>
         ),

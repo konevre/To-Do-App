@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useMatch } from "react-router-dom";
 
-interface CustomLinkProps {
+interface ICustomLinkProps {
     to: string;
     title: string;
     number?: number;
@@ -10,7 +10,7 @@ interface CustomLinkProps {
     [propName: string]: any;
 }
 
-const CustomLink: React.FC<CustomLinkProps> = ({
+const CustomLink: React.FC<ICustomLinkProps> = ({
     to,
     title,
     number,

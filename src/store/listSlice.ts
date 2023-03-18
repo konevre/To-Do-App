@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { List } from "../types";
 
-interface ListSlice {
+interface IListSlice {
     lists: List[];
 }
 
-const initialState: ListSlice = {
+const initialState: IListSlice = {
     lists: [],
 };
 

@@ -2,7 +2,7 @@ import useFilterTasks from "../useFilterTasks";
 
 import { Filter, Todo } from "../../types";
 
-interface TodoBlock {
+interface ITodoBlock {
     todos: Todo[];
     todosLen: number;
     filterName: string;
@@ -11,7 +11,7 @@ interface TodoBlock {
 const useTodoBlock = (
     filter: Filter,
     props?: { id?: string; name?: string } | undefined
-): TodoBlock => {
+): ITodoBlock => {
     const prop = props && (props.id || props.name);
     const todos = useFilterTasks(filter, prop);
     const todosLen = todos.length;

@@ -6,12 +6,12 @@ import useTodoItem from "../../hooks/tasksHooks/useTodoItem";
 
 import { Todo } from "../../types";
 
-interface TaskItemProps {
+interface ITaskItemProps {
     task: Todo;
     i: number;
 }
 
-const TaskItemComponent: React.FC<TaskItemProps> = ({ task, i }) => {
+const TaskItemComponent: React.FC<ITaskItemProps> = ({ task, i }) => {
     const { taskList, switchTodoState, onTask, taskExtra, dueDate, subLength } =
         useTodoItem(task);
 

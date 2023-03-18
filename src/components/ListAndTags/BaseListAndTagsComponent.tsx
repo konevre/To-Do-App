@@ -7,16 +7,17 @@ import { openModal, saveModalTasks } from "../../store/modalSlice";
 import HeaderComponent from "../Header/HeaderComponent";
 import TaskBlock from "../Task/TaskBlock";
 
-interface BaseListAndTagProps {
+interface IBaseListAndTagProps {
     filter: "list" | "tag";
 }
 
-const BaseListAndTagsComponent: React.FC<BaseListAndTagProps> = ({
+const BaseListAndTagsComponent: React.FC<IBaseListAndTagProps> = ({
     filter,
 }) => {
     const params = useParams();
     const [num, setNum] = useState<number>(0);
     const filteredArr = useFilterListAndTags(filter);
+    // TODO - !!!
     const filterName = filteredArr.filter((item) => item.id === params.id)[0]
         .name;
 

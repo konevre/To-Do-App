@@ -1,18 +1,12 @@
+import { FormikHelpers } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import * as Yup from "yup";
 import { DateTime } from "luxon";
 
+import { handleTodoColor } from "../../utils/utils";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { closeEdit, makeEditNull, showTodo } from "../../store/editSlice";
-import {
-    Subtask,
-    Tag,
-    Todo,
-    List,
-    GeneralColors,
-    TagColor,
-    ListColor,
-} from "../../types";
+import { IFormikValues, Todo } from "../../types";
 import {
     useCreateTodoMutation,
     useUpdateTodoMutation,
@@ -20,69 +14,6 @@ import {
 } from "../../store/api/apiEndpoints/todoEndpoints";
 
 import useLuxon from "../calendarHooks/useLuxon";
-import { FormikHelpers } from "formik";
-
-type StringOrEmpty = string | "";
-
-// TODO - вынести филлеры в отдельный файл
-const generalColors: GeneralColors[] = [
-    "bg-fuchsia-500",
-    "bg-yellow-400",
-    "bg-indigo-400",
-    "bg-amber-600",
-    "bg-violet-500",
-    "bg-sky-500",
-    "bg-yellow-400",
-    "bg-red-500",
-    "bg-purple-400",
-];
-
-interface FormikValues {
-    name: StringOrEmpty;
-    list: StringOrEmpty;
-    tags: StringOrEmpty;
-    descr: StringOrEmpty;
-    date: StringOrEmpty;
-    startPeriod: StringOrEmpty;
-    endPeriod: StringOrEmpty;
-    startHour: StringOrEmpty;
-    endHour: StringOrEmpty;
-    subtasks: Subtask[];
-    color: TagColor | ListColor | GeneralColors | "";
-    completed?: boolean;
-}
-
-const getRandomColor = (colors: GeneralColors[]) => {
-    const arrLen = colors.length;
-    const randomIndex = Math.floor(Math.random() * arrLen);
-    return generalColors[randomIndex];
-};
-
-const handleTodoColor = (values: FormikValues, list: List[], tag: Tag[]) => {
-    const listColor = list.filter((item) => item.name === values.list)[0]
-            ?.color,
-        tagColor = tag.filter((item) => item.name === values.tags)[0]?.color;
-
-    if (values.color === "") {
-        if (values.list !== "") {
-            return listColor;
-        }
-        if (values.tags !== "") {
-            return tagColor;
-        }
-        return getRandomColor(generalColors);
-    } else {
-        if (values.list === "") {
-            if (values.tags === "") {
-                return getRandomColor(generalColors);
-            } else {
-                return tagColor;
-            }
-        } else {
-            return listColor;
-        }
-    }
-};
 
 const useTodoForm = () => {
     const dispatch = useAppDispatch();
@@ -98,7 +29,7 @@ const useTodoForm = () => {
     const [updateTodo] = useUpdateTodoMutation();
     const [deleteTodo] = useDeleteTodoMutation();
 
-    const initialValues: FormikValues = {
+    const initialValues: IFormikValues = {
         name: todoObj ? todoObj?.name : "",
         descr: todoObj ? todoObj?.description : "",
         list: todoObj ? todoObj?.list : "",
@@ -172,8 +103,8 @@ const useTodoForm = () => {
     };
 
     const onSubmit = (
-        values: FormikValues,
-        { resetForm }: FormikHelpers<FormikValues>
+        values: IFormikValues,
+        { resetForm }: FormikHelpers<IFormikValues>
     ) => {
         if (todoObj) {
             handleSubmit(values, "PUT");
@@ -183,7 +114,7 @@ const useTodoForm = () => {
         resetForm();
     };
 
-    const handleSubmit = (values: FormikValues, method: "PUT" | "POST") => {
+    const handleSubmit = (values: IFormikValues, method: "PUT" | "POST") => {
         const data: Todo = {
             id: todoObj?.id || uuidv4(),
             name: values.name,

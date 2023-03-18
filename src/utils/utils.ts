@@ -1,3 +1,11 @@
+import { IFormikValues, List, Tag, GeneralColors } from "../types";
+import { generalColors } from "./colors";
+
+export const toCapitalCase = (string: string) => {
+    if (string) return string[0].toUpperCase() + string.slice(1);
+    return string;
+};
+
 export const countHours = (start: number, end: number) => {
     const range = [];
     for (let i = start; end > i; i++) {
@@ -15,4 +23,39 @@ export const isNewCol = (hours: number[][], eventHours: number[]) => {
         }
     }
     return index;
+};
+
+export const getRandomColor = (colors: GeneralColors[]) => {
+    const arrLen = colors.length;
+    const randomIndex = Math.floor(Math.random() * arrLen);
+    return generalColors[randomIndex];
+};
+export const handleTodoColor = (
+    values: IFormikValues,
+    list: List[],
+    tag: Tag[]
+) => {
+    const listColor = list.filter((item) => item.name === values.list)[0]
+            ?.color,
+        tagColor = tag.filter((item) => item.name === values.tags)[0]?.color;
+
+    if (values.color === "") {
+        if (values.list !== "") {
+            return listColor;
+        }
+        if (values.tags !== "") {
+            return tagColor;
+        }
+        return getRandomColor(generalColors);
+    } else {
+        if (values.list === "") {
+            if (values.tags === "") {
+                return getRandomColor(generalColors);
+            } else {
+                return tagColor;
+            }
+        } else {
+            return listColor;
+        }
+    }
 };

@@ -6,14 +6,14 @@ import { Filter } from "../../types";
 import AddTaskComponent from "./AddTaskComponent";
 import TaskListComponent from "./TaskListComponent";
 
-interface TaskBlockProps {
+interface ITaskBlockProps {
     filter: Filter;
     setHeaderNum?: (number: number) => void;
     id?: string;
     name?: string;
 }
 
-const TaskBlock: React.FC<TaskBlockProps> = ({
+const TaskBlock: React.FC<ITaskBlockProps> = ({
     filter,
     setHeaderNum,
     ...props

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// TODO - переименовать modalTasks в другое, потому что там ток назание тэга или листа
-interface Modal {
+// TODO - переименовать modalTasks в другое, потому что там приходит ток назание тэга или листа
+interface IModal {
     isModalOpen: boolean;
     modalTasks: string | null;
 }
 
-const initialState: Modal = {
+const initialState: IModal = {
     isModalOpen: false,
     modalTasks: null,
 };

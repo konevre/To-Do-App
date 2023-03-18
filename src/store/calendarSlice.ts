@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { todayDate } from "../hooks/calendarHooks/useLuxon";
 import { Range } from "../types";
 
-interface Calendar {
+interface ICalendar {
     activeState: Range;
     today: string;
 }
 
-const initialState: Calendar = {
-    activeState: "day",
+const initialState: ICalendar = {
+    activeState: "week",
     today: todayDate,
 };
 
