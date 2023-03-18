@@ -3,15 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import {
-    useCreateStickerMutation,
-    useUpdateStickerMutation,
-} from "../../store/apiSlice";
-
 import ColorPicker from "../../components/ColorPicker/ColorPicker";
 import { showSticker } from "../../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { Sticker } from "../../types";
+import { Sticker, TagColor } from "../../types";
+import { updateSticker, addSticker } from "../../store/stickerSlice";
 
 interface FormikValues {
     Sticker: string;
@@ -19,7 +15,7 @@ interface FormikValues {
 }
 
 const useStickerForm = () => {
-    const colors = [
+    const colors: TagColor[] = [
         "bg-red-300",
         "bg-pink-300",
         "bg-purple-300",
@@ -40,9 +36,6 @@ const useStickerForm = () => {
     useEffect(() => {
         setColor(currentColor);
     }, [colorIndex]);
-
-    const [createSticker] = useCreateStickerMutation();
-    const [updateSticker] = useUpdateStickerMutation();
 
     const initialState = {
         Sticker: editObj ? editObj?.name : "",
@@ -72,7 +65,11 @@ const useStickerForm = () => {
 
     const onUpdate = (newSticker: Sticker) => {
         dispatch(showSticker(newSticker));
-        updateSticker(newSticker);
+        dispatch(updateSticker(newSticker));
+    };
+
+    const onAdd = (newSticker: Sticker) => {
+        dispatch(addSticker(newSticker));
     };
 
     const onSubmit = (
@@ -86,7 +83,7 @@ const useStickerForm = () => {
             color: colors[activeColor],
         };
 
-        editObj ? onUpdate(newSticker) : createSticker(newSticker);
+        editObj ? onUpdate(newSticker) : onAdd(newSticker);
         resetForm();
     };
 

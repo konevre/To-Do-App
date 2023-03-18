@@ -1,11 +1,9 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import {
-    useDeleteListMutation,
-    useDeleteTodoMutation,
-    useDeleteTagMutation,
-} from "../../store/apiSlice";
+import { useDeleteTagMutation } from "../../store/api/apiEndpoints/tagEndpoints";
+import { useDeleteTodoMutation } from "../../store/api/apiEndpoints/todoEndpoints";
+import { useDeleteListMutation } from "../../store/api/apiEndpoints/listEndpoints";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 import { closeModal } from "../../store/modalSlice";
@@ -32,7 +30,6 @@ const ModalComponent = () => {
               deleteFilter: deleteTag,
           };
 
-    console.log("modal");
     const onClose = () => {
         dispatch(closeModal());
     };

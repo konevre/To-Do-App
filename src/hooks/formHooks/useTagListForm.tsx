@@ -5,10 +5,10 @@ import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 
 import ColorPicker from "../../components/ColorPicker/ColorPicker";
-import {
-    useCreateListMutation,
-    useCreateTagMutation,
-} from "../../store/apiSlice";
+import { useCreateTagMutation } from "../../store/api/apiEndpoints/tagEndpoints";
+import { useCreateListMutation } from "../../store/api/apiEndpoints/listEndpoints";
+
+import { ListColor, TagColor, Tag, List } from "../../types";
 
 type FormikValues = { Tag: "" } | { List: "" };
 
@@ -38,28 +38,26 @@ const useTagListForm = (name: "Tag" | "List") => {
               });
 
     // TODO - сделать ListColors interface
-    const colors =
-        name === "Tag"
-            ? [
-                  "bg-red-300",
-                  "bg-pink-300",
-                  "bg-purple-300",
-                  "bg-indigo-300",
-                  "bg-blue-300",
-                  "bg-emerald-300",
-                  "bg-yellow-300",
-                  "bg-orange-300",
-              ]
-            : [
-                  "bg-red-400",
-                  "bg-fuchsia-400",
-                  "bg-violet-400",
-                  "bg-blue-500",
-                  "bg-sky-400",
-                  "bg-green-400",
-                  "bg-yellow-400",
-                  "bg-amber-500",
-              ];
+    const tagColors: TagColor[] = [
+        "bg-red-300",
+        "bg-pink-300",
+        "bg-purple-300",
+        "bg-indigo-300",
+        "bg-blue-300",
+        "bg-emerald-300",
+        "bg-yellow-300",
+        "bg-orange-300",
+    ];
+    const listColors: ListColor[] = [
+        "bg-red-400",
+        "bg-fuchsia-400",
+        "bg-violet-400",
+        "bg-blue-500",
+        "bg-sky-400",
+        "bg-green-400",
+        "bg-yellow-400",
+        "bg-amber-500",
+    ];
 
     const setActiveColor = (i: number) => {
         setColor(i);
@@ -68,7 +66,7 @@ const useTagListForm = (name: "Tag" | "List") => {
     const colorItems = (
         <ColorPicker
             setActiveColor={setActiveColor}
-            colors={colors}
+            colors={name === "Tag" ? tagColors : listColors}
             activeColor={activeColor}
         />
     );
@@ -82,14 +80,14 @@ const useTagListForm = (name: "Tag" | "List") => {
                 ? {
                       id: uuidv4(),
                       name: values.Tag,
-                      color: colors[activeColor],
+                      color: tagColors[activeColor],
                   }
                 : {
                       id: uuidv4(),
                       name: values.List,
-                      color: colors[activeColor],
+                      color: listColors[activeColor],
                   };
-        name === "Tag" ? createTag(newObj) : createList(newObj);
+        name === "Tag" ? createTag(newObj as Tag) : createList(newObj as List);
         resetForm();
     };
 
@@ -99,7 +97,6 @@ const useTagListForm = (name: "Tag" | "List") => {
         initialState,
         validationSchema,
         onSubmit,
-        colors,
         colorItems,
     };
 };

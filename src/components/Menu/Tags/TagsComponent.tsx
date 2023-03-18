@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-import useGetTags from "../../../hooks/useGetTags";
+import { useAppSelector } from "../../../store/hooks";
 import TagListFormComponent from "../../Forms/TagListFormComponent";
 
 import TagsItemComponent from "./TagsItemComponent";
 
 const TagsComponent: React.FC = () => {
-    const { tags } = useGetTags();
+    const { tags } = useAppSelector((state) => state.tags);
     const [isNewTag, setNewTag] = useState(false);
 
     const onTag = () => {

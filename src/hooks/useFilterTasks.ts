@@ -1,22 +1,24 @@
 import useLuxon from "./calendarHooks/useLuxon";
-import useGetTodos from "./tasksHooks/useGetTodos";
-import useGetLists from "./useGetLists";
-import useGetTags from "./useGetTags";
 
-import { Todo, Tag, Sticker, Filter } from "../types";
+import { Todo, Tag, Filter, List } from "../types";
+import { useAppSelector } from "../store/hooks";
 
 const useFilterTasks = (filter: Filter, props?: string | undefined) => {
-    const { todos } = useGetTodos();
-    const { lists } = useGetLists();
-    const { tags } = useGetTags();
+    const { todos } = useAppSelector((state) => state.tasks);
+    const { lists } = useAppSelector((state) => state.lists);
+    const { tags } = useAppSelector((state) => state.tags);
+
     const { filterTasks } = useLuxon();
 
-    // TODO ???? list если одинаковые названия листа и тэга
-    const filterByFilter = (todos: Todo[], filterArr: Tag[] | Sticker[]) => {
+    const filterByProp = <T extends { id: string; name: string }>(
+        todos: Todo[],
+        items: T[],
+        propName: keyof Todo
+    ) => {
         if (props) {
-            const list = filterArr.filter((item) => item.id === props)[0];
+            const arr = items.filter((item) => item.id === props)[0];
             const filtered = todos.filter(
-                (item) => item.list === list.name || item.tags === list.name
+                (item) => item[propName] === arr.name
             );
             return filtered;
         }
@@ -35,9 +37,9 @@ const useFilterTasks = (filter: Filter, props?: string | undefined) => {
         case "week":
             return filterTasks(todos, "week");
         case "list":
-            return filterByFilter(todos, lists);
+            return filterByProp(todos, lists, "list");
         case "tag":
-            return filterByFilter(todos, tags);
+            return filterByProp(todos, tags, "tags");
         case "search":
             return filterBySearch(todos);
         default:

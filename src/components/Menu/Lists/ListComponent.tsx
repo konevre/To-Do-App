@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import useGetLists from "../../../hooks/useGetLists";
 import plus from "../../../resources/icons/plus.svg";
+import { useAppSelector } from "../../../store/hooks";
 import TagListFormComponent from "../../Forms/TagListFormComponent";
 
 import ListItemComponent from "./ListItemComponent";
 
 const ListComponent: React.FC = () => {
-    const { lists } = useGetLists();
+    const { lists } = useAppSelector((state) => state.lists);
     const [isNewList, setNewList] = useState(false);
 
     const onNewList = () => {

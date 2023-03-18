@@ -1,10 +1,9 @@
+import { useAppSelector } from "../store/hooks";
 import { List, Tag } from "../types";
-import useGetLists from "./useGetLists";
-import useGetTags from "./useGetTags";
 
 const useFilterListAndTags = (filter: "list" | "tag"): List[] | Tag[] => {
-    const { tags } = useGetTags();
-    const { lists } = useGetLists();
+    const { lists } = useAppSelector((state) => state.lists);
+    const { tags } = useAppSelector((state) => state.tags);
 
     return filter === "list" ? lists : tags;
 };

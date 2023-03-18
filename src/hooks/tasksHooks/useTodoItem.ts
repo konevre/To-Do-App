@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 
-import { useUpdateTodoMutation } from "../../store/apiSlice";
+import { useUpdateTodoMutation } from "../../store/api/apiEndpoints/todoEndpoints";
 import { showTodo } from "../../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { showMenu } from "../../store/menuSlice";

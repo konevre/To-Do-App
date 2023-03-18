@@ -9,9 +9,11 @@ const TodayComponent: React.FC = () => {
     const setHeaderNum = (number: number) => {
         setNum(number);
     };
+
     return (
         <>
             <HeaderComponent title="Today" number={num} />
+            {/* <TaskBlock filter={"today"} setHeaderNum={setHeaderNum} /> */}
             <TaskBlock filter={"today"} setHeaderNum={setHeaderNum} />
         </>
     );

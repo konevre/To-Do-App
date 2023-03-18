@@ -1,15 +1,12 @@
 import { useLocation } from "react-router-dom";
 
-import {
-    useDeleteStickerMutation,
-    useDeleteTodoMutation,
-} from "../store/apiSlice";
+import { useDeleteTodoMutation } from "../store/api/apiEndpoints/todoEndpoints";
 import { closeEdit, makeEditNull } from "../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { deleteSticker } from "../store/stickerSlice";
 
 const useEdit = () => {
     const { edit } = useAppSelector((state) => state.edit);
-    const [deleteSticker] = useDeleteStickerMutation();
     const [deleteTodo] = useDeleteTodoMutation();
     const location = useLocation();
     const dispatch = useAppDispatch();
@@ -33,7 +30,7 @@ const useEdit = () => {
     const onDelete = () => {
         dispatch(makeEditNull());
         if (stickerPage) {
-            if (edit.sticker) deleteSticker(edit.sticker.id);
+            if (edit.sticker) dispatch(deleteSticker(edit.sticker.id));
         } else {
             if (edit.task) deleteTodo(edit.task.id);
         }

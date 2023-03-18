@@ -1,9 +1,11 @@
 import React from "react";
 
+import { TagColor, ListColor } from "../../types";
+
 interface ColorPickerProps {
     setActiveColor: (i: number) => void;
     activeColor: number;
-    colors: string[];
+    colors: TagColor[] | ListColor[];
 }
 
 // TODO - colors only TagColors or ListColors

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "./api/apiSlice";
 
 import menu from "./menuSlice";
 import tasks from "./todoSlice";

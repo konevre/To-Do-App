@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import MenuComponent from "../components/Menu/Menu";
@@ -13,10 +13,34 @@ import CalendarPage from "../Pages/CalendarPage";
 import ListsPage from "../Pages/ListsPage";
 import TagsPage from "../Pages/TagsPage";
 import SearchResultsPage from "../Pages/SearchResultsPage";
-import { useAppSelector } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { useGetAllTodosQuery } from "../store/api/apiEndpoints/todoEndpoints";
+import { saveTodos } from "../store/todoSlice";
+import { useGetAllListsQuery } from "../store/api/apiEndpoints/listEndpoints";
+import { saveTags } from "../store/tagSlice";
+import { saveLists } from "../store/listSlice";
+import { useGetAllTagsQuery } from "../store/api/apiEndpoints/tagEndpoints";
 const ModalComponent = lazy(() => import("../components/Modal/ModalComponent"));
 
 const App = () => {
+    const dispatch = useAppDispatch();
+
+    const { data: todos = [] } = useGetAllTodosQuery();
+    const { data: lists = [] } = useGetAllListsQuery();
+    const { data: tags = [] } = useGetAllTagsQuery();
+
+    useEffect(() => {
+        dispatch(saveTodos(todos));
+    }, [todos]);
+
+    useEffect(() => {
+        dispatch(saveLists(lists));
+    }, [lists]);
+
+    useEffect(() => {
+        dispatch(saveTags(tags));
+    }, [tags]);
+
     const { isModalOpen } = useAppSelector((state) => state.modal);
     return (
         <Router>
@@ -27,6 +51,7 @@ const App = () => {
                         <Route path="/" element={<WelcomePage />} />
                         <Route path="/today" element={<TodayPage />} />
                         <Route path="/upcoming" element={<UpcomingPage />} />
+                        {/* Сделать memo чтоб notes не обновлялся */}
                         <Route path="/notes" element={<StickyWallPage />} />
                         <Route path="/calendar" element={<CalendarPage />} />
                         <Route path="/lists/:id" element={<ListsPage />} />

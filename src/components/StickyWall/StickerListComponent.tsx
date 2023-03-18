@@ -3,14 +3,13 @@ import { Reorder } from "framer-motion";
 
 import plus from "../../resources/icons/plus.svg";
 
-import useGetStickers from "../../hooks/useGetStickers";
+import useStickers from "../../hooks/useStickers";
 
 import StickerItemComponent from "./StickerItemComponent";
 import { Sticker } from "../../types";
 
 const StickerListComponent: React.FC = () => {
-    const { stickers, setStickers, onNewSticker, hover, cols } =
-        useGetStickers();
+    const { stickers, setStickers, onNewSticker, hover, cols } = useStickers();
 
     return (
         <Reorder.Group
