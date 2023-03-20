@@ -29,7 +29,6 @@ const useTodoItem = (task: Todo) => {
 
     const switchTodoState = () => {
         if (edit.isOpen && edit.task?.id === task.id) {
-            // TODO - модалку ?
             alert("Please, finish editing first.");
         } else {
             const completedState = !task.completed;

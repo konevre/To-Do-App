@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 import plus from "../../../resources/icons/plus.svg";
-import { useAppSelector } from "../../../store/hooks";
+import xmark from "../../../resources/icons/xmark.svg";
 import TagListFormComponent from "../../Forms/TagListFormComponent";
 
-import SaveButton from "../../Buttons/SaveButton";
-import ListItemComponent from "./ListItemComponent";
+import SaveButtonComponent from "../../Buttons/SaveButtonComponent";
+import ListListComponent from "./ListListComponent";
 
 const ListComponent: React.FC = () => {
-    const { lists } = useAppSelector((state) => state.lists);
     const [isNewList, setNewList] = useState<boolean>(false);
 
     const onNewList = () => {
@@ -21,19 +20,24 @@ const ListComponent: React.FC = () => {
                 Lists
             </div>
             <div className="mt-3 flex flex-col">
-                {lists &&
-                    lists.map((list) => {
-                        return <ListItemComponent key={list.id} list={list} />;
-                    })}
+                <ListListComponent />
                 <div
                     className="flex h-10 cursor-pointer items-center rounded-lg px-5"
                     onClick={onNewList}
                 >
-                    <img src={plus} alt="upcoming" className="w-3" />
+                    <img
+                        src={isNewList ? xmark : plus}
+                        alt="upcoming"
+                        className="w-3"
+                    />
                     <div className="ml-2.5 text-sm font-normal">{title}</div>
                 </div>
-                {isNewList && <TagListFormComponent name="List" />}
-                {isNewList && <SaveButton form="list" style="mt-3" />}
+                {isNewList && (
+                    <>
+                        <TagListFormComponent name="List" />
+                        <SaveButtonComponent form="list" style="mt-3" />
+                    </>
+                )}
             </div>
         </>
     );

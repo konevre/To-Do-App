@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import useFilterListAndTags from "../../hooks/useFilterListAndTags";
+import { useAppSelector } from "../../store/hooks";
 import { openModal, saveModalTasks } from "../../store/modalSlice";
+import { Tag, List } from "../../types";
 import HeaderComponent from "../Header/HeaderComponent";
-import TaskBlock from "../Task/TaskBlock";
+import TaskBlockComponent from "../Task/TaskBlockComponent";
 
 interface IBaseListAndTagProps {
     filter: "list" | "tag";
@@ -16,10 +17,13 @@ const BaseListAndTagsComponent: React.FC<IBaseListAndTagProps> = ({
 }) => {
     const params = useParams();
     const [num, setNum] = useState<number>(0);
-    const filteredArr = useFilterListAndTags(filter);
-    // TODO - !!!
-    const filterName = filteredArr.filter((item) => item.id === params.id)[0]
-        .name;
+    const { lists } = useAppSelector((state) => state.lists);
+    const { tags } = useAppSelector((state) => state.tags);
+
+    const filterName =
+        filter === "list"
+            ? lists.filter((item: List) => item.id === params.id)[0]?.name
+            : tags.filter((item: Tag) => item.id === params.id)[0]?.name;
 
     const dispatch = useDispatch();
     const setHeaderNum = (number: number) => {
@@ -33,7 +37,7 @@ const BaseListAndTagsComponent: React.FC<IBaseListAndTagProps> = ({
     return (
         <div className="relative">
             <HeaderComponent title={filterName} number={num} />
-            <TaskBlock
+            <TaskBlockComponent
                 filter={filter}
                 id={params.id}
                 setHeaderNum={setHeaderNum}

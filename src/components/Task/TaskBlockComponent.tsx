@@ -13,7 +13,7 @@ interface ITaskBlockProps {
     name?: string;
 }
 
-const TaskBlock: React.FC<ITaskBlockProps> = ({
+const TaskBlockComponent: React.FC<ITaskBlockProps> = ({
     filter,
     setHeaderNum,
     ...props
@@ -36,4 +36,4 @@ const TaskBlock: React.FC<ITaskBlockProps> = ({
     );
 };
 
-export default TaskBlock;
+export default TaskBlockComponent;

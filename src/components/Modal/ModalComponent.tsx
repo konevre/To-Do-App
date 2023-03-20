@@ -48,7 +48,6 @@ const ModalComponent = () => {
         onClose();
         navigate(`/today`);
         const { filterID, deleteFilter } = filterObj;
-        // TODO - API
         if (filterID) deleteFilter(filterID);
     };
 

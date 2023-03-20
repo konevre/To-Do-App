@@ -8,6 +8,7 @@ import { Tag, List } from "../../types";
 import SubtaskComponent from "../Task/SubtaskComponent";
 
 import DateTimePickerComponent from "./Timepicker/DateTimePickerComponent";
+import CustomErrorMessageComponent from "./CustomErrorMessageComponent";
 
 const TaskFormComponent: React.FC = () => {
     const lists = useAppSelector((state) => state.lists.lists);
@@ -41,11 +42,7 @@ const TaskFormComponent: React.FC = () => {
                         placeholder="Name"
                         className="flex h-10 w-full items-center rounded-lg border border-neutral-300 bg-neutral-200 px-3.5 text-sm text-neutral-500"
                     />
-                    <ErrorMessage
-                        component="div"
-                        name="name"
-                        className="mt-2 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                    />
+                    <CustomErrorMessageComponent name="name" />
                     <Field
                         className="mt-3 w-full resize-none rounded-lg border border-neutral-300 bg-neutral-200 p-3.5 text-sm text-neutral-500"
                         name="descr"
@@ -54,22 +51,18 @@ const TaskFormComponent: React.FC = () => {
                         placeholder="Description"
                         rows="5"
                     ></Field>
-                    {/* GRID */}
-                    {/* TODO - ERRORS combine ?? */}
                     <div className="mt-5 grid grid-cols-form grid-rows-form items-center gap-y-3">
                         <DateTimePickerComponent
                             values={values}
                             setFieldValue={setFieldValue}
                         />
-                        <ErrorMessage
-                            component="div"
+                        <CustomErrorMessageComponent
                             name="date"
-                            className="col-span-2 mt-2 mb-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
+                            style="col-span-2 mb-3"
                         />
-                        <ErrorMessage
-                            component="div"
+                        <CustomErrorMessageComponent
                             name="startHour"
-                            className="col-span-2 mt-2 mb-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
+                            style="col-span-2 mb-3"
                         />
                         <label className="text-sm" htmlFor="list">
                             List

@@ -6,8 +6,10 @@ const SearchFormComponent: React.FC = () => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const searchQuery = e.currentTarget.search.value;
-        navigate(`/search?q=${searchQuery}`);
-        e.currentTarget.search.value = "";
+        if (searchQuery) {
+            navigate(`/search?q=${searchQuery}`);
+            e.currentTarget.search.value = "";
+        }
     };
 
     return (

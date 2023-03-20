@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import HeaderComponent from "../Header/HeaderComponent";
-import TaskBlock from "../Task/TaskBlock";
+import TaskBlockComponent from "../Task/TaskBlockComponent";
 
 const TodayComponent: React.FC = () => {
     const [num, setNum] = useState<number>(0);
@@ -13,8 +13,7 @@ const TodayComponent: React.FC = () => {
     return (
         <>
             <HeaderComponent title="Today" number={num} />
-            {/* <TaskBlock filter={"today"} setHeaderNum={setHeaderNum} /> */}
-            <TaskBlock filter={"today"} setHeaderNum={setHeaderNum} />
+            <TaskBlockComponent filter={"today"} setHeaderNum={setHeaderNum} />
         </>
     );
 };

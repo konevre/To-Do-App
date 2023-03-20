@@ -9,6 +9,12 @@ export const generalColors: GeneralColors[] = [
     "bg-sky-500",
     "bg-yellow-400",
     "bg-red-500",
+    "bg-red-500",
+    "bg-lime-400",
+    "bg-green-400",
+    "bg-emerald-400",
+    "bg-teal-400",
+    "bg-rose-400",
     "bg-purple-400",
 ];
 

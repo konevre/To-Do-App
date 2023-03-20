@@ -1,10 +1,11 @@
 /* eslint-disable indent */
 import React from "react";
-import { Field, ErrorMessage, FieldArray, FormikValues } from "formik";
+import { Field, FieldArray, FormikValues } from "formik";
 
 import plus from "../../resources/icons/plus.svg";
 import xmark from "../../resources/icons/xmark.svg";
 import { ISubtask } from "../../types";
+import CustomErrorMessageComponent from "../Forms/CustomErrorMessageComponent";
 
 const SubtaskComponent: React.FC<FormikValues> = ({ values }) => {
     return (
@@ -31,11 +32,8 @@ const SubtaskComponent: React.FC<FormikValues> = ({ values }) => {
                             {values.subtasks.map(
                                 (subtask: ISubtask, i: number) => {
                                     return (
-                                        <>
-                                            <div
-                                                key={subtask.name}
-                                                className="flex h-10 flex-row p-1"
-                                            >
+                                        <div key={i}>
+                                            <div className="flex h-10 flex-row p-1">
                                                 <Field
                                                     name={`subtasks.${i}.done`}
                                                     type="checkbox"
@@ -61,12 +59,11 @@ const SubtaskComponent: React.FC<FormikValues> = ({ values }) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <ErrorMessage
-                                                component="div"
+                                            <CustomErrorMessageComponent
                                                 name={`subtasks.${i}.name`}
-                                                className="mt-2 mb-2 rounded-lg border border-red-500 p-2 text-center text-red-500"
+                                                style="mb-2"
                                             />
-                                        </>
+                                        </div>
                                     );
                                 }
                             )}

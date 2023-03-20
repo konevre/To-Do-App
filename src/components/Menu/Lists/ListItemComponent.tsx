@@ -1,6 +1,6 @@
 import React from "react";
 
-import useFilterTasks from "../../../hooks/useFilterTasks";
+import useFilterTasks from "../../../hooks/tasksHooks/useFilterTasks";
 import { List } from "../../../types";
 
 import CustomLink from "../CustomLink/CustomLinkComponent";

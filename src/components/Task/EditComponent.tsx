@@ -4,9 +4,9 @@ import React from "react";
 import xmark from "../../resources/icons/xmark.svg";
 import useEdit from "../../hooks/useEdit";
 
-import StickerForm from "../Forms/StickerForm";
+import StickerFormComponent from "../Forms/StickerFormComponent";
 import TaskFormComponent from "../Forms/TaskFormComponent";
-import SaveButton from "../Buttons/SaveButton";
+import SaveButtonComponent from "../Buttons/SaveButtonComponent";
 
 const EditComponent = () => {
     const {
@@ -41,7 +41,7 @@ const EditComponent = () => {
                         </div>
                         {stickerPage ? (
                             <div className="h-full w-full">
-                                <StickerForm />
+                                <StickerFormComponent />
                             </div>
                         ) : (
                             <TaskFormComponent />
@@ -56,7 +56,7 @@ const EditComponent = () => {
                                 {deleteBtn}
                             </button>
                         )}
-                        <SaveButton
+                        <SaveButtonComponent
                             form={form as "sticker" | "task"}
                             style={isEditOpen ? "basis-1/2" : "basis-full"}
                         />

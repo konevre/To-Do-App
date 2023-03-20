@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useTagListForm from "../../hooks/formHooks/useTagListForm";
+import CustomErrorMessageComponent from "./CustomErrorMessageComponent";
 
 interface ITagListProps {
     name: "List" | "Tag";
@@ -31,12 +32,7 @@ const TagListFormComponent: React.FC<ITagListProps> = ({ name }) => {
                             className="ml-2 w-full resize-none bg-neutral-200 px-3.5 text-sm text-neutral-500"
                         ></Field>
                     </div>
-
-                    <ErrorMessage
-                        component="div"
-                        name={name}
-                        className="mt-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                    />
+                    <CustomErrorMessageComponent name={name} style="mt-3" />
                 </Form>
             </Formik>
 

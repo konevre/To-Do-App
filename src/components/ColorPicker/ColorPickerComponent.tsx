@@ -8,7 +8,7 @@ interface IColorPickerProps {
     colors: TagColor[] | ListColor[];
 }
 
-const ColorPicker: React.FC<IColorPickerProps> = ({
+const ColorPickerComponent: React.FC<IColorPickerProps> = ({
     setActiveColor,
     activeColor,
     colors,
@@ -34,4 +34,4 @@ const ColorPicker: React.FC<IColorPickerProps> = ({
     );
 };
 
-export default ColorPicker;
+export default ColorPickerComponent;

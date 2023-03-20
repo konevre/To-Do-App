@@ -5,7 +5,6 @@ import { Sticker } from "../types";
 interface IStickerSlice {
     stickers: Sticker[];
 }
-// TODO - СДЕЛАТЬ MIDDLEWARE в LOCALSTORAGE - см. непомнящего
 const initialState: IStickerSlice = {
     stickers: [
         {

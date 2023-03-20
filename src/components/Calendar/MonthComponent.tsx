@@ -3,21 +3,20 @@ import React from "react";
 import useCalendar from "../../hooks/calendarHooks/useCalendar";
 
 import useCalendarMonth from "../../hooks/calendarHooks/useCalendarMonth";
-import useGetTodos from "../../hooks/tasksHooks/useGetTodos";
+import { useAppSelector } from "../../store/hooks";
+import { isString } from "../../types";
 
 const MonthComponent: React.FC = () => {
     const { monthArray, now, isLessThan640 } = useCalendarMonth();
     const { onEvent } = useCalendar();
-    const { todos } = useGetTodos();
+    const { todos } = useAppSelector((state) => state.tasks);
 
     const monthItems = monthArray.map((item, i) => {
-        const day = typeof item === "string" ? "" : item.toFormat("dd-MM-yy");
+        const day = isString(item) ? "" : item.toFormat("dd-MM-yy");
         const dayEvents = todos.filter((event) => event.due_date === day);
 
         const bgColor =
-            typeof item !== "string" &&
-            now.hasSame(item, "day") &&
-            isLessThan640
+            !isString(item) && now.hasSame(item, "day") && isLessThan640
                 ? "bg-neutral-200 font-semibold h-8 w-8 m-auto"
                 : "";
         return (

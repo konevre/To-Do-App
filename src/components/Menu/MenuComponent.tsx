@@ -1,20 +1,19 @@
 import React from "react";
 
 import { showMenu } from "../../store/menuSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 import upcoming from "../../resources/icons/chevrons-right.svg";
 import today from "../../resources/icons/list-check.svg";
 import calendar from "../../resources/icons/calendar-days.svg";
 import note from "../../resources/icons/note.svg";
-import settings from "../../resources/icons/sliders.svg";
 import xmark from "../../resources/icons/xmark.svg";
-import useFilterTasks from "../../hooks/useFilterTasks";
+import useFilterTasks from "../../hooks/tasksHooks/useFilterTasks";
 import SearchFormComponent from "../Forms/SearchFormComponent";
 
 import ListComponent from "./Lists/ListComponent";
 import TagsComponent from "./Tags/TagsComponent";
 import CustomLink from "./CustomLink/CustomLinkComponent";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const MenuComponent: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -48,7 +47,6 @@ const MenuComponent: React.FC = () => {
                 <div className="mt-5 ml-3 text-xs font-semibold uppercase">
                     Tasks
                 </div>
-                {/* TODO - вынести линки??? */}
                 <div className="mt-3 flex flex-col">
                     <CustomLink
                         to="/upcoming"
@@ -73,11 +71,6 @@ const MenuComponent: React.FC = () => {
                 <ListComponent />
                 <div className="mt-3 h-px bg-neutral-300"></div>
                 <TagsComponent />
-                <div className="mt-6 h-px bg-neutral-300"></div>
-                <div className="mt-4 mb-2 ml-3 flex h-5 items-center gap-x-3">
-                    <img src={settings} alt="settings" className="h-3/4" />
-                    <div className="text-sm">Settings</div>
-                </div>
             </div>
         </div>
     );

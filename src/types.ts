@@ -1,5 +1,9 @@
 import { FormikValues } from "formik";
 
+export const isString = (item: unknown): item is string => {
+    return typeof item === "string";
+};
+
 export interface ISubtask {
     done: boolean;
     name: string;
@@ -14,6 +18,11 @@ export type GeneralColors =
     | "bg-sky-500"
     | "bg-yellow-400"
     | "bg-red-500"
+    | "bg-lime-400"
+    | "bg-green-400"
+    | "bg-emerald-400"
+    | "bg-teal-400"
+    | "bg-rose-400"
     | "bg-purple-400";
 
 export type ListColor =
@@ -70,7 +79,9 @@ export interface Tag {
 }
 
 export type Range = "day" | "week" | "month";
+
 export type Filter = "today" | "tomorrow" | "week" | "list" | "tag" | "search";
+
 export type SetFieldValue = (
     field: string,
     value: any,

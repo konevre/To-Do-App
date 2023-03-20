@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+import CustomErrorMessageComponent from "./CustomErrorMessageComponent";
+
 import useStickerForm from "../../hooks/formHooks/useStickerForm";
 
 const StickerForm = () => {
@@ -42,17 +44,8 @@ const StickerForm = () => {
                             className="ml-2 w-full resize-none bg-neutral-200 px-1 text-sm text-neutral-500"
                         ></Field>
                     </div>
-                    <ErrorMessage
-                        component="div"
-                        name="descr"
-                        className="mt-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                    />
-
-                    <ErrorMessage
-                        component="div"
-                        name="Sticker"
-                        className="mt-3 rounded-lg border border-red-500 p-2 text-center text-red-500"
-                    />
+                    <CustomErrorMessageComponent name="descr" />
+                    <CustomErrorMessageComponent name="Sticker" />
                 </Form>
             </Formik>
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useLayout from "../../hooks/useLayout";
 
 import HeaderComponent from "../Header/HeaderComponent";
-import TaskBlock from "../Task/TaskBlock";
+import TaskBlockComponent from "../Task/TaskBlockComponent";
 
 import UpcomingItemComponent from "./UpcomingItemComponent";
 
@@ -24,13 +24,16 @@ const UpcomingComponent: React.FC = () => {
                 className={`lg:grid-rows-auto grid basis-full grid-cols-1 gap-y-5 lg:gap-6 ${gridLg}`}
             >
                 <UpcomingItemComponent title="Today" colSpanLg={colSpanLg}>
-                    <TaskBlock filter={"today"} />
+                    <TaskBlockComponent filter={"today"} />
                 </UpcomingItemComponent>
                 <UpcomingItemComponent title="Tomorrow">
-                    <TaskBlock filter={"tomorrow"} />
+                    <TaskBlockComponent filter={"tomorrow"} />
                 </UpcomingItemComponent>
                 <UpcomingItemComponent title="This Week">
-                    <TaskBlock filter={"week"} setHeaderNum={setHeaderNum} />
+                    <TaskBlockComponent
+                        filter={"week"}
+                        setHeaderNum={setHeaderNum}
+                    />
                 </UpcomingItemComponent>
             </div>
         </>

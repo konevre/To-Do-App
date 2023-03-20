@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import ColorPicker from "../../components/ColorPicker/ColorPicker";
+import ColorPickerComponent from "../../components/ColorPicker/ColorPickerComponent";
 import { showSticker } from "../../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { Sticker, TagColor } from "../../types";
@@ -56,7 +56,7 @@ const useStickerForm = () => {
     };
 
     const colorItems = (
-        <ColorPicker
+        <ColorPickerComponent
             setActiveColor={setActiveColor}
             colors={colors}
             activeColor={activeColor}

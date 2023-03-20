@@ -5,7 +5,7 @@ interface ISaveButton {
     style?: string;
 }
 
-const SaveButton: React.FC<ISaveButton> = ({ form, style }) => {
+const SaveButtonComponent: React.FC<ISaveButton> = ({ form, style }) => {
     return (
         <button
             type="submit"
@@ -17,4 +17,4 @@ const SaveButton: React.FC<ISaveButton> = ({ form, style }) => {
     );
 };
 
-export default SaveButton;
+export default SaveButtonComponent;

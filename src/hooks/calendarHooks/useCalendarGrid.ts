@@ -1,13 +1,13 @@
 import { DateTime } from "luxon";
 import { isNewCol, countHours } from "../../utils/utils";
-import useGetTodos from "../tasksHooks/useGetTodos";
 import { Todo } from "../../types";
 
 import useLuxon from "./useLuxon";
+import { useAppSelector } from "../../store/hooks";
 
 const useCalendarGrid = (index: number) => {
     const { now } = useLuxon();
-    const { todos } = useGetTodos();
+    const { todos } = useAppSelector((state) => state.tasks);
     const shift = +now.toFormat("E") - 1;
     const dayCalc = index - shift;
     const currentDay: DateTime = now.plus({ day: dayCalc });
@@ -18,7 +18,6 @@ const useCalendarGrid = (index: number) => {
 
     todos.forEach((event) => {
         if (event.due_date === currentDay.toFormat("dd-MM-yy")) {
-            // console.log(currentDay.toFormat("dd-MM-yy"));
             const start = +event.startHour.slice(0, 2);
             const end = +event.endHour.slice(0, 2);
 

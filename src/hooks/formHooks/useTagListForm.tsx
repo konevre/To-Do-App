@@ -4,7 +4,7 @@ import { FormikHelpers } from "formik";
 
 import * as Yup from "yup";
 
-import ColorPicker from "../../components/ColorPicker/ColorPicker";
+import ColorPickerComponent from "../../components/ColorPicker/ColorPickerComponent";
 import { useCreateTagMutation } from "../../store/api/apiEndpoints/tagEndpoints";
 import { useCreateListMutation } from "../../store/api/apiEndpoints/listEndpoints";
 
@@ -43,7 +43,7 @@ const useTagListForm = (name: "Tag" | "List") => {
     };
 
     const colorItems = (
-        <ColorPicker
+        <ColorPickerComponent
             setActiveColor={setActiveColor}
             colors={name === "Tag" ? tagColors : listColors}
             activeColor={activeColor}

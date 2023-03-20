@@ -1,4 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import { apiSlice } from "./api/apiSlice";
 
@@ -11,21 +22,45 @@ import stickers from "./stickerSlice";
 import calendar from "./calendarSlice";
 import modal from "./modalSlice";
 
-const store = configureStore({
-    reducer: {
-        menu,
-        tasks,
-        lists,
-        tags,
-        edit,
-        stickers,
-        calendar,
-        modal,
-        [apiSlice.reducerPath]: apiSlice.reducer,
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(apiSlice.middleware),
+const rootReducer = combineReducers({
+    menu,
+    tasks,
+    lists,
+    tags,
+    edit,
+    stickers,
+    calendar,
+    modal,
+    [apiSlice.reducerPath]: apiSlice.reducer,
 });
+
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["stickers"],
+    blacklist: [apiSlice.reducerPath],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER,
+                ],
+            },
+        }).concat(apiSlice.middleware),
+});
+
+export const persister = persistStore(store);
 
 export default store;
 

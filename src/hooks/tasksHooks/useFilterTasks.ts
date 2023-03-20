@@ -1,7 +1,7 @@
-import useLuxon from "./calendarHooks/useLuxon";
+import useLuxon from "../calendarHooks/useLuxon";
 
-import { Todo, Filter } from "../types";
-import { useAppSelector } from "../store/hooks";
+import { Todo, Filter } from "../../types";
+import { useAppSelector } from "../../store/hooks";
 
 const useFilterTasks = (filter: Filter, props?: string | undefined) => {
     const { todos } = useAppSelector((state) => state.tasks);
@@ -18,7 +18,7 @@ const useFilterTasks = (filter: Filter, props?: string | undefined) => {
         if (props) {
             const arr = items.filter((item) => item.id === props)[0];
             const filtered = todos.filter(
-                (item) => item[propName] === arr.name
+                (item) => item[propName] === arr?.name
             );
             return filtered;
         }

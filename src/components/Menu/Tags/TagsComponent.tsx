@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 
-import { useAppSelector } from "../../../store/hooks";
-import SaveButton from "../../Buttons/SaveButton";
+import SaveButtonComponent from "../../Buttons/SaveButtonComponent";
 import TagListFormComponent from "../../Forms/TagListFormComponent";
-
-import TagsItemComponent from "./TagsItemComponent";
+import TagListComponent from "./TagsListComponent";
 
 const TagsComponent: React.FC = () => {
-    const { tags } = useAppSelector((state) => state.tags);
     const [isNewTag, setNewTag] = useState<boolean>(false);
 
     const onTag = () => {
@@ -22,10 +19,7 @@ const TagsComponent: React.FC = () => {
                 Tags
             </div>
             <div className="mt-3 flex min-h-min flex-wrap gap-1">
-                {tags &&
-                    tags.map((tag) => {
-                        return <TagsItemComponent tag={tag} key={tag.id} />;
-                    })}
+                <TagListComponent />
                 <div
                     onClick={onTag}
                     className="flex h-full cursor-pointer items-center justify-center rounded bg-neutral-300 p-2 text-sm"
@@ -33,8 +27,12 @@ const TagsComponent: React.FC = () => {
                     {title}
                 </div>
             </div>
-            {isNewTag && <TagListFormComponent name="Tag" />}
-            {isNewTag && <SaveButton form="tag" style="mt-3 w-full" />}
+            {isNewTag && (
+                <>
+                    <TagListFormComponent name="Tag" />
+                    <SaveButtonComponent form="tag" style="mt-3 w-full" />
+                </>
+            )}
         </>
     );
 };
