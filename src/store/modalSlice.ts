@@ -20,7 +20,7 @@ const modalSlice = createSlice({
         closeModal: (state) => {
             state.isModalOpen = false;
         },
-        saveModalTasks: (state, action: PayloadAction<string>) => {
+        saveModalTasks: (state, action: PayloadAction<string | null>) => {
             state.modalTasks = action.payload;
         },
     },

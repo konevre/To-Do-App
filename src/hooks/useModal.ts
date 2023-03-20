@@ -4,7 +4,7 @@ import { useDeleteTagMutation } from "../store/api/apiEndpoints/tagEndpoints";
 import { useDeleteTodoMutation } from "../store/api/apiEndpoints/todoEndpoints";
 import { useDeleteListMutation } from "../store/api/apiEndpoints/listEndpoints";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { closeModal } from "../store/modalSlice";
+import { closeModal, saveModalTasks } from "../store/modalSlice";
 import { Todo } from "../types";
 
 const useModal = () => {
@@ -29,6 +29,7 @@ const useModal = () => {
           };
 
     const onClose = () => {
+        dispatch(saveModalTasks(null));
         dispatch(closeModal());
     };
 
