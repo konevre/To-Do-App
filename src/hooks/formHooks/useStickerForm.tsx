@@ -96,7 +96,7 @@ const useStickerForm = () => {
         validationSchema,
         onSubmit,
         colorItems,
-    };
+    } as const;
 };
 
 export default useStickerForm;

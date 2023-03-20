@@ -37,7 +37,14 @@ const useTodoItem = (task: Todo) => {
         }
     };
 
-    return { taskList, switchTodoState, onTask, taskExtra, dueDate, subLength };
+    return {
+        taskList,
+        switchTodoState,
+        onTask,
+        taskExtra,
+        dueDate,
+        subLength,
+    } as const;
 };
 
 export default useTodoItem;

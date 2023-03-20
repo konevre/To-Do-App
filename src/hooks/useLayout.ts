@@ -55,7 +55,7 @@ const useLayout = () => {
         location,
         isMoreThan1024,
         isLessThan840,
-    };
+    } as const;
 };
 
 export default useLayout;

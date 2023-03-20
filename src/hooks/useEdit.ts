@@ -46,7 +46,7 @@ const useEdit = () => {
         title,
         deleteBtn,
         form,
-    };
+    } as const;
 };
 
 export default useEdit;

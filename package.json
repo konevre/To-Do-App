@@ -5,9 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "start": "concurrently \"npm run server\" \"npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.dev.config.ts",
+    "dev": "webpack serve --config webpack.dev.config.ts",
     "server": "json-server -w server/db.json -p 3001 --no-cors",
     "lint": "eslint -c .eslintrc --ext .js,.jsx .",
     "lint:fix": "npm run lint -- --fix"

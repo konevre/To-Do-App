@@ -4,7 +4,7 @@ const useCalendarToday = () => {
     const { now } = useLuxon();
     const todayTitle: string = now.toFormat("d LLLL");
 
-    return { todayTitle };
+    return { todayTitle } as const;
 };
 
 export default useCalendarToday;

@@ -13,15 +13,15 @@ import spinner from "../resources/icons/spinner.svg";
 import MenuComponent from "../components/Menu/MenuComponent";
 import EditComponent from "../components/Task/EditComponent";
 import LayoutComponent from "../components/Layout/LayoutComponent";
-import TodayPage from "../Pages/TodayPage";
-import UpcomingPage from "../Pages/UpcomingPage";
-import WelcomePage from "../Pages/WelcomePage";
-import StickyWallPage from "../Pages/StickyWallPage";
-import CalendarPage from "../Pages/CalendarPage";
-import ListsPage from "../Pages/ListsPage";
-import TagsPage from "../Pages/TagsPage";
-import SearchResultsPage from "../Pages/SearchResultsPage";
-import Page404 from "../Pages/Page404";
+import TodayPage from "../pages/TodayPage";
+import UpcomingPage from "../pages/UpcomingPage";
+import WelcomePage from "../pages/WelcomePage";
+import StickyWallPage from "../pages/StickyWallPage";
+import CalendarPage from "../pages/CalendarPage";
+import ListsPage from "../pages/ListsPage";
+import TagsPage from "../pages/TagsPage";
+import SearchResultsPage from "../pages/SearchResultsPage";
+import Page404 from "../pages/Page404";
 const ModalComponent = lazy(() => import("../components/Modal/ModalComponent"));
 
 const App = () => {

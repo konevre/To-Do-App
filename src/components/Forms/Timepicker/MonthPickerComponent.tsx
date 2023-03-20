@@ -76,9 +76,7 @@ const MonthPickerComponent: React.FC<FieldValues> = ({
                     onClick={() => changeMonth(1)}
                 />
             </div>
-            {!isLessThan840 && (
-                <div className={`${gridCols} mt-3 grid`}>{weekDays}</div>
-            )}
+            {<div className={`mt-3 grid grid-cols-7`}>{weekDays}</div>}
             <div className="grid auto-rows-fr grid-cols-7 grid-rows-4">
                 {monthItems}
             </div>

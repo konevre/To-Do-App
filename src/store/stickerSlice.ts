@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 import { Sticker } from "../types";
 
@@ -11,19 +12,19 @@ const initialState: IStickerSlice = {
             name: "Rent a house",
             description: "Call the real estate manager",
             color: "bg-red-300",
-            id: "1925203c-9151-4153-bce7-5c068826c81a",
+            id: uuidv4(),
         },
         {
             name: "Call Saul",
             description: "Tell him to buy milk",
             color: "bg-yellow-300",
-            id: "1925203c-9151-4153-bce7-5c068826c81b",
+            id: uuidv4(),
         },
         {
             name: "Buy milk",
             description: "Protein milk",
             color: "bg-emerald-300",
-            id: "1925203c-9151-4153-bce7-5c068826c81c",
+            id: uuidv4(),
         },
     ],
 };

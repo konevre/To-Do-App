@@ -146,7 +146,7 @@ const useTodoForm = () => {
         onClose,
         isOpen,
         todoObj,
-    };
+    } as const;
 };
 
 export default useTodoForm;

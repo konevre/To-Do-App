@@ -1,5 +1,9 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { Link, useMatch } from "react-router-dom";
+import { useAppDispatch } from "../../../store/hooks";
+
+import { showMenu } from "../../../store/menuSlice";
 
 interface ICustomLinkProps {
     to: string;
@@ -18,6 +22,7 @@ const CustomLink: React.FC<ICustomLinkProps> = ({
     color,
     ...props
 }) => {
+    const dispatch = useAppDispatch();
     const match = useMatch(to);
     const styledContainer = match ? "rounded-lg bg-neutral-300" : "";
     const styledInner =
@@ -27,8 +32,16 @@ const CustomLink: React.FC<ICustomLinkProps> = ({
             ? "rounded bg-neutral-300"
             : "";
 
+    const isLessThan640: boolean = useMediaQuery({
+        query: "(max-width: 639px)",
+    });
+
+    const hideMenu = () => {
+        if (isLessThan640) dispatch(showMenu());
+    };
+
     return (
-        <Link to={to} {...props}>
+        <Link to={to} {...props} onClick={hideMenu}>
             <div className={`${styledContainer} flex h-10 items-center px-5`}>
                 {icon && <img src={icon} alt={title} className="w-3.5" />}
                 {color && (

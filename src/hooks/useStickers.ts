@@ -22,7 +22,7 @@ const useStickers = () => {
         dispatch(reorderSticker(state));
     };
 
-    return { stickers, setStickers, onNewSticker, hover, cols };
+    return { stickers, setStickers, onNewSticker, hover, cols } as const;
 };
 
 export default useStickers;

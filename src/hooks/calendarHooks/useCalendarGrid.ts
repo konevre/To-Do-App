@@ -35,7 +35,7 @@ const useCalendarGrid = (index: number) => {
         }
     });
 
-    return { cols };
+    return { cols } as const;
 };
 
 export default useCalendarGrid;

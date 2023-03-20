@@ -27,7 +27,7 @@ const useCalendarMonth = (today?: DateTime) => {
         }
     }
 
-    return { monthTitle, monthArray, now, isLessThan640 };
+    return { monthTitle, monthArray, now, isLessThan640 } as const;
 };
 
 export default useCalendarMonth;

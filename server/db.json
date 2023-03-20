@@ -1,50 +1,5 @@
 {
-  "todos": [
-    {
-      "name": "Hello",
-      "description": "watafak",
-      "list": "",
-      "due_date": "20-03-23",
-      "tags": "",
-      "subtasks": [
-        {
-          "done": false,
-          "name": "call bakery!"
-        }
-      ],
-      "completed": true,
-      "startHour": "01:00",
-      "endHour": "02:00",
-      "color": "bg-sky-500",
-      "id": "af2ded07-de92-4aa2-8c9f-113344591d5d"
-    }
-  ],
+  "todos": [],
   "lists": [],
-  "tags": [
-    {
-      "id": "d60ae868-89c7-4ced-8b74-c07137d25da9",
-      "name": "new tag",
-      "color": "bg-indigo-300"
-    }
-  ],
-  "stickers": [
-    {
-      "name": "Buy milk!",
-      "description": "Call dad\n",
-      "color": "bg-red-300",
-      "id": 4
-    },
-    {
-      "name": "Купить молокт",
-      "description": "Для пирога!!!!",
-      "color": "bg-yellow-300",
-      "id": 5
-    },
-    {
-      "name": "Купить творог",
-      "description": "сметану и хлеб!!",
-      "color": "bg-emerald-300",
-      "id": "1925203c-9151-4153-bce7-5c068826c81e"
-    }
-  ]
+  "tags": []
 }

@@ -52,7 +52,14 @@ const useLuxon = () => {
         }
     };
 
-    return { now, constantNow, changeDate, to12, filterTasks, showToday };
+    return {
+        now,
+        constantNow,
+        changeDate,
+        to12,
+        filterTasks,
+        showToday,
+    } as const;
 };
 
 export default useLuxon;

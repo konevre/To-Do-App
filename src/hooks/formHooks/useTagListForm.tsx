@@ -77,7 +77,7 @@ const useTagListForm = (name: "Tag" | "List") => {
         validationSchema,
         onSubmit,
         colorItems,
-    };
+    } as const;
 };
 
 export default useTagListForm;

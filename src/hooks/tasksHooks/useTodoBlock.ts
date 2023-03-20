@@ -12,7 +12,7 @@ const useTodoBlock = (
     const filterName =
         filter === "today" || filter === "tomorrow" ? filter : `this ${filter}`;
 
-    return { todos, todosLen, filterName };
+    return { todos, todosLen, filterName } as const;
 };
 
 export default useTodoBlock;

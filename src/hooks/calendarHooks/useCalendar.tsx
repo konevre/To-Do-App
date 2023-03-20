@@ -50,7 +50,7 @@ const useCalendar = () => {
         activeTitle,
         activeFilter,
         onEvent,
-    };
+    } as const;
 };
 
 export default useCalendar;

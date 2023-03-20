@@ -41,7 +41,7 @@ const useCalendarWeek = () => {
         isNotMonth,
         weekArray,
         now,
-    };
+    } as const;
 };
 
 export default useCalendarWeek;
