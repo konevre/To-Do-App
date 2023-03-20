@@ -65,21 +65,25 @@ const useTodoForm = () => {
                 })
             ),
             date: Yup.string().required("Date field is required."),
-            startHour: Yup.string(),
+            startHour: Yup.number()
+                .min(1, "Number must be between 1 and 12")
+                .max(12, "Number must be between 1 and 12"),
             startPeriod: Yup.string(),
-            endHour: Yup.string(),
+            endHour: Yup.number()
+                .min(1, "Number must be between 1 and 12")
+                .max(12, "Number must be between 1 and 12"),
             endPeriod: Yup.string(),
         })
         .test("time", "end hour is more than start hour", function (value) {
             const { startHour, startPeriod, endHour, endPeriod } = value;
             const start = +DateTime.fromFormat(
-                    `${startHour}${startPeriod}`,
-                    "ha"
-                ).toFormat("H"),
-                end = +DateTime.fromFormat(
-                    `${endHour}${endPeriod}`,
-                    "ha"
-                ).toFormat("H");
+                `${startHour}${startPeriod}`,
+                "ha"
+            ).toFormat("H");
+            const end = +DateTime.fromFormat(
+                `${endHour}${endPeriod}`,
+                "ha"
+            ).toFormat("H");
 
             if (start < end) return true;
             return this.createError({

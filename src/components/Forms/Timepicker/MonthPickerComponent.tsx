@@ -24,7 +24,7 @@ const MonthPickerComponent: React.FC<FieldValues> = ({
 
     const { monthArray } = useCalendarMonth(month);
     const changeMonth = (dir: number) => {
-        setMonth(month.plus({ months: dir }));
+        setMonth((prevState) => prevState.plus({ months: dir }));
     };
 
     const { weekArray, gridCols } = useCalendarWeek();

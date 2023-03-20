@@ -1,7 +1,7 @@
 import React from "react";
+
 import { changeState } from "../../store/calendarSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-
 import { Range } from "../../types";
 import { toCapitalCase } from "../../utils/utils";
 

@@ -1,9 +1,10 @@
 import { DateTime } from "luxon";
+
 import { changeNow } from "../../store/calendarSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { Range, Todo } from "../../types";
 
 export const todayDate = DateTime.now().toFormat("dd-MM-yy");
-import { Range, Todo } from "../../types";
 
 const useLuxon = () => {
     const { today } = useAppSelector((state) => state.calendar);

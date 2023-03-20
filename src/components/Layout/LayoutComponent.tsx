@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-
 import React from "react";
 
 import useLayout from "../../hooks/useLayout";

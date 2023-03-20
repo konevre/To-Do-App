@@ -4,7 +4,6 @@ import { Todo } from "../../../types";
 export const todoApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllTodos: builder.query<Todo[], void>({
-            // query: () => ({ url: "/todos", params: { list: "work" } }),
             query: () => "/todos",
             providesTags: ["todos"],
         }),

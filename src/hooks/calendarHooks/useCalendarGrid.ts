@@ -1,9 +1,10 @@
 import { DateTime } from "luxon";
+
 import { isNewCol, countHours } from "../../utils/utils";
 import { Todo } from "../../types";
+import { useAppSelector } from "../../store/hooks";
 
 import useLuxon from "./useLuxon";
-import { useAppSelector } from "../../store/hooks";
 
 const useCalendarGrid = (index: number) => {
     const { now } = useLuxon();

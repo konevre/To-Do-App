@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Field } from "formik";
 
 import xmark from "../../../resources/icons/xmark.svg";
+import { useAppSelector } from "../../../store/hooks";
+import { FieldValues } from "../../../types";
 
 import MonthPickerComponent from "./MonthPickerComponent";
 import TimePickerComponent from "./TimePickerComponent";
-import { useAppSelector } from "../../../store/hooks";
-
-import { FieldValues } from "../../../types";
 
 const DateTimePickerComponent: React.FC<FieldValues> = ({
     setFieldValue,

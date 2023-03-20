@@ -9,21 +9,28 @@ interface IStickerSlice {
 const initialState: IStickerSlice = {
     stickers: [
         {
-            name: "Rent a house",
-            description: "Call the real estate manager",
+            name: "Social Media",
+            description:
+                "1) Plan social content, 2) Build content calendar, 3) Plan promotion and distribution",
             color: "bg-red-300",
             id: uuidv4(),
         },
         {
-            name: "Call Saul",
-            description: "Tell him to buy milk",
+            name: "Better Call Saul",
+            description: "Start watching the series with Drake",
             color: "bg-yellow-300",
             id: uuidv4(),
         },
         {
-            name: "Buy milk",
-            description: "Protein milk",
+            name: "Email A/B Tests",
+            description: "- Subject lines, Sender, CTA, Sending times",
             color: "bg-emerald-300",
+            id: uuidv4(),
+        },
+        {
+            name: "Banner Ads",
+            description: "- Write down the notes for Banner ADS",
+            color: "bg-indigo-300",
             id: uuidv4(),
         },
     ],

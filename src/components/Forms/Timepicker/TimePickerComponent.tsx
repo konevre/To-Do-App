@@ -3,10 +3,7 @@ import { Field } from "formik";
 
 import { FieldValues } from "../../../types";
 
-const TimePickerComponent: React.FC<FieldValues> = ({
-    setFieldValue,
-    values,
-}) => {
+const TimePickerComponent: React.FC<FieldValues> = ({ setFieldValue }) => {
     const handleHourChange = (
         event: React.SyntheticEvent,
         name: "startHour" | "endHour"

@@ -1,9 +1,9 @@
 import { showSticker } from "../store/editSlice";
 import { reorderSticker } from "../store/stickerSlice";
-
-import useLayout from "./useLayout";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Sticker } from "../types";
+
+import useLayout from "./useLayout";
 
 const useStickers = () => {
     const dispatch = useAppDispatch();

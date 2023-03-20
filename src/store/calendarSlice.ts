@@ -9,7 +9,7 @@ interface ICalendar {
 }
 
 const initialState: ICalendar = {
-    activeState: "week",
+    activeState: "day",
     today: todayDate,
 };
 

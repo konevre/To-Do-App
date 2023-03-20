@@ -46,4 +46,4 @@ npm install
 npm start
 ```
 
-6. The project will start on your local machine, and you can access it by opening your web browser and navigating to http://localhost:3000/.
+6. The project will start on your local machine, and you can access it by opening your web browser and navigating to http://localhost:4000/.

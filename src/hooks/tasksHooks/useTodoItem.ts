@@ -4,7 +4,7 @@ import { useUpdateTodoMutation } from "../../store/api/apiEndpoints/todoEndpoint
 import { showTodo } from "../../store/editSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { showMenu } from "../../store/menuSlice";
-import { Todo, List } from "../../types";
+import { Todo } from "../../types";
 
 const useTodoItem = (task: Todo) => {
     const dispatch = useAppDispatch();

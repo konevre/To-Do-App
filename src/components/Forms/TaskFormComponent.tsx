@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 
 import useTodoForm from "../../hooks/formHooks/useTodoForm";
 import { useAppSelector } from "../../store/hooks";
@@ -62,6 +62,10 @@ const TaskFormComponent: React.FC = () => {
                         />
                         <CustomErrorMessageComponent
                             name="startHour"
+                            style="col-span-2 mb-3"
+                        />
+                        <CustomErrorMessageComponent
+                            name="endHour"
                             style="col-span-2 mb-3"
                         />
                         <label className="text-sm" htmlFor="list">

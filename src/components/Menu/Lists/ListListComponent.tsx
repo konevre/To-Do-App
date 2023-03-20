@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../../store/hooks";
 import ListItemComponent from "./ListItemComponent";
 
-const ListListComponent = () => {
+const ListListComponent: React.FC = () => {
     const { lists = [] } = useAppSelector((state) => state.lists);
     return (
         <>

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useState } from "react";
 
 import HeaderComponent from "../Header/HeaderComponent";

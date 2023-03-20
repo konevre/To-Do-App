@@ -1,6 +1,6 @@
 import useFilterTasks from "./useFilterTasks";
 
-import { Filter, Todo } from "../../types";
+import { Filter } from "../../types";
 
 const useTodoBlock = (
     filter: Filter,

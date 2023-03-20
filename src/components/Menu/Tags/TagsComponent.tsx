@@ -8,7 +8,7 @@ const TagsComponent: React.FC = () => {
     const [isNewTag, setNewTag] = useState<boolean>(false);
 
     const onTag = () => {
-        setNewTag(!isNewTag);
+        setNewTag((prevState) => !prevState);
     };
 
     const title = isNewTag ? "Close Tag" : "+ Add Tag";

@@ -11,7 +11,7 @@ const ListComponent: React.FC = () => {
     const [isNewList, setNewList] = useState<boolean>(false);
 
     const onNewList = () => {
-        setNewList(!isNewList);
+        setNewList((prevState) => !prevState);
     };
     const title = isNewList ? "Close List" : "Add New List";
     return (

@@ -1,9 +1,9 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-
-import CustomErrorMessageComponent from "./CustomErrorMessageComponent";
+import { Formik, Form, Field } from "formik";
 
 import useStickerForm from "../../hooks/formHooks/useStickerForm";
+
+import CustomErrorMessageComponent from "./CustomErrorMessageComponent";
 
 const StickerForm = () => {
     const {

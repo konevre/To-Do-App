@@ -2,11 +2,10 @@ import React from "react";
 import { Reorder } from "framer-motion";
 
 import plus from "../../resources/icons/plus.svg";
-
 import useStickers from "../../hooks/useStickers";
+import { Sticker } from "../../types";
 
 import StickerItemComponent from "./StickerItemComponent";
-import { Sticker } from "../../types";
 
 const StickerListComponent: React.FC = () => {
     const { stickers, setStickers, onNewSticker, hover, cols } = useStickers();

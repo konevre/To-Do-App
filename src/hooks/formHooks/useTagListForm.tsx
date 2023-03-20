@@ -7,7 +7,6 @@ import * as Yup from "yup";
 import ColorPickerComponent from "../../components/ColorPicker/ColorPickerComponent";
 import { useCreateTagMutation } from "../../store/api/apiEndpoints/tagEndpoints";
 import { useCreateListMutation } from "../../store/api/apiEndpoints/listEndpoints";
-
 import { Tag, List } from "../../types";
 import { tagColors, listColors } from "../../utils/colors";
 

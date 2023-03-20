@@ -18,10 +18,10 @@ import CustomLink from "./CustomLink/CustomLinkComponent";
 const MenuComponent: React.FC = () => {
     const dispatch = useAppDispatch();
     const isMenuOpen = useAppSelector((state) => state.menu.isMenuOpen);
-    const upcomingNum: number = useFilterTasks("week").length;
-    const todayNum: number = useFilterTasks("today").length;
+    const upcomingNum = useFilterTasks("week").length;
+    const todayNum = useFilterTasks("today").length;
 
-    const onMenu = (): void => {
+    const onMenu = () => {
         dispatch(showMenu());
     };
 

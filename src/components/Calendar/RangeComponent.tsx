@@ -1,17 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 import useLuxon from "../../hooks/calendarHooks/useLuxon";
-
-import { changeState } from "../../store/calendarSlice";
 import right from "../../resources/icons/chevron.svg";
 import left from "../../resources/icons/chevron-left.svg";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 
 import RangeSelectorComponent from "./RangeSelectorComponent";
 
-const RangeComponent = () => {
+const RangeComponent: React.FC = () => {
     const { activeState } = useAppSelector((state) => state.calendar);
     const { changeDate, showToday } = useLuxon();
     const isMoreThan1024 = useMediaQuery({ query: "(min-width: 1024px)" });

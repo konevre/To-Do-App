@@ -1,5 +1,245 @@
 {
-  "todos": [],
-  "lists": [],
-  "tags": []
+  "todos": [
+    {
+      "name": "Research content ideas",
+      "description": "Write down some ideas that might be useful for further content development",
+      "list": "Work",
+      "due_date": "20-03-23",
+      "tags": "",
+      "subtasks": [],
+      "completed": true,
+      "startHour": "19:00",
+      "endHour": "20:00",
+      "color": "bg-green-400",
+      "id": "4eb82906-b640-4dad-a972-d4047a0dc41d"
+    },
+    {
+      "name": "Create a database of guest authors",
+      "description": "",
+      "list": "",
+      "due_date": "20-03-23",
+      "tags": "",
+      "subtasks": [],
+      "completed": true,
+      "startHour": "01:00",
+      "endHour": "11:00",
+      "color": "bg-violet-500",
+      "id": "92b940fb-01ac-4860-9ace-a24d9b6292e2"
+    },
+    {
+      "id": "12a30cfe-5afd-419a-bf7a-cd3b29878aed",
+      "name": "Renew driver's license",
+      "description": "Call the instructor",
+      "list": "Personal",
+      "due_date": "20-03-23",
+      "tags": "Tag 1",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Read the rules"
+        }
+      ],
+      "completed": false,
+      "startHour": "17:00",
+      "endHour": "18:00",
+      "color": "bg-violet-400"
+    },
+    {
+      "name": "Consult accountant",
+      "description": "Remind John to include the last month bills",
+      "list": "Personal",
+      "due_date": "20-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Ask mom to pay for the upcoming bill"
+        },
+        {
+          "done": false,
+          "name": "Withdraw some money"
+        }
+      ],
+      "completed": true,
+      "startHour": "01:00",
+      "endHour": "02:00",
+      "color": "bg-violet-400",
+      "id": "5379743a-14d1-4c6b-ab68-d1b774920eca"
+    },
+    {
+      "id": "5a12afc8-2395-4f10-bb0b-2b361b8cc1b2",
+      "name": "Prepare collaboration proposals",
+      "description": "Go to google.com",
+      "list": "Work",
+      "due_date": "21-03-23",
+      "tags": "Tag 2",
+      "subtasks": [],
+      "completed": false,
+      "startHour": "15:00",
+      "endHour": "18:00",
+      "color": "bg-green-400"
+    },
+    {
+      "name": "Adopt a link tracker tool",
+      "description": "",
+      "list": "Hobby",
+      "due_date": "21-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Buy a pulse tracker first"
+        }
+      ],
+      "completed": false,
+      "startHour": "01:00",
+      "endHour": "02:00",
+      "color": "bg-blue-500",
+      "id": "e67b4a82-38bc-47ef-b403-81f135a50f54"
+    },
+    {
+      "id": "d2aff9c7-f1e6-4bb6-a0bf-5cebefd89686",
+      "name": "Call mom",
+      "description": "Tell her to buy flowers for Elena's bd",
+      "list": "",
+      "due_date": "23-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": true,
+          "name": "Also bake a cake?"
+        },
+        {
+          "done": true,
+          "name": "What flowers?"
+        }
+      ],
+      "completed": false,
+      "startHour": "01:00",
+      "endHour": "02:00",
+      "color": "bg-yellow-400"
+    },
+    {
+      "id": "6633f6f0-620e-47b9-b17a-882be9ea6ed5",
+      "name": "Write a script",
+      "description": "Watch a youtube video on JS",
+      "list": "Hobby",
+      "due_date": "09-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Elaborate more on closures"
+        }
+      ],
+      "completed": false,
+      "startHour": "13:00",
+      "endHour": "15:00",
+      "color": "bg-blue-500"
+    },
+    {
+      "id": "070c6319-8308-42e1-b810-01857e23e8f8",
+      "name": "Start learning Typescript",
+      "description": "- What is typescript\n- Where to use it\n- What type assertions are",
+      "list": "",
+      "due_date": "02-03-23",
+      "tags": "",
+      "subtasks": [],
+      "completed": false,
+      "startHour": "06:00",
+      "endHour": "07:00",
+      "color": "bg-red-500"
+    },
+    {
+      "id": "65a13b1f-0837-4fda-b158-770f5c4d86d9",
+      "name": "Integrate React with Typescirpt",
+      "description": "",
+      "list": "",
+      "due_date": "02-03-23",
+      "tags": "",
+      "subtasks": [],
+      "completed": false,
+      "startHour": "08:00",
+      "endHour": "09:00",
+      "color": "bg-sky-500"
+    },
+    {
+      "id": "ebd0a89c-2a18-46c3-9c73-76952c10931a",
+      "name": "Debug the code",
+      "description": "Ask ChatGPT on the issue",
+      "list": "Personal",
+      "due_date": "02-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": true,
+          "name": "ZZzzzz! "
+        }
+      ],
+      "completed": false,
+      "startHour": "06:00",
+      "endHour": "15:00",
+      "color": "bg-violet-400"
+    },
+    {
+      "id": "4e91b222-ce20-4832-8eb6-7985c8988767",
+      "name": "Ask Jane for dinner",
+      "description": "Book a table if she agrees",
+      "list": "",
+      "due_date": "25-03-23",
+      "tags": "",
+      "subtasks": [
+        {
+          "done": false,
+          "name": "Buy wine"
+        }
+      ],
+      "completed": false,
+      "startHour": "08:00",
+      "endHour": "11:00",
+      "color": "bg-yellow-400"
+    },
+    {
+      "name": "Fire Alexey from Strizhi",
+      "description": "This is sad....",
+      "list": "Work",
+      "due_date": "28-03-23",
+      "tags": "Tag 2",
+      "subtasks": [],
+      "completed": false,
+      "startHour": "08:00",
+      "endHour": "09:00",
+      "color": "bg-green-400",
+      "id": "71d77afb-8a97-4e77-a00a-7126a5667206"
+    }
+  ],
+  "lists": [
+    {
+      "id": "b9b6d105-884d-4632-809c-1139e2578b29",
+      "name": "Personal",
+      "color": "bg-violet-400"
+    },
+    {
+      "id": "8fe58129-a050-4dc9-981c-f1dca41dfa2f",
+      "name": "Work",
+      "color": "bg-green-400"
+    },
+    {
+      "id": "4d9876fa-36fe-4c9c-9167-c1716cfb8069",
+      "name": "Hobby",
+      "color": "bg-blue-500"
+    }
+  ],
+  "tags": [
+    {
+      "id": "969d2b21-855e-471f-805b-3fe1e3b51e1e",
+      "name": "Tag 1",
+      "color": "bg-red-300"
+    },
+    {
+      "id": "681ee394-2a2b-46d4-95b7-8a540ed29cda",
+      "name": "Tag 2",
+      "color": "bg-orange-300"
+    }
+  ]
 }
