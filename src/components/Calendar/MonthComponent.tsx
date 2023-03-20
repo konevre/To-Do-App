@@ -33,7 +33,7 @@ const MonthComponent: React.FC = () => {
                                 <div
                                     key={event.id}
                                     onClick={() => onEvent(event)}
-                                    className={`${event.color} mt-1 w-full rounded-md p-3`}
+                                    className={`${event.color} mt-1 w-full cursor-pointer rounded-md p-3`}
                                 ></div>
                             );
                         })}

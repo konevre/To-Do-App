@@ -33,19 +33,23 @@ const useModal = () => {
     };
 
     const deleteItems = async (item: Todo) => {
+        const id = item.id;
         if (isList) {
             if (item.list === modalTasks) {
-                const id = item.id;
+                await deleteTodo(id);
+            }
+        } else {
+            if (item.tags === modalTasks) {
                 await deleteTodo(id);
             }
         }
     };
     const onDelete = () => {
         todos.forEach(deleteItems);
-        onClose();
-        navigate(`/today`);
         const { filterID, deleteFilter } = filterObj;
         if (filterID) deleteFilter(filterID);
+        onClose();
+        navigate(`/today`);
     };
 
     return { isModalOpen, modalTasks, onClose, onDelete };
